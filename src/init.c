@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/06 15:48:48 by eemuston         ###   ########.fr       */
+/*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
+/*   Updated: 2023/09/06 16:38:32 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char **argv)
+#include "../header/cub3d.h"
+
+void	init_data(t_cub3d *data)
 {
-	if (error_check(argc, argv) == 1)
-		return (1);
-	//parse_map();
-	return (0);
+	int i;
+
+	i = 0;
+	data->width = 0;
+	data->height = 0;
+	data->fd = 0;
+	while (i < 4)
+	{
+		data->texture[i].path = NULL;
+		data->texture[i].identifier = 0;
+		i++;
+	}
 }

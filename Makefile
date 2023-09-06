@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
+#    By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/06 15:07:59 by atoof            ###   ########.fr        #
+#    Updated: 2023/09/06 15:57:00 by eemuston         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 SRC_DIR = src/
-SRC = main.c
+SRC = main.c errors.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
 HEADER = cub3d.h

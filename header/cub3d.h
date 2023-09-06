@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/06 15:45:16 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/06 16:50:31 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,27 @@
 # define LEFT 123
 # define RIGHT 124
 
+# define NORTH 1
+# define SOUTH 2
+# define EAST 3
+# define WEST 4
+
+typedef struct s_texture
+{
+	char			*path;
+	int				identifier;
+}				t_texture;
+
 /* cub3D struct */
 typedef struct s_cub3d
 {
 	int				width;
 	int				height;
 	int				fd;
+	t_texture		texture[4];
 }				t_cub3d;
+
+void	free_array(char **array);
+int		error_check(int argc, char **argv, t_cub3d *data);
 
 #endif
