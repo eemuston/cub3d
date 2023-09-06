@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/06 18:52:25 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/06 19:23:52 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	texture_init(char **splitted_line, t_cub3d *data, int i)
 			return (1);
 	}
 	else
-		return (error_in_texture(data->texture));
+		return (error_in_texture(data));
 	return (0);
 }
 
@@ -66,6 +66,13 @@ static int	read_texture(int fd, t_cub3d *data)
 	while (i < 4)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			return (0);
+		if ((line[0] != '\0') && line[0] == '\n')
+		{
+			free(line);
+			continue ;
+		}
 		splitted_line = ft_split(line, ' ');
 		if (texture_init(splitted_line, data, i))
 			return (1);
@@ -73,6 +80,7 @@ static int	read_texture(int fd, t_cub3d *data)
 		free(line);
 		i++;
 	}
+	return (0);
 }
 
 int	read_file(char **argv, t_cub3d *data)

@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/06 18:40:28 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/06 19:32:31 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-static void	print_struct(t_cub3d *data)
-{
-	int	i;
+// static void	print_struct(t_cub3d *data)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < 4)
-	{
-		printf("%s ", data->texture[i].path);
-		printf("%d \n", data->texture[i].identifier);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < 4)
+// 	{
+// 		printf("identifier = %d : ", data->texture[i].identifier);
+// 		printf("path = %s", data->texture[i].path);
+// 		i++;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 	if (error_check(argc, argv, &data) == 1)
 		return (1);
 	//parse_map();
-	print_struct(&data);
+	// print_struct(&data);
 	return (0);
 }
