@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/06 16:50:31 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:40:05 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ typedef struct s_cub3d
 	t_texture		texture[4];
 }				t_cub3d;
 
+void	init_data(t_cub3d *data);
 void	free_array(char **array);
 void	free_texture(t_cub3d *data);
+int		error_in_texture(t_cub3d *data);
+int		read_file(char **argv, t_cub3d *data);
 int		error_check(int argc, char **argv, t_cub3d *data);
-void	init_data(t_cub3d *data);
 #endif

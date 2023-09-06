@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+         #
+#    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/06 15:57:00 by eemuston         ###   ########.fr        #
+#    Updated: 2023/09/06 18:30:18 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC =	main.c \
 		errors.c\
 		init.c\
 		free.c\
+		read_file.c
 		
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
