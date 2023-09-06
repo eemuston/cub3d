@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"*.excalidraw": "json",
-		"*.excalidrawlib": "json",
-		"test": "c",
-		"cub3d.h": "c"
-	}
-}
