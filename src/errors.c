@@ -12,7 +12,7 @@
 
 #include "../header/cub3d.h"
 
-static int	allowcate_texture(t_cub3d *data, char *splitted_line, int flag, int i)
+static int	allocate_texture(t_cub3d *data, char *splitted_line, int flag, int i)
 {
 	if (flag == 1)
 		data->texture[i].identifier = NORTH;
@@ -32,22 +32,22 @@ static int	texture_init(char **splitted_line, t_cub3d *data, int i)
 {
 	if (ft_strncmp(splitted_line[0], "NO", 2) == 0)
 	{
-		if (allowcate_texture(data, splitted_line[0], 1, i))
+		if (allocate_texture(data, splitted_line[1], 1, i))
 			return (1);
 	}
 	else if (ft_strncmp(splitted_line[0], "SO", 2) == 0)
 	{
-		if (allowcate_texture(data, splitted_line[0], 2, i))
+		if (allocate_texture(data, splitted_line[1], 2, i))
 			return (1);
 	}
 	else if (ft_strncmp(splitted_line[0], "WE", 2) == 0)
 	{
-		if (allowcate_texture(data, splitted_line[0], 3, i))
+		if (allocate_texture(data, splitted_line[1], 3, i))
 			return (1);
 	}
 	else if (ft_strncmp(splitted_line[0], "EA", 2) == 0)
 	{
-		if (allowcate_texture(data, splitted_line[0], 4, i))
+		if (allocate_texture(data, splitted_line[1], 4, i))
 			return (1);
 	}
 	else
