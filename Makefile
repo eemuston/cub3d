@@ -12,7 +12,11 @@
 
 NAME = cub3D
 SRC_DIR = src/
-SRC = main.c errors.c
+SRC =	main.c \
+		errors.c\
+		init.c\
+		free.c\
+		
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
 HEADER = cub3d.h

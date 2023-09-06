@@ -12,6 +12,18 @@
 
 #include "../header/cub3d.h"
 
+static void	print_struct(t_cub3d *data)
+{
+	int	i = 0;
+	
+	while (i < 4)
+	{
+		printf("%s ", data->texture[i].path);
+		printf("%d \n", data->texture[i].identifier);
+		i++;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	t_cub3d data;
@@ -20,5 +32,6 @@ int main(int argc, char **argv)
 	if (error_check(argc, argv, &data) == 1)
 		return (1);
 	//parse_map();
+	print_struct(&data);
 	return (0);
 }

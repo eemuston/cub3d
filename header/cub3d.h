@@ -41,6 +41,7 @@ typedef struct s_cub3d
 }				t_cub3d;
 
 void	free_array(char **array);
+void	free_texture(t_cub3d *data);
 int		error_check(int argc, char **argv, t_cub3d *data);
-
+void	init_data(t_cub3d *data);
 #endif
