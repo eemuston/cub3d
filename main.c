@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/06 15:08:37 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:48:48 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@ int main(int argc, char **argv)
 {
 	if (error_check(argc, argv) == 1)
 		return (1);
+	//parse_map();
 	return (0);
 }
