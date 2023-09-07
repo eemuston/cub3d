@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/07 17:48:46 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/07 18:38:02 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	split_line(char *line, t_cub3d *data)
 	char	**splitted_line;
 
 	splitted_line = ft_split(line, ' ');
-	if (check_valid_input(splitted_line, data) || \
-	texture_color_init(splitted_line, data))
+	if (check_valid_input(splitted_line, data)
+		|| texture_color_init(splitted_line, data))
 	{
 		free_array(splitted_line);
 		free(line);
@@ -52,7 +52,7 @@ static int	read_texture_color(int fd, t_cub3d *data)
 		if (!line)
 		{
 			free_texture(data);
-			return (1);
+			break ;
 		}
 		if ((line[0] != '\0') && line[0] == '\n')
 		{
@@ -64,10 +64,12 @@ static int	read_texture_color(int fd, t_cub3d *data)
 		free(line);
 		i++;
 	}
+	if (i <= 5)
+		return (error_in_texture(data, 3));
 	return (0);
 }
 
-static	int	check_duplicate(t_cub3d *data)
+static int	check_duplicate(t_cub3d *data)
 {
 	int	index;
 	int	cur_index;
@@ -91,7 +93,7 @@ static	int	check_duplicate(t_cub3d *data)
 
 int	read_file(char **argv, t_cub3d *data)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -105,6 +107,7 @@ int	read_file(char **argv, t_cub3d *data)
 		return (1);
 	}
 	close(fd);
+	// TODO: check if we have correct info in colors and texture structures;
 	if (check_duplicate(data))
 		return (1);
 	return (0);
