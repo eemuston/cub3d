@@ -23,6 +23,7 @@ void	init_data(t_cub3d *data)
 	while (i < 4)
 	{
 		data->texture[i].path = NULL;
+		data->texture[i].key = NULL;
 		data->texture[i].identifier = 0;
 		i++;
 	}

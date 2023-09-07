@@ -17,9 +17,14 @@ void	free_texture(t_cub3d *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	if (!(data->texture[i].key))
+		return ;
+	while (data->texture[i].key != NULL && i < 4)
 	{
 		free(data->texture[i].path);
+		free(data->texture[i].key);
+		data->texture[i].path = NULL;
+		data->texture[i].key = NULL;
 		i++;
 	}
 }

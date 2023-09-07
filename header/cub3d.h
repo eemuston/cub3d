@@ -28,6 +28,7 @@
 typedef struct s_texture
 {
 	char			*path;
+	char			*key;
 	int				identifier;
 }				t_texture;
 
@@ -40,10 +41,17 @@ typedef struct s_cub3d
 	t_texture		texture[4];
 }				t_cub3d;
 
+//init.c:
 void	init_data(t_cub3d *data);
+
+//free.c:
 void	free_array(char **array);
 void	free_texture(t_cub3d *data);
-int		error_in_texture(t_cub3d *data);
+
+
+//read_file.c:
+int		error_in_texture(t_cub3d *data, int flag);
 int		read_file(char **argv, t_cub3d *data);
 int		error_check(int argc, char **argv, t_cub3d *data);
+
 #endif

@@ -12,10 +12,17 @@
 
 #include "../header/cub3d.h"
 
-int	error_in_texture(t_cub3d *data)
+int	error_in_texture(t_cub3d *data, int flag)
 {
+	if (flag == 1)
+		ft_putstr_fd("Error, Invalid texture identifier.\n", 2);
+	else if (flag == 2)
+		ft_putstr_fd("Error duplicate\n", 2);
+	else if (flag == 3)
+		ft_putstr_fd("Error line input\n", 2);
+	else if (flag == 4)
+		ft_putstr_fd("Error malloc\n", 2);
 	free_texture(data);
-	ft_putstr_fd("Error, Invalid texture identifier.\n", 2);
 	return (1);
 }
 
