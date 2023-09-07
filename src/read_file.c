@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/07 18:38:02 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/07 20:35:31 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,21 @@ static int	check_duplicate(t_cub3d *data)
 	return (0);
 }
 
+static int check_map(t_cub3d *data, int current)
+{
+	int fd;
+
+	while (current < 4)
+	{
+		fd = open(data->texture[current].path, O_RDONLY);
+		if (fd == -1)
+			return (error_in_texture(data, 5));
+		close(fd);
+		current++;
+	}
+	return (0);
+}
+
 int	read_file(char **argv, t_cub3d *data)
 {
 	int	fd;
@@ -109,6 +124,8 @@ int	read_file(char **argv, t_cub3d *data)
 	close(fd);
 	// TODO: check if we have correct info in colors and texture structures;
 	if (check_duplicate(data))
+		return (1);
+	if (check_map(data, 0))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
+#    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/07 17:59:06 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/07 20:33:26 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC =	main.c \
 		free.c\
 		read_file.c \
 		texture_color_init.c
-		
+
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
 HEADER = cub3d.h
@@ -27,7 +27,7 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
 ERROR_FLAGS = -fsanitize=address -static-libsan -g -fno-omit-frame-pointer -overflow
-EXTRA_FLAGS = -lmlx -framework OpenGL -framework AppKit
+EXTRA_FLAGS = -Imlx -framework OpenGL -framework AppKit
 
 BOLD = \033[1m
 GREEN = \033[0;32m
@@ -53,7 +53,7 @@ $(OBJ_DIR)%.o: %.c $(HEADER_DIR)$(HEADER)
 	@echo "$(YELLOW)$(BOLD)Compiling $<...$(NC)"
 	@mkdir -p $(@D)
 	@cc $(FLAGS) -I$(HEADER_DIR) -c -o $@ $<
-	
+
 clean:
 	@echo "$(CYAN)$(BOLD)Cleaning object files...$(NC)"
 	@make clean -C ./libft
