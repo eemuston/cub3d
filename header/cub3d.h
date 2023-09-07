@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/06 18:40:05 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/07 17:54:11 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,15 @@
 typedef struct s_texture
 {
 	char			*path;
-	char			*key;
 	int				identifier;
 }				t_texture;
+
+typedef struct s_color
+{
+	char			name;
+	char			*color;
+	short			rgb[3];
+}				t_color;
 
 /* cub3D struct */
 typedef struct s_cub3d
@@ -39,6 +45,7 @@ typedef struct s_cub3d
 	int				height;
 	int				fd;
 	t_texture		texture[4];
+	t_color			colors[2];
 }				t_cub3d;
 
 //init.c:
@@ -48,10 +55,10 @@ void	init_data(t_cub3d *data);
 void	free_array(char **array);
 void	free_texture(t_cub3d *data);
 
-
 //read_file.c:
-int		error_in_texture(t_cub3d *data, int flag);
 int		read_file(char **argv, t_cub3d *data);
+int		error_in_texture(t_cub3d *data, int flag);
 int		error_check(int argc, char **argv, t_cub3d *data);
+int		texture_color_init(char **splitted_line, t_cub3d *data);
 
 #endif

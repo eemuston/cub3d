@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
+#    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/06 18:30:18 by mtoof            ###   ########.fr        #
+#    Updated: 2023/09/07 17:59:06 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME = cub3D
 SRC_DIR = src/
 SRC =	main.c \
 		errors.c\
-		init.c\
+		init_data.c\
 		free.c\
-		read_file.c
+		read_file.c \
+		texture_color_init.c
 		
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
@@ -25,7 +26,7 @@ OBJ_DIR = obj/
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
-# ERROR_FLAGS = -fsanitize=address -static-libsan -g -fno-omit-frame-pointer -overflow
+ERROR_FLAGS = -fsanitize=address -static-libsan -g -fno-omit-frame-pointer -overflow
 EXTRA_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 BOLD = \033[1m

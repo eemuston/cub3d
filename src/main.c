@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/06 19:32:31 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/07 16:02:21 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	print_struct(t_cub3d *data)
 	while (i < 4)
 	{
 		printf("identifier = %d : ", data->texture[i].identifier);
-		printf("key = %s ", data->texture[i].key);
 		printf("path = %s", data->texture[i].path);
 		i++;
 	}

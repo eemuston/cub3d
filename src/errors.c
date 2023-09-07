@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/06 18:36:52 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/07 15:34:39 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	error_in_texture(t_cub3d *data, int flag)
 	if (flag == 1)
 		ft_putstr_fd("Error, Invalid texture identifier.\n", 2);
 	else if (flag == 2)
-		ft_putstr_fd("Error duplicate\n", 2);
+		ft_putstr_fd("Error, duplicate\n", 2);
 	else if (flag == 3)
-		ft_putstr_fd("Error line input\n", 2);
+		ft_putstr_fd("Error, invalide input\n", 2);
 	else if (flag == 4)
-		ft_putstr_fd("Error malloc\n", 2);
+		ft_putstr_fd("Error, malloc\n", 2);
 	free_texture(data);
 	return (1);
 }
