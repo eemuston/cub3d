@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/08 13:33:33 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 14:40:19 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	error_in_texture(t_cub3d *data, int flag)
 		ft_putstr_fd("Error\nmalloc\n", 2);
 	else if (flag == 5)
 		ft_putstr_fd("Error\ninvalid map\n", 2);
+	else if (flag == 6)
+		ft_putstr_fd("Error\ninvalid colors\n", 2);
 	free_texture(data);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/08 12:17:44 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/08 15:29:58 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC =	main.c \
 		read_file.c \
 		texture_color_init.c \
 		get_raw_map.c \
+		check_map_path_color.c \
+		ft_atoll.c \
 		
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/08 13:25:54 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 15:33:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	free_map(t_map **map)
 {
 	t_map	*tmp;
 
-	if (!map)
+	if (!(*map))
 		return ;
 	while (*map != NULL)
 	{
@@ -29,6 +29,7 @@ void	free_map(t_map **map)
 		free(*map);
 		*map = tmp;
 	}
+	(*map) = NULL;
 }
 
 void	free_texture(t_cub3d *data)
@@ -50,7 +51,10 @@ void	free_texture(t_cub3d *data)
 		data->texture[i].path = NULL;
 		i++;
 	}
+	free_array(data->raw_map);
 	free_map(&data->map);
+	if (data->fd < 0)
+		close(data->fd);
 }
 
 void	free_array(char **array)

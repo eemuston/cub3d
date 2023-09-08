@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/08 13:05:10 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 15:32:56 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	read_file(char **argv, t_cub3d *data)
 	}
 	// TODO: check if we have correct info in colors and texture structures;
 	if (check_duplicate(data) || get_raw_map(data, data->fd) \
-		|| check_map(data, 0))
+		|| check_map(data, 0) || check_valid_color(data))
 		return (1);
 	return (0);
 }

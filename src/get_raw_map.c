@@ -6,28 +6,13 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/08 13:30:32 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 15:43:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-int	check_map(t_cub3d *data, int current)
-{
-	int	fd;
-
-	while (current < 4)
-	{
-		fd = open(data->texture[current].path, O_RDONLY);
-		if (fd == -1)
-			return (error_in_texture(data, 5));
-		close(fd);
-		current++;
-	}
-	return (0);
-}
-
-int	new_node(t_map **new, char *line)
+static int	new_node(t_map **new, char *line)
 {
 	*new = malloc(sizeof(t_map));
 	if (!*new) 
@@ -48,7 +33,7 @@ int	new_node(t_map **new, char *line)
 	return (0);
 }
 
-int	add_back_map(t_map **map, t_map *new_node)
+static int	add_back_map(t_map **map, t_map *new_node)
 {
 	t_map	*last;
 
@@ -61,6 +46,35 @@ int	add_back_map(t_map **map, t_map *new_node)
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new_node;
+	return (0);
+}
+
+static int	assign_map_to_cub3d(t_cub3d *data)
+{
+	int		lst_size;
+	int		index;
+	t_map	*current;
+
+	current = data->map;
+	lst_size = 0;
+	index = -1;
+	while (current)
+	{
+		lst_size++;
+		current = current->next;
+	}
+	data->raw_map = malloc(sizeof(char *) * lst_size + 1);
+	if (!data->raw_map)
+		return (error_in_texture(data, 4));
+	current = data->map;
+	while (++index < lst_size)
+	{
+		data->raw_map[index] = ft_strdup(current->line);
+		if (!data->raw_map[index])
+			return (error_in_texture(data, 4));
+		current = current->next;
+	}
+	data->raw_map[index] = NULL;
 	return (0);
 }
 
@@ -80,11 +94,14 @@ int	get_raw_map(t_cub3d *data, int fd)
 			continue ;
 		}
 		new = NULL;
-		new_node(&new, line);
-		if (!new)
-			return (1);
+		if (new_node(&new, line))
+			return (error_in_texture(data, 4));
 		add_back_map(&data->map, new);
 		free(line);
 	}
+	if (assign_map_to_cub3d(data))
+		return (1);
+	free_map(&data->map);
+	close(fd);
 	return (0);
 }

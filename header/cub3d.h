@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/08 13:34:49 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 15:27:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				init_data(t_cub3d *data);
 // free.c:
 void				free_array(char **array);
 void				free_texture(t_cub3d *data);
-
+void				free_map(t_map **map);
 // read_file.c:
 int					read_file(char **argv, t_cub3d *data);
 int					error_in_texture(t_cub3d *data, int flag);
@@ -73,6 +73,12 @@ int					texture_color_init(char **splitted_line, t_cub3d *data);
 
 // get_raw_map.c:
 int					get_raw_map(t_cub3d *data, int fd);
+
+// check_map_path_color.c:
 int					check_map(t_cub3d *data, int current);
+int					check_valid_color(t_cub3d *data);
+
+// utils
+long long			ft_atoll(const char *str);
 
 #endif
