@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/07 15:34:39 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 13:33:33 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	error_in_texture(t_cub3d *data, int flag)
 {
 	if (flag == 1)
-		ft_putstr_fd("Error, Invalid texture identifier.\n", 2);
+		ft_putstr_fd("Error\nInvalid texture identifier.\n", 2);
 	else if (flag == 2)
-		ft_putstr_fd("Error, duplicate\n", 2);
+		ft_putstr_fd("Error\nduplicate\n", 2);
 	else if (flag == 3)
-		ft_putstr_fd("Error, invalide input\n", 2);
+		ft_putstr_fd("Error\ninvalide input\n", 2);
 	else if (flag == 4)
-		ft_putstr_fd("Error, malloc\n", 2);
+		ft_putstr_fd("Error\nmalloc\n", 2);
+	else if (flag == 5)
+		ft_putstr_fd("Error\ninvalid map\n", 2);
 	free_texture(data);
 	return (1);
 }

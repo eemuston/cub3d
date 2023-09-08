@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/07 17:09:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 13:34:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_data(t_cub3d *data)
 	data->width = 0;
 	data->height = 0;
 	data->fd = 0;
+	data->raw_map = NULL;
+	data->map = NULL;
 	while (i < 2)
 	{
 		data->colors[i].color = NULL;

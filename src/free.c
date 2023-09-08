@@ -6,11 +6,30 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/07 17:31:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 13:25:54 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
+
+void	free_map(t_map **map)
+{
+	t_map	*tmp;
+
+	if (!map)
+		return ;
+	while (*map != NULL)
+	{
+		tmp = (*map)->next;
+		if ((*map)->line != NULL)
+		{
+			free((*map)->line);
+			(*map)->line = NULL;
+		}
+		free(*map);
+		*map = tmp;
+	}
+}
 
 void	free_texture(t_cub3d *data)
 {
@@ -31,6 +50,7 @@ void	free_texture(t_cub3d *data)
 		data->texture[i].path = NULL;
 		i++;
 	}
+	free_map(&data->map);
 }
 
 void	free_array(char **array)

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/07 18:38:02 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 13:05:10 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ static int	read_texture_color(int fd, t_cub3d *data)
 	{
 		line = get_next_line(fd);
 		if (!line)
-		{
-			free_texture(data);
 			break ;
-		}
 		if ((line[0] != '\0') && line[0] == '\n')
 		{
 			free(line);
@@ -93,22 +90,20 @@ static int	check_duplicate(t_cub3d *data)
 
 int	read_file(char **argv, t_cub3d *data)
 {
-	int	fd;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	data->fd = open(argv[1], O_RDONLY);
+	if (data->fd == -1)
 	{
 		ft_putstr_fd("Error could not open file.\n", 2);
 		return (1);
 	}
-	if (read_texture_color(fd, data))
+	if (read_texture_color(data->fd, data))
 	{
-		close(fd);
+		close(data->fd);
 		return (1);
 	}
-	close(fd);
 	// TODO: check if we have correct info in colors and texture structures;
-	if (check_duplicate(data))
+	if (check_duplicate(data) || get_raw_map(data, data->fd) \
+		|| check_map(data, 0))
 		return (1);
 	return (0);
 }

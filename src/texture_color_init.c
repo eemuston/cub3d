@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/07 18:05:45 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/08 09:37:55 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 	index = 0;
 	if (!data->texture[index].path)
 	{
-		data->texture[index].path = ft_strdup(splitted_line[1]);
+		data->texture[index].path = ft_substr(splitted_line[1], 0, \
+		ft_strlen(splitted_line[1]) - 1);
 		if (!data->texture[index].path)
 			return (error_in_texture(data, 4));
 		assign_pole(&data->texture[index].identifier, splitted_line[0]);
@@ -40,13 +41,11 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 	else
 		while (data->texture[index].path && index < 4)
 			index++;
-	if (index < 4)
-	{
-		data->texture[index].path = ft_strdup(splitted_line[1]);
-		if (!data->texture[index].path)
-			return (error_in_texture(data, 4));
-		assign_pole(&data->texture[index].identifier, splitted_line[0]);
-	}
+	data->texture[index].path = ft_substr(splitted_line[1], 0, \
+		ft_strlen(splitted_line[1]) - 1);
+	if (!data->texture[index].path)
+		return (error_in_texture(data, 4));
+	assign_pole(&data->texture[index].identifier, splitted_line[0]);
 	return (0);
 }
 
@@ -63,7 +62,8 @@ static int	color_init(t_cub3d *data, char **splitted_line)
 		data->colors[index].name = 'C';
 	if (data->colors[index].color != NULL)
 		return (error_in_texture(data, 2));
-	data->colors[index].color = ft_strdup(splitted_line[1]);
+	data->colors[index].color = ft_substr(splitted_line[1], 0, \
+		ft_strlen(splitted_line[1]) - 1);
 	if (!data->colors[index].color)
 		return (error_in_texture(data, 4));
 	return (0);
