@@ -6,13 +6,13 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/08 15:31:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/09 12:32:15 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-int	check_map(t_cub3d *data, int current)
+int	check_texture_path(t_cub3d *data, int current)
 {
 	int	fd;
 
@@ -25,6 +25,15 @@ int	check_map(t_cub3d *data, int current)
 		current++;
 	}
 	return (0);
+}
+
+static void	assign_color_to_data(t_cub3d *data, int array, char **color)
+{
+	int	index;
+
+	index = -1;
+	while (++index < 3)
+		data->colors[array].rgb[index] = ft_atoi(color[index]);
 }
 
 static int	is_not_number(char **color_check)
@@ -55,17 +64,24 @@ int	check_valid_color(t_cub3d *data)
 {
 	char	**color_check;
 	int		index;
+	int		array;
 
-	index = 0;
-	color_check = ft_split(data->colors[index].color, ',');
-	if (!color_check)
-		return (error_in_texture(data, 4));
-	while (color_check[index] != NULL)
-		index++;
-	if (index != 3 || is_not_number(color_check))
+	array = -1;
+	while (++array < 2)
 	{
+		index = 0;
+		color_check = ft_split(data->colors[array].color, ',');
+		if (!color_check)
+			return (error_in_texture(data, 4));
+		while (color_check[index] != NULL)
+			index++;
+		if (index != 3 || is_not_number(color_check))
+		{
+			free_array(color_check);
+			return (error_in_texture(data, 6));
+		}
+		assign_color_to_data(data, array, color_check);
 		free_array(color_check);
-		return (error_in_texture(data, 6));
 	}
 	return (0);
 }

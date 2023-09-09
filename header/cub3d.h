@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/08 15:27:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/09 12:56:58 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,14 @@ int					texture_color_init(char **splitted_line, t_cub3d *data);
 int					get_raw_map(t_cub3d *data, int fd);
 
 // check_map_path_color.c:
-int					check_map(t_cub3d *data, int current);
 int					check_valid_color(t_cub3d *data);
+int					check_texture_path(t_cub3d *data, int current);
+
+// check_valid_map.c:
+int					check_surround_by_1(t_cub3d *data, char **m, int f, int l);
 
 // utils
 long long			ft_atoll(const char *str);
+int					cub3d_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif

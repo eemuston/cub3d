@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/08 09:37:55 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/09 11:54:07 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ static int	color_init(t_cub3d *data, char **splitted_line)
 
 int	texture_color_init(char **splitted_line, t_cub3d *data)
 {
-	if (!ft_memcmp(splitted_line[0], "NO", ft_strlen(splitted_line[0]))
-		|| !ft_memcmp(splitted_line[0], "SO", ft_strlen(splitted_line[0]))
-		|| !ft_memcmp(splitted_line[0], "EA", ft_strlen(splitted_line[0]))
-		|| !ft_memcmp(splitted_line[0], "WE", ft_strlen(splitted_line[0])))
+	if (!cub3d_memcmp(splitted_line[0], "NO", ft_strlen(splitted_line[0]))
+		|| !cub3d_memcmp(splitted_line[0], "SO", ft_strlen(splitted_line[0]))
+		|| !cub3d_memcmp(splitted_line[0], "EA", ft_strlen(splitted_line[0]))
+		|| !cub3d_memcmp(splitted_line[0], "WE", ft_strlen(splitted_line[0])))
 		return (allocate_texture(data, splitted_line));
-	else if (!ft_memcmp(splitted_line[0], "F", ft_strlen(splitted_line[0]))
-		|| !ft_memcmp(splitted_line[0], "C", ft_strlen(splitted_line[0])))
+	else if (!cub3d_memcmp(splitted_line[0], "F", ft_strlen(splitted_line[0]))
+		|| !cub3d_memcmp(splitted_line[0], "C", ft_strlen(splitted_line[0])))
 		return (color_init(data, splitted_line));
 	else
 		return (error_in_texture(data, 1));
