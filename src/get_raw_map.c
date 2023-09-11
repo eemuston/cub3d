@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_raw_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/11 17:01:57 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 18:38:33 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	get_raw_map(t_cub3d *data, int fd)
 	if (assign_map_to_cub3d(data, 0, -1, NULL))
 		return (error_in_texture(data, 5));
 	free_map(&data->map);
+	data->map = NULL;
 	close(fd);
 	return (0);
 }

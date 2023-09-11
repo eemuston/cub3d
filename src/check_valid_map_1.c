@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:36:29 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/11 17:18:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 18:54:04 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	check_valid_map(int x, int y, char ***map, t_cub3d *data)
 {
-	if (x < 0 || y < 0 || x >= data->width || y >= data->height \
-	|| check_character((*map)[y][x], 3))
+	if (x < 0 || y < 0 || x >= (int)ft_strlen((*map)[y]) \
+	|| x >= data->width || y >= data->height \
+	|| check_character((*map)[y][x], 3) != 0)
 		return ;
 	else
 	{
@@ -91,7 +92,6 @@ int	check_amount_player(char **map, int index, int current, t_cub3d *data)
 		if (data->player > 1)
 			return (error_in_texture(data, 7));
 		flood_fill(0, data->raw_map, data);
-		//free_array(data->raw_map);
 	}
 	return (0);
 }
