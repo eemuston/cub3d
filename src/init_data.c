@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/08 13:34:36 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/10 17:05:31 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	init_data(t_cub3d *data)
 	data->width = 0;
 	data->height = 0;
 	data->fd = 0;
+	data->player = 0;
+	data->player_x = 0;
+	data->player_y = 0;
+	data->player_direction = 'a';
 	data->raw_map = NULL;
 	data->map = NULL;
 	while (i < 2)

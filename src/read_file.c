@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/09 12:56:44 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 14:04:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,10 @@ int	read_file(char **argv, t_cub3d *data)
 	}
 	if (read_texture_color(data->fd, data) || check_duplicate(data) || \
 		check_texture_path(data, 0) || check_valid_color(data) || \
-		get_raw_map(data, data->fd) || \
-		check_surround_by_1(data, data->raw_map, 0, 0))
+		get_raw_map(data, data->fd))
+		//check_amount_player(data->raw_map, 0, 0, data))
 		return (1);
+
+	check_amount_player(data->raw_map, 0, 0, data);
 	return (0);
 }

@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_memcmp.c                                     :+:      :+:    :+:   */
+/*   memcmp_valid_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:51:06 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/09 11:51:37 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 16:41:42 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
+
+int	check_character(char c, int flag)
+{
+	if (flag == 1)
+		return ((c == '1' || c == 32 || (c >= 9 && c <= 13) || c == '0' || \
+				c == 'W' || c == 'S' || c == 'E' || c == 'N'));
+	else if (flag == 2)
+		return (c == 'W' || c == 'S' || c == 'E' || c == 'N');
+	else if (flag == 3)
+		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0'); 
+	// else if (flag == 4)
+	// 	return (c == '1' || c == '0');
+	return (0);
+}
 
 int	cub3d_memcmp(const void *s1, const void *s2, size_t n)
 {

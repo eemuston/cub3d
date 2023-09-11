@@ -6,60 +6,92 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:36:29 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/09 13:12:25 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 17:18:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-static int	is_1_and_space(int c)
+static void	check_valid_map(int x, int y, char ***map, t_cub3d *data)
 {
-	return ((c == '1' || c == 32 || c == '\t') && c != '\0');
-}
-
-static int	first_chr_is_1(char **raw_map, int line, \
-							int index, int last_line)
-{
-	while (++line <= last_line)
-		if (raw_map[line][index] != '1')
-			return (1);
-	return (0);
-}
-
-static int	last_chr_is_1(char **raw_map, int line, \
-							size_t index, int last_line)
-{
-	while (++line <= last_line)
+	if (x < 0 || y < 0 || x >= data->width || y >= data->height \
+	|| check_character((*map)[y][x], 3))
+		return ;
+	else
 	{
-		index = ft_strlen(raw_map[line]);
-		if (raw_map[line][--index] != '1')
-			return (1);
+		if (check_character((*map)[y][x], 3) != 0)
+			return ;
+		(*map)[y][x] = 'X';
+		check_valid_map(x + 1, y, map, data);
+		check_valid_map(x - 1, y, map, data);
+		check_valid_map(x, y + 1, map, data);
+		check_valid_map(x, y - 1, map, data);
 	}
+	return ;
+}
+
+static int	flood_fill(int y, char **raw_map, t_cub3d *data)
+{
+	char	**temp_map;
+	int		i;
+
+	i = 0;
+	temp_map = ft_calloc(sizeof(char *), data->height + 1);
+	if (!temp_map)
+		return (error_in_texture(data, 4));
+	while (raw_map[y] != NULL)
+	{
+		temp_map[y] = ft_strdup(raw_map[y]);
+		if (!temp_map[y])
+			return (error_in_texture(data, 4));
+		y++;
+	}
+	check_valid_map(data->player_x, data->player_y, &temp_map, data);
+	printf("\nafter fllod fill\n");
+	while (temp_map[i] != NULL)
+	{
+		if (i + 1 < 10)
+			printf("i: %d  %s\n", i + 1, temp_map[i]);
+		else
+			printf("i: %d %s\n", i + 1, temp_map[i]);
+		i++;
+	}
+	if (temp_map)
+		free_array(temp_map);
 	return (0);
 }
 
-int	check_surround_by_1(t_cub3d *data, char **raw_map, \
-						int first_line, int last_line)
+int	check_amount_player(char **map, int index, int current, t_cub3d *data)
 {
-	size_t	index_first;
-	size_t	index_last;
-	size_t	len_fisrt_line;
-	size_t	len_last_line;
+	int	temp;
 
-	index_first = 0;
-	index_last = 0;
-	while (raw_map[last_line] != NULL)
-		last_line++;
-	len_fisrt_line = ft_strlen(raw_map[first_line]);
-	len_last_line = ft_strlen(raw_map[--last_line]);
-	while (is_1_and_space(raw_map[first_line][index_first]))
-		index_first++;
-	while (is_1_and_space(raw_map[last_line][index_last]))
-		index_last++;
-	if ((index_first != len_fisrt_line) || index_last != len_last_line)
-		return (error_in_texture(data, 7));
-	if (first_chr_is_1(raw_map, -1, 0, last_line) || \
-		last_chr_is_1(raw_map, -1, 0, last_line))
-		return (error_in_texture(data, 7));
+	temp = 0;
+	if (map[index] != NULL)
+	{
+		while (map[index] != NULL)
+		{
+			current = 0;
+			while (map[index][current] != '\0')
+			{
+				if (check_character(map[index][current], 2))
+				{
+					data->player += 1;
+					data->player_direction = map[index][current];
+					data->player_x = current;
+					data->player_y = index;
+				}
+				current++;
+			}
+			temp = ft_strlen(map[index]);
+			if (temp > data->width)
+				data->width = temp;
+			index++;
+		}
+		data->height = index;
+		if (data->player > 1)
+			return (error_in_texture(data, 7));
+		flood_fill(0, data->raw_map, data);
+		//free_array(data->raw_map);
+	}
 	return (0);
 }

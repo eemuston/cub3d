@@ -6,64 +6,50 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/09 11:38:53 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/11 17:01:57 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-static int	new_node(t_map **new, char *line)
+static int	not_valid_line(char *current)
 {
-	*new = malloc(sizeof(t_map));
-	if (!*new) 
-	{
-		ft_putstr_fd("malloc in new_node\n", 2);
+	int	index;
+	int	len;
+
+	index = 0;
+	len = ft_strlen(current);
+	if (len == 1 && current[index] == '\n')
 		return (1);
-	}
-	if (ft_strrchr(line, '\n'))
-		(*new)->line = ft_substr(line, 0, ft_strlen(line) - 1);
-	else
-		(*new)->line = ft_strdup(line);
-	if (!(*new)->line)
+	while (current[index] == 32 \
+	|| (current[index] >= 9 && current[index] <= 13))
 	{
-		ft_putstr_fd("malloc in new_node\n", 2);
-		return (1);
+		index++;
+		if (current[index] == '\n' || current[index] == '\0')
+			return (1);
 	}
-	(*new)->next = NULL;
+	while (current[index] != '\0')
+	{
+		if (current[index] == '\n')
+			index++;
+		else if (!check_character(current[index], 1))
+			return (1);
+		if (current[index] != '\0')
+			index++;
+	}
 	return (0);
 }
 
-static int	add_back_map(t_map **map, t_map *new_node)
+static int	assign_map_to_cub3d(t_cub3d *data, int lst_size, \
+								int index, t_map *current)
 {
-	t_map	*last;
-
-	last = *map;
-	if (*map == NULL)
-	{
-		*map = new_node;
-		return (0);
-	}
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new_node;
-	return (0);
-}
-
-static int	assign_map_to_cub3d(t_cub3d *data)
-{
-	int		lst_size;
-	int		index;
-	t_map	*current;
-
 	current = data->map;
-	lst_size = 0;
-	index = -1;
-	while (current)
+	while (current != NULL)
 	{
 		lst_size++;
 		current = current->next;
 	}
-	data->raw_map = malloc(sizeof(char *) * lst_size + 1);
+	data->raw_map = ft_calloc(sizeof(char *), lst_size + 1);
 	if (!data->raw_map)
 		return (error_in_texture(data, 4));
 	current = data->map;
@@ -74,33 +60,38 @@ static int	assign_map_to_cub3d(t_cub3d *data)
 			return (error_in_texture(data, 4));
 		current = current->next;
 	}
-	data->raw_map[index] = NULL;
 	return (0);
+}
+
+int	free_line(char *line, t_cub3d *data)
+{
+	free(line);
+	return (error_in_texture(data, 5));
 }
 
 int	get_raw_map(t_cub3d *data, int fd)
 {
 	char	*line;
-	t_map	*new;
 
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if ((line[0] != '\0') && line[0] == '\n')
+		if (line && line[0] == '\n' && data->map == NULL)
 		{
 			free(line);
 			continue ;
 		}
-		new = NULL;
-		if (new_node(&new, line))
-			return (error_in_texture(data, 4));
-		add_back_map(&data->map, new);
+		else if ((line && line[0] == '\n' && data->map != NULL) \
+		|| not_valid_line(line))
+			return (free_line(line, data));
+		if (add_new_node_to_map(line, data))
+			return (1);
 		free(line);
 	}
-	if (assign_map_to_cub3d(data))
-		return (1);
+	if (assign_map_to_cub3d(data, 0, -1, NULL))
+		return (error_in_texture(data, 5));
 	free_map(&data->map);
 	close(fd);
 	return (0);

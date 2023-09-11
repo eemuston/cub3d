@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/09 10:34:34 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/10 16:55:30 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	else if (flag == 6)
 		ft_putstr_fd("Error\nInvalid colors\n", 2);
 	else if (flag == 7)
-		ft_putstr_fd("Error\nNot surrounded by 1\n", 2);
+		ft_putstr_fd("Error\nMore than 1 player\n", 2);
 	free_texture(data);
 	return (1);
 }
