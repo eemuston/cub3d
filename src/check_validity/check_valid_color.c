@@ -6,26 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 12:12:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 15:46:53 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
-
-int	check_texture_path(t_cub3d *data, int current)
-{
-	int	fd;
-
-	while (current < 4)
-	{
-		fd = open(data->texture[current].path, O_RDONLY);
-		if (fd == -1)
-			return (error_in_texture(data, 8));
-		close(fd);
-		current++;
-	}
-	return (0);
-}
+#include "../../header/cub3d.h"
 
 static void	assign_color_to_data(t_cub3d *data, int array, char **color)
 {

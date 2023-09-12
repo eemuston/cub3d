@@ -6,11 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/12 11:50:29 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 16:37:22 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../../header/cub3d.h"
 
 static int	check_valid_input(char **splitted_line, t_cub3d *data)
 {
@@ -100,6 +100,7 @@ int	read_file(char **argv, t_cub3d *data)
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \
 		check_amount_player(data->raw_map, 0, data) || \
+		flood_fill(data->raw_map, data) || valid_map(data, data->raw_map) || \
 		check_map_zeros(data))
 		return (1);
 	return (0);

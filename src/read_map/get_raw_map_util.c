@@ -6,11 +6,26 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:40:43 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/11 13:41:41 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 15:47:39 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../header/cub3d.h"
+
+int	check_texture_path(t_cub3d *data, int current)
+{
+	int	fd;
+
+	while (current < 4)
+	{
+		fd = open(data->texture[current].path, O_RDONLY);
+		if (fd == -1)
+			return (error_in_texture(data, 8));
+		close(fd);
+		current++;
+	}
+	return (0);
+}
 
 static int	new_node(t_map **new, char *line)
 {

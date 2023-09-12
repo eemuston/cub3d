@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 12:07:15 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:30:30 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	main(int argc, char **argv)
 	t_cub3d	data;
 
 	init_data(&data);
-	if (error_check(argc, argv, &data) == 1)
+	if (error_check(argc, argv) == 1)
+		return (1);
+	if (read_file(argv, &data) == 1)
 		return (1);
 	print_struct(&data);
 	//parse_map();

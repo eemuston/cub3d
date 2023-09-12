@@ -6,11 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 12:12:52 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:30:33 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../../header/cub3d.h"
 
 int	error_in_texture(t_cub3d *data, int flag)
 {
@@ -27,14 +27,14 @@ int	error_in_texture(t_cub3d *data, int flag)
 	else if (flag == 6)
 		ft_putstr_fd("Error\nInvalid colors\n", 2);
 	else if (flag == 7)
-		ft_putstr_fd("Error\nInvalid player\n", 2);
+		ft_putstr_fd("Error\nInvalid player number\n", 2);
 	else if (flag == 8)
 		ft_putstr_fd("Error\nInvalid texture path\n", 2);
 	free_texture(data);
 	return (1);
 }
 
-int	error_check(int argc, char **argv, t_cub3d *data)
+int	error_check(int argc, char **argv)
 {
 	if (argc != 2)
 	{
@@ -48,7 +48,5 @@ int	error_check(int argc, char **argv, t_cub3d *data)
 		ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
 		return (1);
 	}
-	if (read_file(argv, data) == 1)
-		return (1);
 	return (0);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_raw_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/11 18:38:33 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/12 15:39:47 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../../header/cub3d.h"
 
 static int	not_valid_line(char *current)
 {

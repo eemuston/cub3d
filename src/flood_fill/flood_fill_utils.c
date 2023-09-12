@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp_valid_chr.c                                 :+:      :+:    :+:   */
+/*   flood_fill_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:51:06 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 12:38:04 by vvu              ###   ########.fr       */
+/*   Created: 2023/09/12 15:39:03 by vvu               #+#    #+#             */
+/*   Updated: 2023/09/12 16:12:27 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../../header/cub3d.h"
 
-int	check_character(char c, int flag)
+int	allocate_temp_map(char ***temp_map, char **raw_map, \
+								int height, int width)
 {
-	if (flag == 1)
-		return ((c == '1' || c == 32 || (c >= 9 && c <= 13) || c == '0' || \
-				c == 'W' || c == 'S' || c == 'E' || c == 'N'));
-	else if (flag == 2)
-		return (c == 'W' || c == 'S' || c == 'E' || c == 'N');
-	else if (flag == 3)
-		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0'); 
-	else if (flag == 4)
-		return (c == '1' || c == '0');
-	else if (flag == 5)
-		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
-				c != 'N');
-	else if (flag == 6)
-		return (c != '1' && c != '0');
+	int	y;
+	int	i;
+
+	i = 0;
+	y = 0;
+	*temp_map = ft_calloc(sizeof(char *), height + 1);
+	if (!(*temp_map))
+		return (1);
+	while (raw_map[y] != NULL)
+	{
+		(*temp_map)[y] = ft_calloc(sizeof(char), width + 1);
+		if (!((*temp_map)[y]))
+			return (1);
+		y++;
+	}
+	(*temp_map)[y] = NULL;
+	while (i < height)
+	{
+		ft_memmove((*temp_map)[i], raw_map[i], ft_strlen(raw_map[i]));
+		i++;
+	}
 	return (0);
 }
 
@@ -51,7 +59,7 @@ int	check_valid_line(char **map, int flag)
 	return (0);
 }
 
-void	assign_player_dimension(t_cub3d *data, char **map, int *temp)
+void	assign_player_map_dimension(t_cub3d *data, char **map, int *temp)
 {
 	int	index;
 	int	current;
@@ -77,28 +85,4 @@ void	assign_player_dimension(t_cub3d *data, char **map, int *temp)
 		index++;
 	}
 	data->height = index;
-}
-
-int	cub3d_memcmp(const void *s1, const void *s2, size_t n)
-{
-	size_t				i;
-	size_t				len1;
-	size_t				len2;
-	const unsigned char	*str1;
-	const unsigned char	*str2;
-
-	i = 0;
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	if (len1 < len2)
-		n = len2;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n)
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
-	}
-	return (0);
 }

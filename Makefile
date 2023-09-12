@@ -6,27 +6,27 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/12 14:42:04 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/12 17:31:14 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 SRC_DIR = src/
-SRC =	main.c \
-		errors.c\
-		init_data.c\
-		free.c\
-		read_file.c \
-		texture_color_init.c \
-		get_raw_map.c \
-		get_raw_map_util.c \
-		check_map_path_color.c \
-		check_valid_map_1.c \
-		ft_atoll.c \
-		memcmp_valid_chr.c \
-		check_valid_zeros.c
+UTILS_DIR = src/utils/
+VALID_DIR = src/check_validity/
+ERROR_DIR = src/error_checking/
+FLOODFILL_DIR = src/flood_fill/
+READMAP_DIR = src/read_map/
+SRC =	main.c
+VALID = check_valid_color.c validity_utils.c valid_map.c
+ERROR =  errors.c 
+UTILS =  free.c ft_atoll.c init_data.c
+FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
+READMAP = read_file.c texture_color_init.c get_raw_map_util.c get_raw_map.c
+SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
+		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \
+		$(addprefix $(READMAP_DIR), $(READMAP)) $(addprefix $(UTILS_DIR), $(UTILS))
 		
-SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
 HEADER = cub3d.h
 OBJ_DIR = obj/

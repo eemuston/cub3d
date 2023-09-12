@@ -1,6 +1,6 @@
-SO ./maps/valid_map.cub
-WE ./maps/valid_map.cub
-EA ./maps/valid_map.cub
+SO dkfm ./maps/valid_map.cub
+WE  12313 ./maps/valid_map.cub
+EA ewrre ./maps/valid_map.cub
 N ./maps/valid_map.cub
 
 F 0000,000000000000000000000255,00000154

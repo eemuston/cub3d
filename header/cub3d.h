@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 12:38:01 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:30:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void				free_map(t_map **map);
 // read_file.c:
 int					read_file(char **argv, t_cub3d *data);
 int					error_in_texture(t_cub3d *data, int flag);
-int					error_check(int argc, char **argv, t_cub3d *data);
+int					error_check(int argc, char **argv);
 
 // textture_color_init.c:
 int					texture_color_init(char **splitted_line, t_cub3d *data);
@@ -79,19 +79,24 @@ int					texture_color_init(char **splitted_line, t_cub3d *data);
 int					get_raw_map(t_cub3d *data, int fd);
 int					add_new_node_to_map(char *line, t_cub3d *data);
 
+// flood_fill_algorithm
+int					flood_fill(char **raw_map, t_cub3d *data);
+int					allocate_temp_map(char ***temp_map, char **raw_map, \
+					int height, int width);
+
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
 
-// check_valid_map.c:
+// check_validity:
+int					valid_map(t_cub3d *data, char **raw_map);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils
 long long			ft_atoll(const char *str);
-int					cub3d_memcmp(const void *s1, const void *s2, size_t n);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
-void				assign_player_dimension(t_cub3d *data, \
+void				assign_player_map_dimension(t_cub3d *data, \
 									char **map, int *temp);
 int					check_map_zeros(t_cub3d *data);
 
