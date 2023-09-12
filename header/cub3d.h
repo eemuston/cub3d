@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 09:58:39 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 11:13:38 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
 
 // check_valid_map.c:
-int					check_amount_player(char **map, int i, int c, t_cub3d *d);
+int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils
 long long			ft_atoll(const char *str);
