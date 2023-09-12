@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:27:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 16:35:15 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:38:22 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int	valid_map(t_cub3d *data, char **raw_map)
 	}
 	free_array(temp_map);
 	temp_map = NULL;
+	if (check_map_zeros(data))
+		return (1);
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   read_file_and_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/12 16:37:22 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:47:02 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ static int	read_texture_color(int fd, t_cub3d *data)
 		return (error_in_texture(data, 3));
 	return (0);
 }
+// read_file, check validity and parsing
 
-int	read_file(char **argv, t_cub3d *data)
+int	read_file_and_parse(char **argv, t_cub3d *data)
 {
 	data->fd = open(argv[1], O_RDONLY);
 	if (data->fd == -1)
@@ -100,8 +101,7 @@ int	read_file(char **argv, t_cub3d *data)
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \
 		check_amount_player(data->raw_map, 0, data) || \
-		flood_fill(data->raw_map, data) || valid_map(data, data->raw_map) || \
-		check_map_zeros(data))
+		flood_fill(data->raw_map, data) || valid_map(data, data->raw_map))
 		return (1);
 	return (0);
 }

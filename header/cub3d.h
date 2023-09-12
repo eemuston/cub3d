@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 17:30:46 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:45:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void				free_array(char **array);
 void				free_texture(t_cub3d *data);
 void				free_map(t_map **map);
 // read_file.c:
-int					read_file(char **argv, t_cub3d *data);
+int					read_file_and_parse(char **argv, t_cub3d *data);
 int					error_in_texture(t_cub3d *data, int flag);
 int					error_check(int argc, char **argv);
 
@@ -89,6 +89,7 @@ int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
 
 // check_validity:
+int					not_valid_line(char *current);
 int					valid_map(t_cub3d *data, char **raw_map);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 

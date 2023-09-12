@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 17:30:30 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:46:27 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ int	main(int argc, char **argv)
 	init_data(&data);
 	if (error_check(argc, argv) == 1)
 		return (1);
-	if (read_file(argv, &data) == 1)
+	if (read_file_and_parse(argv, &data) == 1)
 		return (1);
 	print_struct(&data);
-	//parse_map();
+	//init_game
+	//ray_casting
 	free_texture(&data);
 	return (0);
 }

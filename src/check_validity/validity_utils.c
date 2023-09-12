@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 16:19:47 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:48:11 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,45 +43,30 @@ int	check_amount_player(char **map, int index, t_cub3d *data)
 	return (0);
 }
 
-static int	check_zero(t_cub3d *data, int i, int j)
+int	not_valid_line(char *current)
 {
-	if (data->raw_map[i][j] == '0')
+	int	index;
+	int	len;
+
+	index = 0;
+	len = ft_strlen(current);
+	if (len == 1 && current[index] == '\n')
+		return (1);
+	while (current[index] == 32 \
+	|| (current[index] >= 9 && current[index] <= 13))
 	{
-		if (check_character(data->raw_map[i + 1][j], 5))
-			return (1);
-		if (check_character(data->raw_map[i - 1][j], 5))
-			return (1);
-		if (check_character(data->raw_map[i][j + 1], 5))
-			return (1);
-		if (check_character(data->raw_map[i][j - 1], 5))
+		index++;
+		if (current[index] == '\n' || current[index] == '\0')
 			return (1);
 	}
-	return (0);
-}
-
-int	check_map_zeros(t_cub3d *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (data->raw_map[i])
+	while (current[index] != '\0')
 	{
-		j = 0;
-		while (data->raw_map[i][j] != '\0')
-		{
-			if (data->raw_map[i][j] == '0')
-			{
-				if (check_zero(data, i, j) == 1)
-				{
-					error_in_texture(data, 5);
-					return (1);
-				}
-			}
-			j++;
-		}
-		i++;
+		if (current[index] == '\n')
+			index++;
+		else if (!check_character(current[index], 1))
+			return (1);
+		if (current[index] != '\0')
+			index++;
 	}
 	return (0);
 }

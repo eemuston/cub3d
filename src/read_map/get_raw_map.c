@@ -6,39 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 15:39:47 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 17:41:51 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
-
-static int	not_valid_line(char *current)
-{
-	int	index;
-	int	len;
-
-	index = 0;
-	len = ft_strlen(current);
-	if (len == 1 && current[index] == '\n')
-		return (1);
-	while (current[index] == 32 \
-	|| (current[index] >= 9 && current[index] <= 13))
-	{
-		index++;
-		if (current[index] == '\n' || current[index] == '\0')
-			return (1);
-	}
-	while (current[index] != '\0')
-	{
-		if (current[index] == '\n')
-			index++;
-		else if (!check_character(current[index], 1))
-			return (1);
-		if (current[index] != '\0')
-			index++;
-	}
-	return (0);
-}
 
 static int	assign_map_to_cub3d(t_cub3d *data, int lst_size, \
 								int index, t_map *current)
