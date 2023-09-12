@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/11 13:42:55 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 09:58:39 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int					check_amount_player(char **map, int i, int c, t_cub3d *d);
 long long			ft_atoll(const char *str);
 int					cub3d_memcmp(const void *s1, const void *s2, size_t n);
 int					check_character(char c, int flag);
+int					check_valid_line(char **map, int flag);
 
 #endif
