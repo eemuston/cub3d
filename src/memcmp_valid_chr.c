@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memcmp_valid_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:51:06 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 10:01:14 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 11:12:59 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	check_character(char c, int flag)
 		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0'); 
 	else if (flag == 4)
 		return (c == '1' || c == '0');
+	else if (flag == 5)
+		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
+				c != 'N');
 	return (0);
 }
 
