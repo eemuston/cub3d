@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 11:19:37 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:27:14 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ int					check_valid_line(char **map, int flag);
 
 // checks to check that zeros are surrounded by 1s or player
 int					check_map_zeros(t_cub3d *data);
-int					check_zero(t_cub3d *data, int i, int j);
+
 #endif

@@ -6,13 +6,13 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 11:21:29 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:26:55 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 
-int	check_zero(t_cub3d *data, int i, int j)
+static int	check_zero(t_cub3d *data, int i, int j)
 {
 	if (data->raw_map[i][j] == '0')
 	{
