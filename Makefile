@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/12 10:56:46 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/12 11:36:25 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC =	main.c \
 		check_valid_map_1.c \
 		ft_atoll.c \
 		memcmp_valid_chr.c \
+		check_valid_zeros.c
 		
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 HEADER_DIR = header/
