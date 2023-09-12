@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 11:21:20 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:43:08 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	else if (flag == 6)
 		ft_putstr_fd("Error\nInvalid colors\n", 2);
 	else if (flag == 7)
-		ft_putstr_fd("Error\nMore than 1 player\n", 2);
+		ft_putstr_fd("Error\nInvalid player\n", 2);
 	free_texture(data);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:36:29 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 11:13:22 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 11:48:02 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	check_amount_player(char **map, int index, t_cub3d *data)
 	if (map[index] != NULL)
 	{
 		assign_player_dimension(data, map, &temp);
-		if (data->player > 1)
+		if (data->player > 1 || data->player == 0)
 			return (error_in_texture(data, 7));
 		if (flood_fill(data->raw_map, data))
 			return (1);

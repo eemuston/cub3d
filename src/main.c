@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 11:35:22 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 12:07:15 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	print_struct(t_cub3d *data)
 		i++;
 	}
 	i = 0;
-	printf("raw map: \n");
+	printf("\nvalid map: \n");
 	while (data->raw_map[i])
 	{
 		printf("%s\n", data->raw_map[i]);
