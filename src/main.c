@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 10:32:13 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:33:23 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ int	main(int argc, char **argv)
 		return (1);
 	print_struct(&data);
 	//parse_map();
-	
-	//careful with this part if we got error somewhere in the check map
-	//we free them right away, and if we use address sanitize this line
-	//will cause us error since we free 2 times:
 	free_texture(&data);
 	return (0);
 }
