@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 11:35:47 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 12:38:01 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ long long			ft_atoll(const char *str);
 int					cub3d_memcmp(const void *s1, const void *s2, size_t n);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
-
-// checks to check that zeros are surrounded by 1s or player
+void				assign_player_dimension(t_cub3d *data, \
+									char **map, int *temp);
 int					check_map_zeros(t_cub3d *data);
 
 #endif

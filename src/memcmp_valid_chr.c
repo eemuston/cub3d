@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:51:06 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 11:52:09 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 12:38:04 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	check_character(char c, int flag)
 	else if (flag == 5)
 		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
 				c != 'N');
+	else if (flag == 6)
+		return (c != '1' && c != '0');
 	return (0);
 }
 
@@ -47,6 +49,34 @@ int	check_valid_line(char **map, int flag)
 		i++;
 	}
 	return (0);
+}
+
+void	assign_player_dimension(t_cub3d *data, char **map, int *temp)
+{
+	int	index;
+	int	current;
+
+	index = 0;
+	while (map[index] != NULL)
+	{
+		current = 0;
+		while (map[index][current] != '\0')
+		{
+			if (check_character(map[index][current], 2))
+			{
+				data->player += 1;
+				data->player_direction = map[index][current];
+				data->player_x = current;
+				data->player_y = index;
+			}
+			current++;
+		}
+		*temp = ft_strlen(map[index]);
+		if (*temp > data->width)
+			data->width = *temp;
+		index++;
+	}
+	data->height = index;
 }
 
 int	cub3d_memcmp(const void *s1, const void *s2, size_t n)

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/09 12:32:15 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 12:12:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_texture_path(t_cub3d *data, int current)
 	{
 		fd = open(data->texture[current].path, O_RDONLY);
 		if (fd == -1)
-			return (error_in_texture(data, 5));
+			return (error_in_texture(data, 8));
 		close(fd);
 		current++;
 	}
