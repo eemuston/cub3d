@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:40:02 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 17:40:26 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/13 12:58:23 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	check_zero(t_cub3d *data, int i, int j)
 {
+	if (i == 0 || i == data->height - 1)
+		return (1);
 	if (data->raw_map[i][j] == '0')
 	{
 		if (check_character(data->raw_map[i + 1][j], 5))
