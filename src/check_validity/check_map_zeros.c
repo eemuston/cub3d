@@ -3,26 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_zeros.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:40:02 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 17:40:26 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/13 12:42:19 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-static int	check_zero(t_cub3d *data, int i, int j)
+static int	check_zero(t_cub3d *data, int y, int x)
 {
-	if (data->raw_map[i][j] == '0')
+	if (y == 0 || y == data->height - 1)
+		return (1);
+	if (data->raw_map[y][x] == '0')
 	{
-		if (check_character(data->raw_map[i + 1][j], 5))
+		if (check_character(data->raw_map[y + 1][x], 5))
 			return (1);
-		if (check_character(data->raw_map[i - 1][j], 5))
+		if (check_character(data->raw_map[y - 1][x], 5))
 			return (1);
-		if (check_character(data->raw_map[i][j + 1], 5))
+		if (check_character(data->raw_map[y][x + 1], 5))
 			return (1);
-		if (check_character(data->raw_map[i][j - 1], 5))
+		if (check_character(data->raw_map[y][x - 1], 5))
 			return (1);
 	}
 	return (0);
@@ -30,27 +32,27 @@ static int	check_zero(t_cub3d *data, int i, int j)
 
 int	check_map_zeros(t_cub3d *data)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	j = 0;
-	while (data->raw_map[i])
+	y = 0;
+	x = 0;
+	while (data->raw_map[y])
 	{
-		j = 0;
-		while (data->raw_map[i][j] != '\0')
+		x = 0;
+		while (data->raw_map[y][x] != '\0')
 		{
-			if (data->raw_map[i][j] == '0')
+			if (data->raw_map[y][x] == '0')
 			{
-				if (check_zero(data, i, j) == 1)
+				if (check_zero(data, y, x) == 1)
 				{
 					error_in_texture(data, 5);
 					return (1);
 				}
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (0);
 }
