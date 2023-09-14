@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:34:41 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 16:29:03 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/12 18:02:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	fill_map_with_x(int x, int y, char ***map, t_cub3d *data)
 {
-	if (x < 0 || y < 0 || x >= (int)ft_strlen((*map)[y]) \
-		|| x >= data->width || y >= data->height)
+	if (x < 0 || y < 0 || x >= data->width || y >= data->height)
 		return ;
 	else
 	{

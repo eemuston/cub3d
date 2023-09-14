@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/12 17:45:52 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/13 14:35:31 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+# include "mlx.h"
 # include <stdio.h>
 
 /* arrow keys */
@@ -47,12 +48,17 @@ typedef struct s_map
 /* cub3D struct */
 typedef struct s_cub3d
 {
+	void			*mlx;
+	void			*mlx_window;
+	int				color[3];
 	int				width;
 	int				height;
 	int				fd;
 	int				player;
 	int				player_x;
 	int				player_y;
+	int				tmp_player_x;
+	int				tmp_player_y;
 	char			player_direction;
 	char			**raw_map;
 	t_map			*map;
@@ -93,12 +99,19 @@ int					not_valid_line(char *current);
 int					valid_map(t_cub3d *data, char **raw_map);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
-// utils
+// utils:
 long long			ft_atoll(const char *str);
+int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
 									char **map, int *temp);
 int					check_map_zeros(t_cub3d *data);
+int					key_handler(int key, t_cub3d *data);
+
+// init_window:
+void				put_to_win(t_cub3d *data);
+void				init_window(t_cub3d *data);
+void				image_handler(t_cub3d *data);
 
 #endif
