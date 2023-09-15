@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/13 14:35:31 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/15 16:39:02 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <stdio.h>
+# include <math.h>
 
 /* arrow keys */
 # define LEFT 123
@@ -25,6 +26,12 @@
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
+
+# define X 1920
+# define Y 1080
+
+# define BLOCK_SIZE 16
+# define PLAYER_SIZE 4
 
 typedef struct s_texture
 {
@@ -45,11 +52,19 @@ typedef struct s_map
 	struct s_map	*next;
 }					t_map;
 
+/* cub3D image struct */
+typedef struct s_img
+{
+	void			*img_ptr;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}				t_img;
+
 /* cub3D struct */
 typedef struct s_cub3d
 {
-	void			*mlx;
-	void			*mlx_window;
 	int				color[3];
 	int				width;
 	int				height;
@@ -60,8 +75,11 @@ typedef struct s_cub3d
 	int				tmp_player_x;
 	int				tmp_player_y;
 	char			player_direction;
+	void			*mlx_ptr;
+	void			*mlx_window;
 	char			**raw_map;
 	t_map			*map;
+	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
 }					t_cub3d;
@@ -113,5 +131,8 @@ int					key_handler(int key, t_cub3d *data);
 void				put_to_win(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
+
+//image_handler
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y, unsigned int color);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 15:41:08 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/15 14:58:07 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_data(t_cub3d *data)
 	data->player_direction = 'a';
 	data->raw_map = NULL;
 	data->map = NULL;
+	data->img = malloc(sizeof(t_img) * 1);
 	while (i < 2)
 	{
 		data->colors[i].color = NULL;
