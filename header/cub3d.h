@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/13 14:35:31 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/15 16:13:54 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,26 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <stdio.h>
+# include <math.h>
 
-/* arrow keys */
+/* keys */
 # define LEFT 123
 # define RIGHT 124
+# define ESC 53
+# define W 13
+# define S 1
+# define A 0
+# define D 2
 
+/* Directions */
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
+
+/* Sizes */
+# define BLOCK_SIZE 24
+# define PLAYER_SIZE 24
 
 typedef struct s_texture
 {
@@ -87,8 +98,8 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill(char **raw_map, t_cub3d *data);
-int					allocate_temp_map(char ***temp_map, char **raw_map, \
-					int height, int width);
+int					allocate_temp_map(char ***temp_map, char **raw_map,
+						int height, int width);
 
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
@@ -104,8 +115,9 @@ long long			ft_atoll(const char *str);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
-void				assign_player_map_dimension(t_cub3d *data, \
-									char **map, int *temp);
+void	assign_player_map_dimension(t_cub3d *data,
+									char **map,
+									int *temp);
 int					check_map_zeros(t_cub3d *data);
 int					key_handler(int key, t_cub3d *data);
 

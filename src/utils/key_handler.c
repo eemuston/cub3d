@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/13 16:27:37 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/15 17:59:05 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,17 @@ static void	move(t_cub3d *data, int height, int width)
 
 void	moving_keys(int key, t_cub3d *data)
 {
-	if (key == 13 && data->raw_map[data->tmp_player_y - 1][data->tmp_player_x] == '0') //w key
+	if (key == W && data->raw_map[data->tmp_player_y - 1][data->tmp_player_x] \
+			== '0')
 		data->tmp_player_y--;
-	if (key == 1 && data->raw_map[data->tmp_player_y + 1][data->tmp_player_x] == '0') //S
+	if (key == S && data->raw_map[data->tmp_player_y + 1][data->tmp_player_x] \
+			== '0')
 		data->tmp_player_y++;
-	if (key == 0 && data->raw_map[data->tmp_player_y][data->tmp_player_x - 1] == '0') // A
+	if (key == A && data->raw_map[data->tmp_player_y][data->tmp_player_x - 1] \
+			== '0')
 		data->tmp_player_x--;
-	if (key == 2 && data->raw_map[data->tmp_player_y][data->tmp_player_x + 1] == '0') //D
+	if (key == D && data->raw_map[data->tmp_player_y][data->tmp_player_x + 1] \
+			== '0')
 		data->tmp_player_x++;
 }
 
@@ -50,13 +54,13 @@ int	key_handler(int key, t_cub3d *data)
 {
 	data->tmp_player_x = data->player_x;
 	data->tmp_player_y = data->player_y;
-	if (key == 53)
+	if (key == ESC)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_window);
 		free_texture(data);
 		exit(0);
 	}
-	if (key == 13 || key == 0 || key == 1 || key == 2)
+	if (key == W || key == A || key == S || key == D)
 	{
 		data->raw_map[data->tmp_player_y][data->tmp_player_x] = '0';
 		moving_keys(key, data);
