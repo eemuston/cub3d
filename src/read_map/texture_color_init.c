@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/17 15:53:47 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/17 17:26:41 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 static int	color_init(t_cub3d *data, char **splitted_line)
 {
 	int	index;
+	int	len;
 
 	index = 0;
 	if (data->colors[index].color != NULL)
@@ -86,8 +87,14 @@ static int	color_init(t_cub3d *data, char **splitted_line)
 		data->colors[index].name = 'C';
 	if (data->colors[index].color != NULL)
 		return (error_in_texture(data, 2));
-	data->colors[index].color = ft_substr(splitted_line[1], 0, \
+	len = check_splitptr_len(splitted_line);
+	if (len == 2)
+	{
+		data->colors[index].color = ft_substr(splitted_line[1], 0, \
 		ft_strlen(splitted_line[1]) - 1);
+	}
+	else
+		data->colors[index].color = join_splitted_line(splitted_line);
 	if (!data->colors[index].color)
 		return (error_in_texture(data, 4));
 	return (0);
