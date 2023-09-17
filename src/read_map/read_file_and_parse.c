@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/17 15:53:29 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/17 17:09:00 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ static int	check_valid_input(char **splitted_line, t_cub3d *data)
 	i = 0;
 	while (splitted_line[i])
 		i++;
-	if (i > 2)
+	if ((!ft_strncmp(splitted_line[0], "NO", 2) || \
+		!ft_strncmp(splitted_line[0], "EA", 2) || \
+		!ft_strncmp(splitted_line[0], "WE", 2) || \
+		!ft_strncmp(splitted_line[0], "SO", 2)) && \
+		i > 2)
 		return (error_in_texture(data, 3));
 	return (0);
 }

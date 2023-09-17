@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/17 15:53:46 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/17 17:08:25 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <stdio.h>
+# include <math.h>
 
 /* arrow keys */
 # define LEFT 123
@@ -25,8 +26,6 @@
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
-# define MAPX 5
-# define MAPY 5
 
 typedef struct s_texture
 {
@@ -47,11 +46,19 @@ typedef struct s_map
 	struct s_map	*next;
 }					t_map;
 
+/* cub3D image struct */
+typedef struct s_img
+{
+	void			*img_ptr;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}				t_img;
+
 /* cub3D struct */
 typedef struct s_cub3d
 {
-	void			*mlx;
-	void			*mlx_window;
 	int				color[3];
 	int				width;
 	int				height;
@@ -62,8 +69,11 @@ typedef struct s_cub3d
 	double			tmp_player_x;
 	double			tmp_player_y;
 	char			player_direction;
+	void			*mlx_ptr;
+	void			*mlx_window;
 	char			**raw_map;
 	t_map			*map;
+	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
 }					t_cub3d;
@@ -81,8 +91,7 @@ int					error_in_texture(t_cub3d *data, int flag);
 int					error_check(int argc, char **argv);
 
 // textture_color_init.c:
-int					texture_color_init(char **splitted_line, \
-					t_cub3d *data);
+int					texture_color_init(char **splitted_line, t_cub3d *data);
 
 // get_raw_map.c:
 int					get_raw_map(t_cub3d *data, int fd);
@@ -118,5 +127,9 @@ void				draw_player(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
 void				put_player_to_map(t_cub3d *data);
+
+//image_handler
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
+					unsigned int color);
 
 #endif
