@@ -1,4 +1,4 @@
- SO ./maps/valid_map.cub
+SO ./maps/valid_map.cub
 WE ./maps/valid_map.cub
 EA ./maps/valid_map.cub
 NO ./maps/valid_map.cub
