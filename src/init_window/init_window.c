@@ -6,11 +6,29 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/17 18:39:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/17 18:48:38 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	render_background(t_cub3d *data)
+{
+	int	y;
+	int	x;
+	int	color;
+
+	color = 0x58ABE5;
+	y = -1;
+	while (++y < Y)
+	{
+		x = -1;
+		while (++x < X)
+		{
+			my_mlx_pixel_put(data, x, y, color);
+		}
+	}
+}
 
 static void	put_map_to_window(int x, int y, char c, t_cub3d *data)
 {
@@ -78,12 +96,13 @@ void	draw_map(t_cub3d *data)
 void	image_handler(t_cub3d *data)
 {
 	// mlx_key_hook(data->mlx_window, key_handler, data);
+	render_background(data);
+	mlx_put_image_to_window(data->mlx_ptr, \
+	data->mlx_window, data->img->img_ptr, 0, 0);
 	draw_map(data);
 	draw_player(data);
 	mlx_hook(data->mlx_window, 2, 1L << 1, key_handler, data);
 	mlx_hook(data->mlx_window, 17, 0, mouse_handler, data);
-	mlx_put_image_to_window(data->mlx_ptr,
-	data->mlx_window, data->img->img_ptr, 0, 0);
 	mlx_loop(data->mlx_ptr);
 }
 
