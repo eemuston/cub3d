@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/13 14:35:31 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:53:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
+# define MAPX 5
+# define MAPY 5
 
 typedef struct s_texture
 {
@@ -55,10 +57,10 @@ typedef struct s_cub3d
 	int				height;
 	int				fd;
 	int				player;
-	int				player_x;
-	int				player_y;
-	int				tmp_player_x;
-	int				tmp_player_y;
+	double			player_x;
+	double			player_y;
+	double			tmp_player_x;
+	double			tmp_player_y;
 	char			player_direction;
 	char			**raw_map;
 	t_map			*map;
@@ -79,7 +81,8 @@ int					error_in_texture(t_cub3d *data, int flag);
 int					error_check(int argc, char **argv);
 
 // textture_color_init.c:
-int					texture_color_init(char **splitted_line, t_cub3d *data);
+int					texture_color_init(char **splitted_line, \
+					t_cub3d *data);
 
 // get_raw_map.c:
 int					get_raw_map(t_cub3d *data, int fd);
@@ -110,8 +113,10 @@ int					check_map_zeros(t_cub3d *data);
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
-void				put_to_win(t_cub3d *data);
+void				draw_map(t_cub3d *data);
+void				draw_player(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
+void				put_player_to_map(t_cub3d *data);
 
 #endif
