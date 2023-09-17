@@ -6,7 +6,7 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/15 11:34:24 by mtoof            ###   ########.fr        #
+#    Updated: 2023/09/17 16:50:20 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ VALID = check_valid_color.c validity_utils.c valid_map.c check_map_zeros.c
 ERROR =  errors.c 
 UTILS =  free.c ft_atoll.c init_data.c key_handler.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
-READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c
+READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
+			color_init_utils.c
 INITWINDOW = init_window.c image_handler.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \

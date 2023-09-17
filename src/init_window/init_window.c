@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/15 17:43:55 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/17 14:06:48 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,17 @@ void	render_2d_map(t_cub3d *data)
 	while (++y < data->height)
 	{
 		x = -1;
-		while (++x < (int)ft_strlen(data->raw_map[y]))
+		while (++x < data->width)
 		{
-			if (check_character(data->raw_map[y][x], 2))
-				data->raw_map[y][x] = '0';
-			if (data->raw_map[y][x] == '1')
-				color = data->color[1];
-			if (data->raw_map[y][x] == '0')
-				color = data->color[0];
+			if (x < (int)ft_strlen(data->raw_map[y]))
+			{
+				if (check_character(data->raw_map[y][x], 2))
+					color = data->color[0];
+				if (data->raw_map[y][x] == '1')
+					color = data->color[1];
+				if (data->raw_map[y][x] == '0')
+					color = data->color[0];
+			}
 			render_map(data, x * BLOCK_SIZE, y * BLOCK_SIZE, color);
 		}
 	}

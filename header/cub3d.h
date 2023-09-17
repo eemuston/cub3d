@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/15 16:39:02 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/17 16:52:00 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int					error_in_texture(t_cub3d *data, int flag);
 int					error_check(int argc, char **argv);
 
 // textture_color_init.c:
+int					check_splitptr_len(char **splitted_line);
+char				*join_splitted_line(char **splitted_line);
 int					texture_color_init(char **splitted_line, t_cub3d *data);
 
 // get_raw_map.c:
@@ -133,6 +135,7 @@ void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
 
 //image_handler
-void				my_mlx_pixel_put(t_cub3d *data, int x, int y, unsigned int color);
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
+					unsigned int color);
 
 #endif
