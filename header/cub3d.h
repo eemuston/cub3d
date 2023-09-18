@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/18 09:33:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 14:31:06 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define X 1920
 # define Y 1080
 
-# define BLOCK_SIZE 16
-# define PLAYER_SIZE 4
+# define BLOCK_SIZE 20
+# define PLAYER_SIZE 5
 
 typedef struct s_texture
 {
@@ -74,6 +74,9 @@ typedef struct s_cub3d
 	double			player_y;
 	double			tmp_player_x;
 	double			tmp_player_y;
+	double			pdx;
+	double			pdy;
+	double			pa;
 	char			player_direction;
 	void			*mlx_ptr;
 	void			*mlx_window;
@@ -134,11 +137,7 @@ void				draw_map(t_cub3d *data);
 void				draw_player(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
-void				put_player_to_map(t_cub3d *data);
-
-//image_handler
-void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
-					unsigned int color);
+void				render_background(t_cub3d *data);
 
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \

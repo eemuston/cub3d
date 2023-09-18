@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:27:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/13 12:31:58 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 13:41:45 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	player_surround_by_1_0(int x, int y, int height, char **raw_map)
 		return (1);
 	if (check_character(raw_map[y][x], 2))
 	{
-		if (!check_character(raw_map[y - 1][x], 4))
+		if (!check_character(raw_map[y - 1][x], 7))
 			return (1);
-		if (!check_character(raw_map[y + 1][x], 4))
+		if (!check_character(raw_map[y + 1][x], 7))
 			return (1);
-		if (!check_character(raw_map[y][x - 1], 4))
+		if (!check_character(raw_map[y][x - 1], 7))
 			return (1);
-		if (!check_character(raw_map[y][x + 1], 4))
+		if (!check_character(raw_map[y][x + 1], 7))
 			return (1);
 	}
 	return (0);

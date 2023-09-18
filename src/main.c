@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/17 18:24:28 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 09:36:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	init_window(&data);
 	image_handler(&data);
 	//printf("player pos = [%d][%d]", data.player_y, data.player_x);
-	//hook_keys_loop(&data);
+	hook_keys_loop(&data);
 	free_texture(&data);
 	return (0);
 }

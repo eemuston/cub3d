@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/18 09:34:58 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 14:33:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	move(t_cub3d *data, int height, int width)
 
 void	moving_keys(int key, t_cub3d *data)
 {
-	if (key == 13) //w key
+	if (key == 13) //W
 		data->tmp_player_y--;
 	if (key == 1) //S
 		data->tmp_player_y++;
@@ -60,7 +60,7 @@ int	key_handler(int key, t_cub3d *data)
 		moving_keys(key, data);
 		if (data->player_x != data->tmp_player_x || \
 		data->player_y != data->tmp_player_y)
-		move(data, data->tmp_player_y, data->tmp_player_x);
+			move(data, data->tmp_player_y, data->tmp_player_x);
 	}
 	return (0);
 }
