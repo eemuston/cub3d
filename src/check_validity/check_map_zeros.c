@@ -6,15 +6,15 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:40:02 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/18 15:55:54 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:57:50 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-static int	check_zero(t_cub3d *data, int y, int x)
+static int	check_zero(t_cub3d *data, int i, int j)
 {
-	if (y == 0 || y == data->height - 1)
+	if (i == 0 || i == data->height - 1)
 		return (1);
 	if (data->raw_map[i][j] == '0' || data->raw_map[i][j] == ' ')
 	{
@@ -46,7 +46,7 @@ int	check_map_zeros(t_cub3d *data)
 		x = 0;
 		while (data->raw_map[y][x] != '\0')
 		{
-			if (data->raw_map[i][j] == '0' || data->raw_map[i][j] == ' ')
+			if (data->raw_map[y][x] == '0' || data->raw_map[y][x] == ' ')
 			{
 				if (check_zero(data, y, x) == 1)
 				{
