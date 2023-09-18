@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/17 17:09:04 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 09:34:10 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ static int	is_not_number(char **color_check)
 		nbr_check = ft_atoll(color_check[index]);
 		if (nbr_check > 255 || nbr_check < 0)
 			return (1);
-		while (color_check[index][current])
+		while (color_check[index][current] != '\0')
 		{
-			if (!ft_isdigit(color_check[index][current]))
+			if (color_check[index][current] != '\n' && \
+			!ft_isdigit(color_check[index][current]))
 				return (1);
 			current++;
 		}
