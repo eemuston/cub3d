@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/18 14:32:52 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 15:18:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	put_map_to_window(int x, int y, char **map, t_cub3d *data)
 
 	color = 0;
 	block_y = 0;
-	if (map[y][x] != '\0' && map[y][x] == '2')
+	if (map[y][x] != '\0' && map[y][x] == '1')
 		color = data->color[1];
 	else if (map[y][x] != '\0' && (map[y][x] == '0' \
 	|| check_character(map[y][x], 2) || map[y][x] == 32))
@@ -71,7 +71,7 @@ void	draw_map(t_cub3d *data)
 		x = 0;
 		while (x < data->width)
 		{
-			put_map_to_window(x, y, data->raw_map, data);
+			put_map_to_window(x, y, data->valid_map, data);
 			x++;
 		}
 		y++;

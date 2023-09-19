@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 09:42:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 10:24:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	free_texture(t_cub3d *data)
 		free_map(&data->map);
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
+	free(data->img);
 	close(data->fd);
 }
 
@@ -63,7 +64,7 @@ void	free_array(char **array)
 	int	i;
 
 	i = 0;
-	if (!*array)
+	if (!(*array))
 		return ;
 	else
 	{

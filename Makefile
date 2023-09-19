@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
+#    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/17 16:50:20 by mtoof            ###   ########.fr        #
+#    Updated: 2023/09/18 19:30:11 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLOODFILL_DIR = src/flood_fill/
 READMAP_DIR = src/read_map/
 INITWINDOW_DIR = src/init_window/
 SRC =	main.c
-VALID = check_valid_color.c validity_utils.c valid_map.c check_map_zeros.c
+VALID = check_valid_color.c validity_utils.c valid_map.c
 ERROR =  errors.c 
 UTILS =  free.c ft_atoll.c init_data.c key_handler.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
