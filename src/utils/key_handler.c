@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/19 12:43:51 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/18 14:33:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int	key_handler(int key, t_cub3d *data)
 {
 	data->tmp_player_x = data->player_x;
 	data->tmp_player_y = data->player_y;
-	if (key == ESC)
+	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
 		free_texture(data);
 		exit(0);
 	}
-	if (key == W || key == A || key == S || key == D)
+	if (key == 13 || key == 0 || key == 1 || key == 2)
 	{
 		moving_keys(key, data);
 		if (data->player_x != data->tmp_player_x || \

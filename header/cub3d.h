@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/19 12:43:10 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 11:44:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@
 # include <stdio.h>
 # include <math.h>
 
-/* keys */
+/* arrow keys */
 # define LEFT 123
 # define RIGHT 124
-# define ESC 53
-# define W 13
-# define S 1
-# define A 0
-# define D 2
 
-/* Directions */
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
@@ -118,8 +112,8 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill(char **raw_map, t_cub3d *data);
-int					allocate_temp_map(char ***temp_map, char **raw_map,
-						int height, int width);
+int					allocate_temp_map(char ***temp_map, char **raw_map, \
+					int height, int width);
 
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);

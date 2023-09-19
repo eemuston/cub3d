@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/19 12:43:44 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/18 15:18:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	put_map_to_window(int x, int y, char **map, t_cub3d *data)
 {
+	int	color;
 	int	block_y;
 	int	block_x;
 
@@ -43,11 +44,7 @@ void	draw_player(t_cub3d *data)
 {
 	int	block_y;
 	int	block_x;
-	int	x_size;
-	int	y_size;
 
-	x = x * BLOCK_SIZE;
-	y = y * BLOCK_SIZE;
 	block_y = 0;
 	while (block_y < PLAYER_SIZE)
 	{
