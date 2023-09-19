@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/19 14:16:20 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 15:47:16 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_cub3d
 {
 	int				color[3];
 	int				found_zero;
+	int				found_space;
 	int				width;
 	int				height;
 	int				fd;
@@ -111,7 +112,7 @@ int					get_raw_map(t_cub3d *data, int fd);
 int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
-int					flood_fill(char **raw_map, t_cub3d *data);
+int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
 int					allocate_temp_map(char ***temp_map, char **raw_map, \
 					int height, int width);
 

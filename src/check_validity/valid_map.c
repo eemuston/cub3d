@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:27:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/19 14:24:58 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 16:55:23 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,68 +31,52 @@ static void	check_zero(char **temp_map, t_cub3d *data, int x, int y)
 	}
 }
 
-static int	assign_temp_map(char ***temp_map, int index, int current,
-		t_cub3d *data)
+static void	fill_temp_map(char ***temp_map, int height, int width, \
+t_cub3d *data)
 {
-	printf("heiht %d\n", data->height);
-	printf("width: %d\n", data->width);
-	*temp_map = ft_calloc(sizeof(char *), (data->height + 3));
-	if (!(*temp_map))
-		return (1);
-	while (++index < data->height + 2)
-	{
-		(*temp_map)[index] = ft_calloc(sizeof(char), (data->width + 3));
-		if (!((*temp_map)[index]))
-			return (1);
-	}
-	index = -1;
-	while (++index < data->height + 2)
+	int	index;
+	int	current;
+
+	index = 0;
+	while (index < height)
 	{
 		current = -1;
-		while (++current < data->width + 2)
+		while (++current < width)
 			(*temp_map)[index][current] = '-';
-		(*temp_map)[index][current] = '\0';
+		index++;
 	}
-	(*temp_map)[index] = NULL;
-	return (0);
-}
-
-static int	check_map_zeros_player(t_cub3d *data, int index, int current)
-{
-	char	**temp_map;
-	// int		i;
-
-	// i = 0;
-	// while (data->raw_map[i])
-	// {
-	// 	printf("%s\n", data->raw_map[i]);
-	// 	i++;
-	// }
-	temp_map = NULL;
-	if (assign_temp_map(&temp_map, index, current, data))
-		return (error_in_texture(data, 4));
-	// i = 0;
-	// while (i < data->height + 2)
-	// {
-	// 	printf("%s\n", temp_map[i]);
-	// 	i++;
-	// }
-	if (!temp_map)
-		return (error_in_texture(data, 4));
 	index = -1;
 	while (++index < data->height)
 	{
 		current = 0;
 		while (current < (int)ft_strlen(data->raw_map[index]))
 		{
-			temp_map[index + 1][current + 1] =
-				data->raw_map[index][current];
+			(*temp_map)[index + 1][current + 1] = data->raw_map[index][current];
 			current++;
 		}
 	}
-	// printf("\n");
-	// i = 0;
-	// while (i < data->height + 2)
+}
+
+static int	flood_fill_outside_map(t_cub3d *data)
+{
+	char	**temp_map;
+	int		index;
+
+	index = 0;
+	temp_map = NULL;
+	temp_map = ft_calloc(sizeof(char *), data->height + 3);
+	if (!temp_map)
+		return (error_in_texture(data, 4));
+	while (index < data->height + 2)
+	{
+		temp_map[index] = ft_calloc(sizeof(char), data->width + 3);
+		if (!temp_map[index])
+			return (error_in_texture(data, 4));
+		index++;
+	}
+	fill_temp_map(&temp_map, data->height + 2, data->width + 2, data);
+	// int i = 0;
+	// while (temp_map[i] != NULL)
 	// {
 	// 	printf("%s\n", temp_map[i]);
 	// 	i++;
@@ -106,7 +90,9 @@ static int	check_map_zeros_player(t_cub3d *data, int index, int current)
 
 int	valid_map(t_cub3d *data)
 {
-	if (check_map_zeros_player(data, -1, 0))
+	if (flood_fill_inside_map(data->raw_map, data))
+		return (1);
+	if (flood_fill_outside_map(data))
 		return (1);
 	return (0);
 }

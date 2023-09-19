@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/19 12:27:08 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 15:41:44 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	check_character(char c, int flag)
 	else if (flag == 2)
 		return (c == 'W' || c == 'S' || c == 'E' || c == 'N');
 	else if (flag == 3)
-		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0');
+		return (c == 32 || (c >= 9 && c <= 13) || c == '\0');
 	else if (flag == 4)
-		return (c == '1');
+		return (c == '1' || c == 'X');
 	else if (flag == 5)
 		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
 				c != 'N' && c != ' ');

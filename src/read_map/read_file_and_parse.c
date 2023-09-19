@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_and_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/19 14:20:54 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 15:42:12 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	read_file_and_parse(char **argv, t_cub3d *data)
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \
 		check_amount_player(data->raw_map, 0, data) || \
-		valid_map(data) || flood_fill(data->raw_map, data))
+		valid_map(data))
 		return (1);
 	return (0);
 }
