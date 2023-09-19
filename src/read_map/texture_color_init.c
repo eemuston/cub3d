@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 15:42:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/18 18:16:12 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,8 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 	int	index;
 
 	index = 0;
-	if (!data->texture[index].path)
-	{
-		data->texture[index].path = ft_substr(splitted_line[1], 0, \
-		ft_strlen(splitted_line[1]) - 1);
-		if (!data->texture[index].path)
-			return (error_in_texture(data, 4));
-		assign_pole(&data->texture[index].identifier, splitted_line[0]);
-		return (0);
-	}
-	else
-		while (data->texture[index].path && index < 4)
-			index++;
+	while (data->texture[index].path && index < 4)
+		index++;
 	data->texture[index].path = ft_substr(splitted_line[1], 0, \
 		ft_strlen(splitted_line[1]) - 1);
 	if (!data->texture[index].path)
@@ -76,6 +66,7 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 static int	color_init(t_cub3d *data, char **splitted_line)
 {
 	int	index;
+	int	len;
 
 	index = 0;
 	if (data->colors[index].color != NULL)
@@ -86,8 +77,14 @@ static int	color_init(t_cub3d *data, char **splitted_line)
 		data->colors[index].name = 'C';
 	if (data->colors[index].color != NULL)
 		return (error_in_texture(data, 2));
-	data->colors[index].color = ft_substr(splitted_line[1], 0, \
+	len = check_splitptr_len(splitted_line);
+	if (len == 2)
+	{
+		data->colors[index].color = ft_substr(splitted_line[1], 0, \
 		ft_strlen(splitted_line[1]) - 1);
+	}
+	else
+		data->colors[index].color = join_splitted_line(splitted_line);
 	if (!data->colors[index].color)
 		return (error_in_texture(data, 4));
 	return (0);

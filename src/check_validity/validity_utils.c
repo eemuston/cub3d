@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/15 15:22:15 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 12:43:31 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ int	check_character(char c, int flag)
 	else if (flag == 3)
 		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0');
 	else if (flag == 4)
-		return (c == '1' || c == '0');
+		return (c == '1');
 	else if (flag == 5)
 		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
-				c != 'N');
+				c != 'N' && c != ' ');
+	else if (flag == 6)
+		return ((c >= 9 && c <= 13) || c == 32 || ft_isdigit(c));
+	else if (flag == 7)
+		return (c == '1' || c == '0' || c == 32);
 	return (0);
 }
 

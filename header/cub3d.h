@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/15 16:13:54 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/19 12:43:10 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@
 # define EAST 3
 # define WEST 4
 
-/* Sizes */
-# define BLOCK_SIZE 24
-# define PLAYER_SIZE 24
+# define X 1920
+# define Y 1080
+
+# define BLOCK_SIZE 16
+# define PLAYER_SIZE 4
 
 typedef struct s_texture
 {
@@ -56,23 +58,39 @@ typedef struct s_map
 	struct s_map	*next;
 }					t_map;
 
+/* cub3D image struct */
+typedef struct s_img
+{
+	void			*img_ptr;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}				t_img;
+
 /* cub3D struct */
 typedef struct s_cub3d
 {
-	void			*mlx;
-	void			*mlx_window;
 	int				color[3];
+	int				found_zero;
 	int				width;
 	int				height;
 	int				fd;
 	int				player;
-	int				player_x;
-	int				player_y;
-	int				tmp_player_x;
-	int				tmp_player_y;
+	double			player_x;
+	double			player_y;
+	double			tmp_player_x;
+	double			tmp_player_y;
+	double			pdx;
+	double			pdy;
+	double			pa;
 	char			player_direction;
+	void			*mlx_ptr;
+	void			*mlx_window;
 	char			**raw_map;
+	char			**valid_map;
 	t_map			*map;
+	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
 }					t_cub3d;
@@ -90,6 +108,8 @@ int					error_in_texture(t_cub3d *data, int flag);
 int					error_check(int argc, char **argv);
 
 // textture_color_init.c:
+int					check_splitptr_len(char **splitted_line);
+char				*join_splitted_line(char **splitted_line);
 int					texture_color_init(char **splitted_line, t_cub3d *data);
 
 // get_raw_map.c:
@@ -107,7 +127,7 @@ int					check_texture_path(t_cub3d *data, int current);
 
 // check_validity:
 int					not_valid_line(char *current);
-int					valid_map(t_cub3d *data, char **raw_map);
+int					valid_map(t_cub3d *data);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
@@ -115,15 +135,19 @@ long long			ft_atoll(const char *str);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
-void	assign_player_map_dimension(t_cub3d *data,
-									char **map,
-									int *temp);
-int					check_map_zeros(t_cub3d *data);
+void				assign_player_map_dimension(t_cub3d *data, \
+									char **map, int *temp);
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
-void				put_to_win(t_cub3d *data);
+void				draw_map(t_cub3d *data);
+void				draw_player(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				image_handler(t_cub3d *data);
+void				render_background(t_cub3d *data);
+
+//image_handler
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
+					unsigned int color);
 
 #endif

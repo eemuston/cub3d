@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 15:41:08 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 11:25:49 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	init_data(t_cub3d *data)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
+
+	data->found_zero = 0;
 	data->width = 0;
 	data->height = 0;
 	data->fd = 0;
@@ -26,16 +28,13 @@ void	init_data(t_cub3d *data)
 	data->player_direction = 'a';
 	data->raw_map = NULL;
 	data->map = NULL;
-	while (i < 2)
-	{
+	data->img = malloc(sizeof(t_img) * 1);
+	while (++i < 2)
 		data->colors[i].color = NULL;
-		i++;
-	}
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
 		data->texture[i].path = NULL;
 		data->texture[i].identifier = 0;
-		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/12 17:47:02 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 12:27:32 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static int	check_valid_input(char **splitted_line, t_cub3d *data)
 	i = 0;
 	while (splitted_line[i])
 		i++;
-	if (i > 2)
+	if (i > 2 && (!ft_strncmp(splitted_line[0], "NO", 2) || \
+		!ft_strncmp(splitted_line[0], "EA", 2) || \
+		!ft_strncmp(splitted_line[0], "WE", 2) || \
+		!ft_strncmp(splitted_line[0], "SO", 2)))
 		return (error_in_texture(data, 3));
 	return (0);
 }
@@ -62,6 +65,8 @@ static int	check_duplicate(t_cub3d *data)
 	return (0);
 }
 
+//check_duplicate_color
+
 static int	read_texture_color(int fd, t_cub3d *data)
 {
 	char	*line;
@@ -88,7 +93,7 @@ static int	read_texture_color(int fd, t_cub3d *data)
 	return (0);
 }
 // read_file, check validity and parsing
-
+//flood_fill(data->raw_map, data) 
 int	read_file_and_parse(char **argv, t_cub3d *data)
 {
 	data->fd = open(argv[1], O_RDONLY);
@@ -101,7 +106,7 @@ int	read_file_and_parse(char **argv, t_cub3d *data)
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \
 		check_amount_player(data->raw_map, 0, data) || \
-		flood_fill(data->raw_map, data) || valid_map(data, data->raw_map))
+		valid_map(data) || flood_fill(data->raw_map, data))
 		return (1);
 	return (0);
 }

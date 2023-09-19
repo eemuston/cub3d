@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:34:41 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 18:02:46 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 11:58:25 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	fill_map_with_x(int x, int y, char ***map, t_cub3d *data)
 		return ;
 	else
 	{
-		if (check_character((*map)[y][x], 3) != 0)
+		if (check_character((*map)[y][x], 3))
 			return ;
 		(*map)[y][x] = 'X';
 		fill_map_with_x(x + 1, y, map, data);
@@ -40,7 +40,7 @@ int	flood_fill(char **raw_map, t_cub3d *data)
 	if (check_valid_line(temp_map, 4))
 	{
 		free_array(temp_map);
-		return (error_in_texture(data, 5));
+		return (error_in_texture(data, 10));
 	}
 	free_array(temp_map);
 	temp_map = NULL;

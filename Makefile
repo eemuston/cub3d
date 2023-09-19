@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/13 13:13:43 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/18 19:30:11 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ FLOODFILL_DIR = src/flood_fill/
 READMAP_DIR = src/read_map/
 INITWINDOW_DIR = src/init_window/
 SRC =	main.c
-VALID = check_valid_color.c validity_utils.c valid_map.c check_map_zeros.c
+VALID = check_valid_color.c validity_utils.c valid_map.c
 ERROR =  errors.c 
 UTILS =  free.c ft_atoll.c init_data.c key_handler.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
-READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c
-INITWINDOW = init_window.c
+READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
+			color_init_utils.c
+INITWINDOW = init_window.c image_handler.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \
 		$(addprefix $(READMAP_DIR), $(READMAP)) $(addprefix $(UTILS_DIR), $(UTILS)) \
