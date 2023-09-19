@@ -87,7 +87,8 @@ void	render_player(t_cub3d *data)
 			if (x == data->player_x && y == data->player_y)
 			{
 				color = data->color[2];
-				creat_player(data, x * BLOCK_SIZE + BLOCK_SIZE / 2, y * BLOCK_SIZE + BLOCK_SIZE / 2, color);
+				creat_player(data, x * BLOCK_SIZE + BLOCK_SIZE / 2, y
+						* BLOCK_SIZE + BLOCK_SIZE / 2, color);
 				break ;
 			}
 			x++;
@@ -96,21 +97,19 @@ void	render_player(t_cub3d *data)
 	}
 }
 
-
 void	my_mlx_pixel_put(t_cub3d *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
 	data->img->addr = mlx_get_data_addr(data->img->img_ptr,
-			&data->img->bits_per_pixel, &data->img->line_length,
-			&data->img->endian);
-	dst = data->img->addr + (y * data->img->line_length + \
-	x * (data->img->bits_per_pixel
-				/ 8));
+										&data->img->bits_per_pixel,
+										&data->img->line_length,
+										&data->img->endian);
+	dst = data->img->addr + (y * data->img->line_length + x
+			* (data->img->bits_per_pixel / 8));
 	if ((x >= 0 && x < X) && (y >= 0 && y < Y))
 		*(unsigned int *)dst = color;
 }
-
 
 int	mouse_handler(t_cub3d *data)
 {
@@ -157,9 +156,9 @@ int	key_handler(int key, t_cub3d *data)
 	if (key == 13 || key == 0 || key == 1 || key == 2)
 	{
 		moving_keys(key, data);
-		if (data->player_x * 2 != data->tmp_player_x || \
-		data->player_y * 2 != data->tmp_player_y)
-		move(data, data->tmp_player_y, data->tmp_player_x);
+		if (data->player_x * 2 != data->tmp_player_x ||
+			data->player_y * 2 != data->tmp_player_y)
+			move(data, data->tmp_player_y, data->tmp_player_x);
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/19 11:25:49 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 14:19:57 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	init_data(t_cub3d *data)
 	int	i;
 
 	i = -1;
-
 	data->found_zero = 0;
 	data->width = 0;
 	data->height = 0;
