@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/19 15:47:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 18:44:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 /* arrow keys */
 # define LEFT 123
 # define RIGHT 124
-
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
