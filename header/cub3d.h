@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/19 18:44:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 10:58:37 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
+int					flood_fill_outside_map(char	**temp_map, t_cub3d *data);
 int					allocate_temp_map(char ***temp_map, char **raw_map, \
 					int height, int width);
-
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
