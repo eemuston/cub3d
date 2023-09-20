@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/20 13:36:10 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/20 18:13:57 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INITWINDOW_DIR = src/init_window/
 SRC =	main.c
 VALID = check_valid_color.c validity_utils.c valid_map.c
 ERROR =  errors.c 
-UTILS =  free.c ft_atoll.c init_data.c key_handler.c
+UTILS =  free.c ft_atoll.c init_data.c key_handler.c ft_split_spaces.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
 READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
 			color_init_utils.c

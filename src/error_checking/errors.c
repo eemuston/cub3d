@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 13:38:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 18:25:51 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	if (flag == 1)
 		ft_putstr_fd("Error\nInvalid texture identifier.\n", 2);
 	else if (flag == 2)
-		ft_putstr_fd("Error\nDuplicate\n", 2);
+		ft_putstr_fd("Error\nDuplicate texture direction\n", 2);
 	else if (flag == 3)
 		ft_putstr_fd("Error\nInvalide input\n", 2);
 	else if (flag == 4)

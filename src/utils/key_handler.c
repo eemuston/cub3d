@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 17:20:40 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/20 18:42:40 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,31 @@ int	mouse_handler(t_cub3d *data)
 	exit(0);
 }
 
+static int	qualify_move(t_cub3d *data, int height, int width)
+{
+	if ((data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1'))
+		return (1);
+	return (0);
+}
+
 static void	move(t_cub3d *data, int height, int width)
 {
-	if (data->raw_map[height / (BLOCK_SIZE / PLAYER_SIZE)] \
-				[width / (BLOCK_SIZE / PLAYER_SIZE)] == '1')
+	if (qualify_move(data, height, width))
 		return ;
 	else
 	{
@@ -74,7 +95,7 @@ void	moving_keys(int key, t_cub3d *data)
 		data->player_angle -= 360;
 	if (data->player_angle < 0)
 		data->player_angle += 360;
-	printf("Angle: %f\n", data->player_angle);
+	// printf("Angle: %f\n", data->player_angle);
 }
 
 int	key_handler(int key, t_cub3d *data)
@@ -87,11 +108,11 @@ int	key_handler(int key, t_cub3d *data)
 		free_texture(data);
 		exit(0);
 	}
-	if (key == W || key == A || key == S || key == D || key == LEFT ||
-		key == RIGHT)
+	if (key == W || key == A || key == S || key == D || key == LEFT || \
+	key == RIGHT)
 	{
 		moving_keys(key, data);
-		if (data->player_x != data->tmp_player_x ||
+		if (data->player_x != data->tmp_player_x || \
 			data->player_y != data->tmp_player_y)
 			move(data, data->tmp_player_y, data->tmp_player_x);
 	}

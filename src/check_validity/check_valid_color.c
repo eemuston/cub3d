@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/18 09:34:10 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 18:27:25 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ static int	is_not_number(char **color_check)
 	return (0);
 }
 
+static int	check_dup_color(t_cub3d *data)
+{
+	int	index;
+
+	index = 0;
+	if (data->colors[index].name == data->colors[index + 1].name)
+	{
+		ft_putstr_fd("Error\nDuplicated color names\n", 2);
+		free_texture(data);
+		return (1);
+	}
+	return (0);
+}
+
 int	check_valid_color(t_cub3d *data)
 {
 	char	**color_check;
@@ -72,5 +86,7 @@ int	check_valid_color(t_cub3d *data)
 		assign_color_to_data(data, array, color_check);
 		free_array(color_check);
 	}
+	if (check_dup_color(data))
+		return (1);
 	return (0);
 }

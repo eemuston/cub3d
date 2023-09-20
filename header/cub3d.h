@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/20 14:11:40 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/20 18:34:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "../libft/libft.h"
 # include "mlx.h"
-# include <math.h>
 # include <stdio.h>
+# include <math.h>
 
 /* arrow keys */
 # define LEFT 123
@@ -78,7 +78,7 @@ typedef struct s_img
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-}					t_img;
+}				t_img;
 
 /* cub3D struct */
 typedef struct s_cub3d
@@ -133,9 +133,9 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
-int					flood_fill_outside_map(char **temp_map, t_cub3d *data);
-int					allocate_temp_map(char ***temp_map, char **raw_map,
-						int height, int width);
+int					flood_fill_outside_map(char	**temp_map, t_cub3d *data);
+int					allocate_temp_map(char ***temp_map, char **raw_map, \
+					int height, int width);
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
@@ -147,14 +147,16 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
 long long			ft_atoll(const char *str);
+char				**ft_split_spaces(char *str);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
-									char **map,	int *temp);
+									char **map, int *temp);
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
+void				init_player(t_cub3d *data);
 void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
@@ -164,7 +166,7 @@ void				render_background(t_cub3d *data);
 void				error_in_img(t_cub3d *data, int flag);
 
 //image_handler
-void				my_mlx_pixel_put(t_cub3d *data, int x, int y,
-						unsigned int color);
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
+					unsigned int color);
 
 #endif
