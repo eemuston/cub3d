@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/20 10:58:37 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 13:42:31 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,15 @@ typedef struct s_cub3d
 	int				height;
 	int				fd;
 	int				player;
+	double			ray_x;
+	double			ray_y;
 	double			player_x;
 	double			player_y;
 	double			tmp_player_x;
 	double			tmp_player_y;
 	double			pdx;
 	double			pdy;
+	double			pdz;
 	double			pa;
 	char			player_direction;
 	void			*mlx_ptr;
@@ -138,11 +141,13 @@ void				assign_player_map_dimension(t_cub3d *data, \
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
-void				draw_map(t_cub3d *data);
-void				draw_player(t_cub3d *data);
+void				draw_2d_map(t_cub3d *data);
+void				draw_2d_player(t_cub3d *data);
+void				draw_rayline(t_cub3d *data);
 void				init_window(t_cub3d *data);
-void				image_handler(t_cub3d *data);
+void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
+void				error_in_img(t_cub3d *data, int flag);
 
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \

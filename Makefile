@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/20 10:17:35 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/20 13:36:10 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ UTILS =  free.c ft_atoll.c init_data.c key_handler.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
 READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
 			color_init_utils.c
-INITWINDOW = init_window.c image_handler.c
+INITWINDOW = init_window.c image_handler.c mini_map.c render.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \
 		$(addprefix $(READMAP_DIR), $(READMAP)) $(addprefix $(UTILS_DIR), $(UTILS)) \

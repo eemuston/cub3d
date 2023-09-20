@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:34:41 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 11:00:11 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 12:54:01 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	flood_fill_inside_map(char **temp_map, t_cub3d *data)
 	return (0);
 }
 
-static void	check_zero(char **temp_map, t_cub3d *data, int x, int y)
+static void	surrounded_by_wall(char **temp_map, t_cub3d *data, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= data->width + 2 || y >= data->height + 2)
 		return ;
@@ -56,10 +56,10 @@ static void	check_zero(char **temp_map, t_cub3d *data, int x, int y)
 		if (temp_map[y][x] == '0' || check_character(temp_map[y][x], 2))
 			data->found_zero = 1;
 		temp_map[y][x] = 'X';
-		check_zero(temp_map, data, x + 1, y);
-		check_zero(temp_map, data, x - 1, y);
-		check_zero(temp_map, data, x, y + 1);
-		check_zero(temp_map, data, x, y - 1);
+		surrounded_by_wall(temp_map, data, x + 1, y);
+		surrounded_by_wall(temp_map, data, x - 1, y);
+		surrounded_by_wall(temp_map, data, x, y + 1);
+		surrounded_by_wall(temp_map, data, x, y - 1);
 	}
 }
 
@@ -105,7 +105,7 @@ int	flood_fill_outside_map(char	**temp_map, t_cub3d *data)
 		index++;
 	}
 	fill_temp_map(&temp_map, data->height + 2, data->width + 2, data);
-	check_zero(temp_map, data, 0, 0);
+	surrounded_by_wall(temp_map, data, 0, 0);
 	free_array(temp_map);
 	if (data->found_zero == 1)
 		return (error_in_texture(data, 9));
