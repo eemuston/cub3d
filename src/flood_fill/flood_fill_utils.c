@@ -6,28 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:39:03 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/19 17:03:53 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 11:02:29 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
-
-static double	calculate_angle(char player_direction)
-{
-	double	angle;
-
-	if (player_direction == 'N')
-		angle = 0.0;
-	else if (player_direction == 'E')
-		angle = 90.0;
-	else if (player_direction == 'S')
-		angle = 180.0;
-	else if (player_direction == 'W')
-		angle = 270.0;
-	else
-		angle = -1.0;
-	return (angle);
-}
 
 int	allocate_temp_map(char ***temp_map, char **raw_map, int height, int width)
 {
@@ -73,33 +56,4 @@ int	check_valid_line(char **map, int flag)
 		i++;
 	}
 	return (0);
-}
-
-void	assign_player_map_dimension(t_cub3d *data, char **map, int *temp)
-{
-	int	index;
-	int	current;
-
-	index = 0;
-	while (map[index] != NULL)
-	{
-		current = 0;
-		while (map[index][current] != '\0')
-		{
-			if (check_character(map[index][current], 2))
-			{
-				data->player += 1;
-				data->player_direction = map[index][current];
-				data->player_x = current;
-				data->player_y = index;
-				data->pa = calculate_angle(map[index][current]);
-			}
-			current++;
-		}
-		*temp = ft_strlen(map[index]);
-		if (*temp > data->width)
-			data->width = *temp;
-		index++;
-	}
-	data->height = index;
 }

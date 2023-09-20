@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/19 15:41:44 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 11:02:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,60 @@ int	check_character(char c, int flag)
 	else if (flag == 2)
 		return (c == 'W' || c == 'S' || c == 'E' || c == 'N');
 	else if (flag == 3)
-		return (c == 32 || (c >= 9 && c <= 13) || c == '\0');
+		return (c == '1' || c == '0');
 	else if (flag == 4)
-		return (c == '1' || c == 'X');
+		return (c == 32 || (c >= 9 && c <= 13) || c == 'X' || c == '\0');
 	else if (flag == 5)
-		return (c != '1' && c != '0' && c != 'W' && c != 'S' && c != 'E' && \
-				c != 'N' && c != ' ');
+		return (c == '0' || c == 'W' || c == 'S' || c == 'E' || c == 'N');
 	else if (flag == 6)
 		return ((c >= 9 && c <= 13) || c == 32 || ft_isdigit(c));
-	else if (flag == 7)
-		return (c == '1' || c == '0' || c == 32);
 	return (0);
+}
+
+static double	calculate_angle(char player_direction)
+{
+	double	angle;
+
+	if (player_direction == 'N')
+		angle = 0.0;
+	else if (player_direction == 'E')
+		angle = 90.0;
+	else if (player_direction == 'S')
+		angle = 180.0;
+	else if (player_direction == 'W')
+		angle = 270.0;
+	else
+		angle = -1.0;
+	return (angle);
+}
+
+void	assign_player_map_dimension(t_cub3d *data, char **map, int *temp)
+{
+	int	index;
+	int	current;
+
+	index = 0;
+	while (map[index] != NULL)
+	{
+		current = 0;
+		while (map[index][current] != '\0')
+		{
+			if (check_character(map[index][current], 2))
+			{
+				data->player += 1;
+				data->player_direction = map[index][current];
+				data->player_x = current;
+				data->player_y = index;
+				data->pa = calculate_angle(map[index][current]);
+			}
+			current++;
+		}
+		*temp = ft_strlen(map[index]);
+		if (*temp > data->width)
+			data->width = *temp;
+		index++;
+	}
+	data->height = index;
 }
 
 int	check_amount_player(char **map, int index, t_cub3d *data)
