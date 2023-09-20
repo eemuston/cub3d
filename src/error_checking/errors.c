@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/19 15:41:01 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 10:09:11 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	else if (flag == 4)
 		ft_putstr_fd("Error\nMalloc\n", 2);
 	else if (flag == 5)
-		ft_putstr_fd("Error\nInvalid map\n", 2);
+		ft_putstr_fd("Error\nInvalid input around the map\n", 2);
 	else if (flag == 6)
 		ft_putstr_fd("Error\nInvalid colors\n", 2);
 	else if (flag == 7)
@@ -34,6 +34,8 @@ int	error_in_texture(t_cub3d *data, int flag)
 		ft_putstr_fd("Error\nMap not surrounded by 1\n", 2);
 	else if (flag == 10)
 		ft_putstr_fd("Error\nFound space inside map\n", 2);
+	else if (flag == 11)
+		ft_putstr_fd("Error\nFound island\n", 2);
 	free_texture(data);
 	return (1);
 }
