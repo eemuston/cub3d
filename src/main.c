@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 13:37:15 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 15:43:26 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (read_file_and_parse(argv, &data) == 1)
 		return (1);
-	// printf("pa: %f\n",data.pa);
-	// printf("cos: %f\n",cos(data.pa));
-	// printf("sin: %f\n",sin(data.pa));
-	// printf("tan: %f\n",tan(data.pa));
-	// data.pdz = cos(data.pa) / data.pdx;
-	// printf("pz %f\n", data.pdz);
 	init_window(&data);
 	render_game(&data);
 	hook_keys_loop(&data);

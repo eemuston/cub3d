@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 13:42:56 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 16:22:39 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,45 @@ static void	move(t_cub3d *data, int height, int width)
 	}
 }
 
-void	moving_keys(int key, t_cub3d *data)
+void moving_keys(int key, t_cub3d *data)
 {
-	if (key == W_KEY)
-		data->tmp_player_y--;
-	if (key == S_KEY)
-		data->tmp_player_y++;
-	if (key == A_KEY)
-		data->tmp_player_x--;
-	if (key == D_KEY)
-		data->tmp_player_x++;
+    double move_speed = 1; // Adjust the movement speed as needed
+
+    if (key == W)
+    {
+        data->tmp_player_x -= move_speed * cos(data->player_angle * M_PI / 180);
+        data->tmp_player_y -= move_speed * sin(data->player_angle * M_PI / 180);
+    }
+    if (key == S)
+    {
+        data->tmp_player_x += move_speed * cos(data->player_angle * M_PI / 180);
+        data->tmp_player_y += move_speed * sin(data->player_angle * M_PI / 180);
+    }
+    if (key == A)
+    {
+        // Move left by subtracting 90 degrees from the player's angle
+        data->tmp_player_x += move_speed * cos((data->player_angle + 90) * M_PI / 180);
+        data->tmp_player_y += move_speed * sin((data->player_angle + 90) * M_PI / 180);
+    }
+    if (key == D)
+    {
+        // Move right by adding 90 degrees to the player's angle
+        data->tmp_player_x += move_speed * cos((data->player_angle - 90) * M_PI / 180);
+        data->tmp_player_y += move_speed * sin((data->player_angle - 90) * M_PI / 180);
+    }
+    if (key == RIGHT)
+    {
+        data->player_angle += 5;
+        if (data->player_angle >= 360)
+            data->player_angle -= 360;
+    }
+    if (key == LEFT)
+    {
+        data->player_angle -= 5;
+        if (data->player_angle < 0)
+            data->player_angle += 360;
+    }
+    printf("Angle: %f\n", data->player_angle);
 }
 
 int	key_handler(int key, t_cub3d *data)
@@ -55,9 +84,13 @@ int	key_handler(int key, t_cub3d *data)
 		free_texture(data);
 		exit(0);
 	}
-	moving_keys(key, data);
-	if (data->player_x != data->tmp_player_x || \
-		data->player_y != data->tmp_player_y)
-		move(data, data->tmp_player_y, data->tmp_player_x);
+	if (key == W || key == A || key == S || key == D || key == LEFT || \
+		key == RIGHT)
+	{
+		moving_keys(key, data);
+		if (data->player_x != data->tmp_player_x || \
+			data->player_y != data->tmp_player_y)
+			move(data, data->tmp_player_y, data->tmp_player_x);
+	}
 	return (0);
 }

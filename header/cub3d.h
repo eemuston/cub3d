@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/20 13:42:31 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 14:11:40 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 # include "../libft/libft.h"
 # include "mlx.h"
-# include <stdio.h>
 # include <math.h>
+# include <stdio.h>
 
 /* arrow keys */
 # define LEFT 123
 # define RIGHT 124
-# define W_KEY 13
-# define A_KEY 0
-# define S_KEY 1
-# define D_KEY 2
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
@@ -35,6 +35,21 @@
 
 # define BLOCK_SIZE 16
 # define PLAYER_SIZE 4
+
+typedef struct s_ray
+{
+	double			x;
+	double			y;
+	double			angle;
+	double			dist;
+	double			dir_x;
+	double			dir_y;
+	double			p_delta_x;
+	double			p_delta_y;
+	int				steps_x;
+	int				steps_y;
+
+}					t_ray;
 
 typedef struct s_texture
 {
@@ -63,7 +78,7 @@ typedef struct s_img
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-}				t_img;
+}					t_img;
 
 /* cub3D struct */
 typedef struct s_cub3d
@@ -75,8 +90,6 @@ typedef struct s_cub3d
 	int				height;
 	int				fd;
 	int				player;
-	double			ray_x;
-	double			ray_y;
 	double			player_x;
 	double			player_y;
 	double			tmp_player_x;
@@ -84,7 +97,7 @@ typedef struct s_cub3d
 	double			pdx;
 	double			pdy;
 	double			pdz;
-	double			pa;
+	double			player_angle;
 	char			player_direction;
 	void			*mlx_ptr;
 	void			*mlx_window;
@@ -94,6 +107,7 @@ typedef struct s_cub3d
 	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
+	t_ray			*ray;
 }					t_cub3d;
 
 // init.c:
@@ -119,9 +133,9 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
-int					flood_fill_outside_map(char	**temp_map, t_cub3d *data);
-int					allocate_temp_map(char ***temp_map, char **raw_map, \
-					int height, int width);
+int					flood_fill_outside_map(char **temp_map, t_cub3d *data);
+int					allocate_temp_map(char ***temp_map, char **raw_map,
+						int height, int width);
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
@@ -137,7 +151,7 @@ int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
-									char **map, int *temp);
+									char **map,	int *temp);
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
@@ -150,7 +164,7 @@ void				render_background(t_cub3d *data);
 void				error_in_img(t_cub3d *data, int flag);
 
 //image_handler
-void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
-					unsigned int color);
+void				my_mlx_pixel_put(t_cub3d *data, int x, int y,
+						unsigned int color);
 
 #endif
