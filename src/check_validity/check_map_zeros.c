@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:40:02 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 10:10:34 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:45:29 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_map_zeros(t_cub3d *data)
 		x = 0;
 		while (data->raw_map[y][x] != '\0')
 		{
-			if (data->raw_map[i][j] == '0')
+			if (data->raw_map[y][x] == '0')
 			{
 				if (check_zero(data, y, x) == 1)
 				{
