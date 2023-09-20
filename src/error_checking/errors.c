@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/12 17:30:33 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 15:41:01 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	error_in_texture(t_cub3d *data, int flag)
 		ft_putstr_fd("Error\nInvalid player number\n", 2);
 	else if (flag == 8)
 		ft_putstr_fd("Error\nInvalid texture path\n", 2);
+	else if (flag == 9)
+		ft_putstr_fd("Error\nMap not surrounded by 1\n", 2);
+	else if (flag == 10)
+		ft_putstr_fd("Error\nFound space inside map\n", 2);
 	free_texture(data);
 	return (1);
 }

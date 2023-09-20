@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/18 14:31:06 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/19 18:44:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 /* arrow keys */
 # define LEFT 123
 # define RIGHT 124
-
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
@@ -30,8 +33,8 @@
 # define X 1920
 # define Y 1080
 
-# define BLOCK_SIZE 20
-# define PLAYER_SIZE 5
+# define BLOCK_SIZE 16
+# define PLAYER_SIZE 4
 
 typedef struct s_texture
 {
@@ -66,6 +69,8 @@ typedef struct s_img
 typedef struct s_cub3d
 {
 	int				color[3];
+	int				found_zero;
+	int				found_space;
 	int				width;
 	int				height;
 	int				fd;
@@ -81,6 +86,7 @@ typedef struct s_cub3d
 	void			*mlx_ptr;
 	void			*mlx_window;
 	char			**raw_map;
+	char			**valid_map;
 	t_map			*map;
 	t_img			*img;
 	t_texture		texture[4];
@@ -109,7 +115,7 @@ int					get_raw_map(t_cub3d *data, int fd);
 int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
-int					flood_fill(char **raw_map, t_cub3d *data);
+int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
 int					allocate_temp_map(char ***temp_map, char **raw_map, \
 					int height, int width);
 
@@ -119,7 +125,7 @@ int					check_texture_path(t_cub3d *data, int current);
 
 // check_validity:
 int					not_valid_line(char *current);
-int					valid_map(t_cub3d *data, char **raw_map);
+int					valid_map(t_cub3d *data);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
@@ -129,7 +135,6 @@ int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
 									char **map, int *temp);
-int					check_map_zeros(t_cub3d *data);
 int					key_handler(int key, t_cub3d *data);
 
 // init_window:
