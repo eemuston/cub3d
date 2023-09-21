@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:39:03 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 11:02:29 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 12:29:20 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	allocate_temp_map(char ***temp_map, char **raw_map, int height, int width)
 
 	i = 0;
 	y = 0;
-	*temp_map = ft_calloc(sizeof(char *), height + 1);
+	*temp_map = ft_calloc(sizeof(char *), height + 2);
 	if (!(*temp_map))
 		return (1);
 	while (raw_map[y] != NULL)
 	{
-		(*temp_map)[y] = ft_calloc(sizeof(char), width + 1);
+		(*temp_map)[y] = ft_calloc(sizeof(char), width + 2);
 		if (!((*temp_map)[y]))
 			return (1);
 		y++;

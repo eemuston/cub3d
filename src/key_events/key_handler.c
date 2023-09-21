@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/21 13:19:26 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:17:24 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,24 @@ int	mouse_handler(t_cub3d *data)
 	exit(0);
 }
 
-static int	qualify_move(t_cub3d *data, int height, int width)
+static void	right_left_arrow_keys(int key, t_cub3d *data)
 {
-	if ((data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1'))
-		return (1);
-	return (0);
-}
-
-static void	move(t_cub3d *data, int height, int width)
-{
-	if (qualify_move(data, height, width))
-		return ;
-	else
+	if (key == RIGHT)
 	{
-		data->player_x = width;
-		data->player_y = height;
-		mlx_clear_window(data->mlx_ptr, data->mlx_window);
-		render_game(data);
+		data->player_angle += 90;
+		if (data->player_angle >= 360)
+			data->player_angle -= 360;
 	}
+	else if (key == LEFT)
+	{
+		data->player_angle -= 90;
+		if (data->player_angle < 0)
+			data->player_angle += 360;
+	}
+	if (data->player_angle >= 360)
+		data->player_angle -= 360;
+	if (data->player_angle < 0)
+		data->player_angle += 360;
 }
 
 void	moving_keys(int key, t_cub3d *data)
@@ -64,38 +49,23 @@ void	moving_keys(int key, t_cub3d *data)
 		data->tmp_player_x -= cos(player_rad_angle);
 		data->tmp_player_y -= sin(player_rad_angle);
 	}
-	if (key == S)
+	else if (key == S)
 	{
 		data->tmp_player_x += cos(player_rad_angle);
 		data->tmp_player_y += sin(player_rad_angle);
 	}
-	if (key == A)
+	else if (key == A)
 	{
 		data->tmp_player_x -= sin(player_rad_angle);
 		data->tmp_player_y += cos(player_rad_angle);
 	}
-	if (key == D)
+	else if (key == D)
 	{
 		data->tmp_player_x += sin(player_rad_angle);
 		data->tmp_player_y -= cos(player_rad_angle);
 	}
-	if (key == RIGHT)
-	{
-		data->player_angle += 90;
-		if (data->player_angle >= 360)
-			data->player_angle -= 360;
-	}
-	if (key == LEFT)
-	{
-		data->player_angle -= 90;
-		if (data->player_angle < 0)
-			data->player_angle += 360;
-	}
-	if (data->player_angle >= 360)
-		data->player_angle -= 360;
-	if (data->player_angle < 0)
-		data->player_angle += 360;
-	// printf("Angle: %f\n", data->player_angle);
+	else
+		right_left_arrow_keys(key, data);
 }
 
 int	key_handler(int key, t_cub3d *data)

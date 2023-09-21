@@ -6,29 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:24:51 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/18 14:32:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 13:35:01 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
-
-void	render_background(t_cub3d *data)
-{
-	int	y;
-	int	x;
-	int	color;
-
-	color = 0x58ABE5;
-	y = -1;
-	while (++y < Y)
-	{
-		x = -1;
-		while (++x < X)
-		{
-			my_mlx_pixel_put(data, x, y, color);
-		}
-	}
-}
 
 void	my_mlx_pixel_put(t_cub3d *data, int x, int y, unsigned int color)
 {
@@ -38,8 +20,7 @@ void	my_mlx_pixel_put(t_cub3d *data, int x, int y, unsigned int color)
 			&data->img->bits_per_pixel, &data->img->line_length,
 			&data->img->endian);
 	dst = data->img->addr + (y * data->img->line_length + \
-	x * (data->img->bits_per_pixel
-				/ 8));
+	x * (data->img->bits_per_pixel / 8));
 	if ((x >= 0 && x < X) && (y >= 0 && y < Y))
 		*(unsigned int *)dst = color;
 }

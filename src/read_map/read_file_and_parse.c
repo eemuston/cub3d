@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/19 15:42:12 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 18:19:37 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	split_line(char *line, t_cub3d *data)
 {
 	char	**splitted_line;
 
-	splitted_line = ft_split(line, ' ');
+	splitted_line = ft_split_spaces(line);
 	if (check_valid_input(splitted_line, data)
 		|| texture_color_init(splitted_line, data))
 	{
@@ -65,8 +65,6 @@ static int	check_duplicate(t_cub3d *data)
 	return (0);
 }
 
-//check_duplicate_color
-
 static int	read_texture_color(int fd, t_cub3d *data)
 {
 	char	*line;
@@ -92,9 +90,6 @@ static int	read_texture_color(int fd, t_cub3d *data)
 		return (error_in_texture(data, 3));
 	return (0);
 }
-
-// read_file, check validity and parsing
-//flood_fill(data->raw_map, data)
 
 int	read_file_and_parse(char **argv, t_cub3d *data)
 {

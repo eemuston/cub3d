@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/20 10:58:37 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/21 12:41:13 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 /* arrow keys */
 # define LEFT 123
 # define RIGHT 124
-# define W_KEY 13
-# define A_KEY 0
-# define S_KEY 1
-# define D_KEY 2
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
@@ -35,6 +35,21 @@
 
 # define BLOCK_SIZE 16
 # define PLAYER_SIZE 4
+
+typedef struct s_ray
+{
+	double			x;
+	double			y;
+	double			angle;
+	double			dist;
+	double			dir_x;
+	double			dir_y;
+	double			p_delta_x;
+	double			p_delta_y;
+	int				steps_x;
+	int				steps_y;
+
+}					t_ray;
 
 typedef struct s_texture
 {
@@ -81,7 +96,8 @@ typedef struct s_cub3d
 	double			tmp_player_y;
 	double			pdx;
 	double			pdy;
-	double			pa;
+	double			pdz;
+	double			player_angle;
 	char			player_direction;
 	void			*mlx_ptr;
 	void			*mlx_window;
@@ -91,6 +107,7 @@ typedef struct s_cub3d
 	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
+	t_ray			*ray;
 }					t_cub3d;
 
 // init.c:
@@ -130,22 +147,28 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
 long long			ft_atoll(const char *str);
+char				**ft_split_spaces(char *str);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
-									char **map, int *temp);
-int					key_handler(int key, t_cub3d *data);
+					char **map);
 
 // init_window:
-void				draw_map(t_cub3d *data);
-void				draw_player(t_cub3d *data);
+void				draw_2d_map(t_cub3d *data);
+void				draw_2d_player(t_cub3d *data);
+void				draw_rayline(t_cub3d *data);
 void				init_window(t_cub3d *data);
-void				image_handler(t_cub3d *data);
+void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
+void				error_in_img(t_cub3d *data, int flag);
 
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
 					unsigned int color);
+
+//key_events
+int					key_handler(int key, t_cub3d *data);
+void				move(t_cub3d *data, int height, int width);
 
 #endif

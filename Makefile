@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
+#    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/20 10:17:35 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/21 12:24:35 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,22 @@ UTILS_DIR = src/utils/
 VALID_DIR = src/check_validity/
 ERROR_DIR = src/error_checking/
 FLOODFILL_DIR = src/flood_fill/
-READMAP_DIR = src/read_map/
-INITWINDOW_DIR = src/init_window/
+READ_MAP_DIR = src/read_map/
+INIT_WINDOW_DIR = src/init_window/
+KEY_EVENTS_DIR = src/key_events/
 SRC =	main.c
 VALID = check_valid_color.c validity_utils.c valid_map.c
 ERROR =  errors.c 
-UTILS =  free.c ft_atoll.c init_data.c key_handler.c
+UTILS =  free.c ft_atoll.c init_data.c ft_split_spaces.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
-READMAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
-			color_init_utils.c
-INITWINDOW = init_window.c image_handler.c
+READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
+			color_init_utils.c init_player_position.c
+INIT_WINDOW = init_window.c image_handler.c mini_map.c render.c
+KEY_EVENTS = key_handler.c key_utils.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \
-		$(addprefix $(READMAP_DIR), $(READMAP)) $(addprefix $(UTILS_DIR), $(UTILS)) \
-		$(addprefix $(INITWINDOW_DIR), $(INITWINDOW))
+		$(addprefix $(READ_MAP_DIR), $(READ_MAP)) $(addprefix $(UTILS_DIR), $(UTILS)) \
+		$(addprefix $(INIT_WINDOW_DIR), $(INIT_WINDOW)) $(addprefix $(KEY_EVENTS_DIR), $(KEY_EVENTS))
 HEADER_DIR = header/
 HEADER = cub3d.h
 OBJ_DIR = obj/

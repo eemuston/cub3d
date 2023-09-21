@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 10:09:11 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/20 18:25:51 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	if (flag == 1)
 		ft_putstr_fd("Error\nInvalid texture identifier.\n", 2);
 	else if (flag == 2)
-		ft_putstr_fd("Error\nDuplicate\n", 2);
+		ft_putstr_fd("Error\nDuplicate texture direction\n", 2);
 	else if (flag == 3)
 		ft_putstr_fd("Error\nInvalide input\n", 2);
 	else if (flag == 4)
@@ -55,4 +55,29 @@ int	error_check(int argc, char **argv)
 		return (1);
 	}
 	return (0);
+}
+
+static void	destroy_image_ptr(t_cub3d *data)
+{
+	if (data->img->img_ptr && data->mlx_window && data->mlx_ptr)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
+		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+	}
+	else if (data->mlx_window && data->mlx_ptr)
+		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+	else if (data->img->img_ptr && data->mlx_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
+	free_texture(data);
+}
+
+void	error_in_img(t_cub3d *data, int flag)
+{
+	if (flag == 1)
+		printf("Error\nCouldn't initialize mlx_ptr\n");
+	else if (flag == 2)
+		printf("Error\nCouldn't create window\n");
+	else if (flag == 3)
+		printf("Error\nCouldn't create the image\n");
+	destroy_image_ptr(data);
 }
