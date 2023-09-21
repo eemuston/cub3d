@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 17:01:21 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/21 12:46:06 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ void	hook_keys_loop(t_cub3d *data)
 	mlx_loop(data->mlx_ptr);
 }
 
+void	set_player_x_y(t_cub3d *data)
+{
+	data->player_x = (data->player_x * BLOCK_SIZE / \
+	PLAYER_SIZE) + PLAYER_SIZE / 2;
+	data->player_y = (data->player_y * BLOCK_SIZE / \
+	PLAYER_SIZE) + PLAYER_SIZE / 2;
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub3d	data;
@@ -29,7 +37,7 @@ int	main(int argc, char **argv)
 	if (read_file_and_parse(argv, &data) == 1)
 		return (1);
 	init_window(&data);
-	init_player(&data);
+	set_player_x_y(&data);
 	render_game(&data);
 	hook_keys_loop(&data);
 	free_texture(&data);

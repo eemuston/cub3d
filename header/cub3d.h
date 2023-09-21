@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/20 18:34:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/21 12:41:13 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,11 +152,9 @@ int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
-									char **map, int *temp);
-int					key_handler(int key, t_cub3d *data);
+					char **map);
 
 // init_window:
-void				init_player(t_cub3d *data);
 void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
@@ -168,5 +166,9 @@ void				error_in_img(t_cub3d *data, int flag);
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
 					unsigned int color);
+
+//key_events
+int					key_handler(int key, t_cub3d *data);
+void				move(t_cub3d *data, int height, int width);
 
 #endif
