@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 13:33:59 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/21 16:54:51 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	draw_2d_player(t_cub3d *data)
 		block_x = 0;
 		while (block_x < data->width + 1)
 		{
-			create_player(data, data->player_x * PLAYER_SIZE, \
-			data->player_y * PLAYER_SIZE, data->color[2]);
+			create_player(data, data->player->player_x * PLAYER_SIZE, \
+			data->player->player_y * PLAYER_SIZE, data->color[2]);
 			block_x++;
 		}
 		block_y++;

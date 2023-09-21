@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/21 12:41:13 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:47:04 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,22 @@ typedef struct s_texture
 	int				identifier;
 }					t_texture;
 
+typedef struct s_point
+{
+	double	p_x;
+	double	p_y;
+}			t_point;
+
+typedef struct s_line
+{
+	double			s_x;
+	double			s_y;
+	double			dx;
+	double			dy;
+	int				err;
+	int				err2;
+}				t_line;
+
 typedef struct s_color
 {
 	char			name;
@@ -80,6 +96,15 @@ typedef struct s_img
 	int				endian;
 }				t_img;
 
+typedef struct s_player
+{
+	double			player_x;
+	double			player_y;
+	double			tmp_player_x;
+	double			tmp_player_y;
+	double			player_angle;
+}					t_player;
+
 /* cub3D struct */
 typedef struct s_cub3d
 {
@@ -89,20 +114,13 @@ typedef struct s_cub3d
 	int				width;
 	int				height;
 	int				fd;
-	int				player;
-	double			player_x;
-	double			player_y;
-	double			tmp_player_x;
-	double			tmp_player_y;
-	double			pdx;
-	double			pdy;
-	double			pdz;
-	double			player_angle;
+	int				player_number;
 	char			player_direction;
 	void			*mlx_ptr;
 	void			*mlx_window;
 	char			**raw_map;
 	char			**valid_map;
+	t_player		*player;
 	t_map			*map;
 	t_img			*img;
 	t_texture		texture[4];
@@ -162,6 +180,8 @@ void				init_window(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 void				error_in_img(t_cub3d *data, int flag);
+void				bresenham(t_point p1, t_point p2, \
+					t_cub3d *data, t_line line);
 
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
