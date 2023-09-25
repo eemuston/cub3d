@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/21 17:04:32 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/22 09:41:07 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,21 @@ void	draw_2d_direction(t_cub3d *data)
 	t_line	line;
 	t_point	p1;
 	t_point	p2;
+	t_point	p3;
 
+	printf("p1.p_x = data->player->player_x :%f\n", data->player->player_x);
+	printf("p1.p_x = data->player->player_y :%f\n", data->player->player_y);
 	line.dx = 0;
-	p1.p_x = (data->player->player_x * BLOCK_SIZE / PLAYER_SIZE) + PLAYER_SIZE / 2;
-	p2.p_x = (data->player->player_x * BLOCK_SIZE / PLAYER_SIZE) + PLAYER_SIZE / 2;
-	p1.p_y = data->player->player_y * BLOCK_SIZE / PLAYER_SIZE;
-	p2.p_y = data->player->player_y * BLOCK_SIZE / PLAYER_SIZE - 10 ;
+	p1.p_x = data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2;
+	p1.p_y = data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2;
+
+	p2.p_x = data->player->player_x * PLAYER_SIZE + 10 + PLAYER_SIZE / 2;
+	p2.p_y = data->player->player_y * PLAYER_SIZE - 10  + PLAYER_SIZE / 2;
+
+	p3.p_x = data->player->player_x * PLAYER_SIZE - 10 + PLAYER_SIZE / 2;
+	p3.p_y = data->player->player_y * PLAYER_SIZE - 10  + PLAYER_SIZE / 2;
 	bresenham(p1, p2, data, line);
+	bresenham(p1, p3, data, line);
 }
 
 void	render_game(t_cub3d *data)

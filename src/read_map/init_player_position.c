@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_position.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/21 16:59:03 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/22 13:26:07 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static double	calculate_angle(char player_direction)
 	double	angle;
 
 	if (player_direction == 'E')
-		angle = 0.0;
+		angle = 180.0;
 	else if (player_direction == 'N')
 		angle = 90.0;
 	else if (player_direction == 'W')
-		angle = 180.0;
+		angle = 0.0;
 	else if (player_direction == 'S')
 		angle = 270.0;
 	else
