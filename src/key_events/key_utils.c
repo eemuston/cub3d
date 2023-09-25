@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/21 12:17:59 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:55:11 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	move(t_cub3d *data, int height, int width)
 		return ;
 	else
 	{
-		data->player_x = width;
-		data->player_y = height;
+		data->player->player_x = width;
+		data->player->player_y = height;
 		mlx_clear_window(data->mlx_ptr, data->mlx_window);
 		render_game(data);
 	}

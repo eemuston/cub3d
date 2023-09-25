@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 18:46:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/21 16:54:16 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	init_player(t_cub3d *data)
 {
-	data->player_x = (data->player_x * BLOCK_SIZE / \
+	data->player->player_x = (data->player->player_x * BLOCK_SIZE / \
 	PLAYER_SIZE) + PLAYER_SIZE / 2;
-	data->player_y = (data->player_y * BLOCK_SIZE / \
+	data->player->player_y = (data->player->player_y * BLOCK_SIZE / \
 	PLAYER_SIZE) + PLAYER_SIZE / 2;
-	data->pdx = PLAYER_SIZE / 2;
-	data->pdy = PLAYER_SIZE / 2;
 }
 
 static void	init_mlx_ptr(t_cub3d *data)
@@ -39,13 +37,15 @@ void	init_data(t_cub3d *data)
 	data->width = 0;
 	data->height = 0;
 	data->fd = 0;
-	data->player = 0;
-	data->player_x = 0;
-	data->player_y = 0;
+	data->player_number = 0;
 	data->raw_map = NULL;
 	data->map = NULL;
 	init_mlx_ptr(data);
+	//TODO:protect malloc
 	data->ray = ft_calloc(sizeof(t_ray), 1);
+	data->player = ft_calloc(sizeof(t_player), 1);
+	data->player->player_x = 0;
+	data->player->player_y = 0;
 	while (++i < 2)
 		data->colors[i].color = NULL;
 	i = -1;

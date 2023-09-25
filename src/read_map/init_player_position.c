@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/21 12:47:21 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:59:03 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static double	calculate_angle(char player_direction)
 void	init_player_position(t_cub3d *data, int x, int y, char **map)
 {
 	data->player_direction = map[y][x];
-	data->player_x = x;
-	data->player_y = y;
-	data->player_angle = calculate_angle(map[y][x]);
-	data->ray->dir_x = cos(data->player_angle);
-	data->ray->dir_y = sin(data->player_angle);
+	data->player->player_x = x;
+	data->player->player_y = y;
+	data->player->player_angle = calculate_angle(map[y][x]);
+	data->ray->dir_x = cos(data->player->player_angle);
+	data->ray->dir_y = sin(data->player->player_angle);
 }
 
 void	assign_player_map_dimension(t_cub3d *data, char **map)
@@ -52,7 +52,7 @@ void	assign_player_map_dimension(t_cub3d *data, char **map)
 		{
 			if (check_character(map[y][x], 2))
 			{
-				data->player += 1;
+				data->player_number += 1;
 				init_player_position(data, x, y, map);
 			}
 			x++;

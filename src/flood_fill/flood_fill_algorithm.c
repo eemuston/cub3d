@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:34:41 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/21 12:46:20 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:53:15 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	flood_fill_inside_map(char **temp_map, t_cub3d *data)
 {
 	if (allocate_temp_map(&temp_map, data->raw_map, data->height, data->width))
 		return (error_in_texture(data, 4));
-	fill_map_with_x(data->player_x, data->player_y, &temp_map, data);
+	fill_map_with_x(data->player->player_x, data->player->player_y, &temp_map, data);
 	if (check_valid_line(temp_map, 3))
 	{
 		free_array(temp_map);

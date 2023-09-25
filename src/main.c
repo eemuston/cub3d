@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/21 13:19:40 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:53:27 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	hook_keys_loop(t_cub3d *data)
 
 void	set_player_x_y(t_cub3d *data)
 {
-	data->player_x = (data->player_x * BLOCK_SIZE / \
+	data->player->player_x = (data->player->player_x * BLOCK_SIZE / \
 	PLAYER_SIZE) + PLAYER_SIZE / 2;
-	data->player_y = (data->player_y * BLOCK_SIZE / \
+	data->player->player_y = (data->player->player_y * BLOCK_SIZE / \
 	PLAYER_SIZE) + PLAYER_SIZE / 2;
 }
 

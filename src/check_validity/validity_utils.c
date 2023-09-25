@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:21:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/21 12:41:02 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/21 16:51:35 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_amount_player(char **map, int index, t_cub3d *data)
 	if (map[index] != NULL)
 	{
 		assign_player_map_dimension(data, map);
-		if (data->player > 1 || data->player == 0)
+		if (data->player_number > 1 || data->player_number == 0)
 			return (error_in_texture(data, 7));
 	}
 	return (0);
