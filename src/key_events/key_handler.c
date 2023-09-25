@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/21 16:50:38 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/25 15:11:34 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void	right_left_arrow_keys(int key, t_cub3d *data)
 {
 	if (key == RIGHT)
 	{
-		data->player->player_angle += 90;
+		data->player->player_angle += 10;
 		if (data->player->player_angle >= 360)
 			data->player->player_angle -= 360;
 	}
 	else if (key == LEFT)
 	{
-		data->player->player_angle -= 90;
+		data->player->player_angle -= 10;
 		if (data->player->player_angle < 0)
 			data->player->player_angle += 360;
 	}
@@ -37,6 +37,7 @@ static void	right_left_arrow_keys(int key, t_cub3d *data)
 		data->player->player_angle -= 360;
 	if (data->player->player_angle < 0)
 		data->player->player_angle += 360;
+	render_game(data);
 }
 
 void	moving_keys(int key, t_cub3d *data)
@@ -46,23 +47,23 @@ void	moving_keys(int key, t_cub3d *data)
 	player_rad_angle = data->player->player_angle * M_PI / 180.0;
 	if (key == W)
 	{
-		data->player->tmp_player_x -= cos(player_rad_angle);
-		data->player->tmp_player_y -= sin(player_rad_angle);
+		data->player->tmp_player_x -= cos(player_rad_angle) * SPEED;
+		data->player->tmp_player_y -= sin(player_rad_angle) * SPEED;
 	}
 	else if (key == S)
 	{
-		data->player->tmp_player_x += cos(player_rad_angle);
-		data->player->tmp_player_y += sin(player_rad_angle);
+		data->player->tmp_player_x += cos(player_rad_angle) * SPEED;
+		data->player->tmp_player_y += sin(player_rad_angle) * SPEED;
 	}
 	else if (key == A)
 	{
-		data->player->tmp_player_x -= sin(player_rad_angle);
-		data->player->tmp_player_y += cos(player_rad_angle);
+		data->player->tmp_player_x -= sin(player_rad_angle) * SPEED;
+		data->player->tmp_player_y += cos(player_rad_angle) * SPEED;
 	}
 	else if (key == D)
 	{
-		data->player->tmp_player_x += sin(player_rad_angle);
-		data->player->tmp_player_y -= cos(player_rad_angle);
+		data->player->tmp_player_x += sin(player_rad_angle) * SPEED;
+		data->player->tmp_player_y -= cos(player_rad_angle) * SPEED;
 	}
 	else
 		right_left_arrow_keys(key, data);

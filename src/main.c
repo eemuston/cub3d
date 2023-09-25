@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/21 16:52:42 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/25 15:39:10 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	hook_keys_loop(t_cub3d *data)
 void	set_player_x_y(t_cub3d *data)
 {
 	data->player->player_x = (data->player->player_x * BLOCK_SIZE / \
-	PLAYER_SIZE) + PLAYER_SIZE / 2;
+	PLAYER_SIZE);// + PLAYER_SIZE / 2;
 	data->player->player_y = (data->player->player_y * BLOCK_SIZE / \
-	PLAYER_SIZE) + PLAYER_SIZE / 2;
+	PLAYER_SIZE); //+ PLAYER_SIZE / 2;
 }
 
 int	main(int argc, char **argv)

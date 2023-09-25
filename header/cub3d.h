@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/21 17:42:47 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/25 15:30:45 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@
 # define X 1920
 # define Y 1080
 
-# define BLOCK_SIZE 16
-# define PLAYER_SIZE 4
+# define BLOCK_SIZE 15
+# define PLAYER_SIZE 3
+# define SPEED 0.8
 
 typedef struct s_ray
 {
@@ -175,6 +176,7 @@ void				assign_player_map_dimension(t_cub3d *data, \
 // init_window:
 void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
+void				draw_2d_direction(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
 void				init_window(t_cub3d *data);
 void				render_game(t_cub3d *data);
@@ -189,6 +191,6 @@ void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
 
 //key_events
 int					key_handler(int key, t_cub3d *data);
-void				move(t_cub3d *data, int height, int width);
+void				move(t_cub3d *data, double height, double width);
 
 #endif

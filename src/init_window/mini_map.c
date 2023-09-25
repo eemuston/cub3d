@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/21 17:39:56 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/25 15:40:36 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	draw_2d_player(t_cub3d *data)
 			create_player(data, data->player->player_x * PLAYER_SIZE, \
 			data->player->player_y * PLAYER_SIZE, data->color[2]);
 			block_x++;
-			printf("player_y = %f\n", data->player->player_y * PLAYER_SIZE);
-			printf("player_x = %f\n", data->player->player_x * PLAYER_SIZE);
 		}
 		block_y++;
 	}
