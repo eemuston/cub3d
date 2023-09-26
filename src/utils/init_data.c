@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/21 16:54:16 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/26 13:26:22 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,22 @@ void	init_player(t_cub3d *data)
 	PLAYER_SIZE) + PLAYER_SIZE / 2;
 }
 
-static void	init_mlx_ptr(t_cub3d *data)
+static int	init_mlx_ray_player(t_cub3d *data)
 {
-	data->img = malloc(sizeof(t_img) * 1);
+	data->img = ft_calloc(sizeof(t_img), 1);
+	data->ray = ft_calloc(sizeof(t_ray), 1);
+	data->player = ft_calloc(sizeof(t_player), 1);
+	if (!data->img || !data->ray || !data->player)
+		return (1);
 	data->img->img_ptr = NULL;
 	data->mlx_ptr = NULL;
 	data->mlx_window = NULL;
+	data->player->player_x = 0;
+	data->player->player_y = 0;
+	return (0);
 }
 
-void	init_data(t_cub3d *data)
+int	init_data(t_cub3d *data)
 {
 	int	i;
 
@@ -40,12 +47,8 @@ void	init_data(t_cub3d *data)
 	data->player_number = 0;
 	data->raw_map = NULL;
 	data->map = NULL;
-	init_mlx_ptr(data);
-	//TODO:protect malloc
-	data->ray = ft_calloc(sizeof(t_ray), 1);
-	data->player = ft_calloc(sizeof(t_player), 1);
-	data->player->player_x = 0;
-	data->player->player_y = 0;
+	if (init_mlx_ray_player(data))
+		return (error_in_texture(data, 4));
 	while (++i < 2)
 		data->colors[i].color = NULL;
 	i = -1;
@@ -54,4 +57,5 @@ void	init_data(t_cub3d *data)
 		data->texture[i].path = NULL;
 		data->texture[i].identifier = 0;
 	}
+	return (0);
 }

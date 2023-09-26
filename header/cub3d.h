@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/25 15:30:45 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:29:13 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "mlx.h"
 # include <stdio.h>
 # include <math.h>
+# include <stdbool.h>
 
 /* arrow keys */
 # define LEFT 123
@@ -29,13 +30,15 @@
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
-
+# define TRUE 1
+# define FALSE 0
 # define X 1920
 # define Y 1080
 
-# define BLOCK_SIZE 15
-# define PLAYER_SIZE 3
+# define BLOCK_SIZE 30
+# define PLAYER_SIZE 5
 # define SPEED 0.8
+# define ANGLE 10
 
 typedef struct s_ray
 {
@@ -109,6 +112,7 @@ typedef struct s_player
 /* cub3D struct */
 typedef struct s_cub3d
 {
+	bool			keys[256];
 	int				color[3];
 	int				found_zero;
 	int				found_space;
@@ -130,7 +134,7 @@ typedef struct s_cub3d
 }					t_cub3d;
 
 // init.c:
-void				init_data(t_cub3d *data);
+int					init_data(t_cub3d *data);
 
 // free.c:
 void				free_array(char **array);
@@ -165,6 +169,7 @@ int					valid_map(t_cub3d *data);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
+double				angle_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
 int					mouse_handler(t_cub3d *data);
@@ -178,19 +183,21 @@ void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
-void				init_window(t_cub3d *data);
+int					init_window(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
-void				error_in_img(t_cub3d *data, int flag);
+int					error_in_img(t_cub3d *data, int flag);
 void				bresenham(t_point p1, t_point p2, \
 					t_cub3d *data, t_line line);
 
 //image_handler
-void				my_mlx_pixel_put(t_cub3d *data, int x, int y, \
+void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 					unsigned int color);
 
 //key_events
-int					key_handler(int key, t_cub3d *data);
-void				move(t_cub3d *data, double height, double width);
+void				hook_keys_loop(t_cub3d *data);
+void				move_keys(t_cub3d *data, double player_rad_angle);
+void				arrow_keys(t_cub3d *data);
+void				update_player_coordinates(t_cub3d *data);
 
 #endif
