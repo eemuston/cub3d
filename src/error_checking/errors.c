@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/20 18:25:51 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:28:21 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	destroy_image_ptr(t_cub3d *data)
 	free_texture(data);
 }
 
-void	error_in_img(t_cub3d *data, int flag)
+int	error_in_img(t_cub3d *data, int flag)
 {
 	if (flag == 1)
 		printf("Error\nCouldn't initialize mlx_ptr\n");
@@ -80,4 +80,5 @@ void	error_in_img(t_cub3d *data, int flag)
 	else if (flag == 3)
 		printf("Error\nCouldn't create the image\n");
 	destroy_image_ptr(data);
+	return (1);
 }

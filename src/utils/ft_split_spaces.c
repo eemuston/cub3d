@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:09:47 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 18:13:30 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:14:57 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*each_string(char **str)
 
 	len = 0;
 	index = 0;
-	while (delimiter(**str))
+	while (**str != '\0' && delimiter(**str))
 		(*str)++;
-	while (!delimiter((*str)[len]))
+	while ((*str)[len] != '\0' && !delimiter((*str)[len]))
 		len++;
 	new_str = malloc(sizeof(char) * len + 1);
 	if (!new_str)

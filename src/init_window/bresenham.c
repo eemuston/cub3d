@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:06:32 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/24 14:10:27 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/25 17:30:37 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	bresenham(t_point p1, t_point p2, t_cub3d *data, t_line line)
 	line.err = (line.dx - line.dy);
 	while ((int)p1.p_x != (int)p2.p_x || (int)p1.p_y != (int)p2.p_y)
 	{
-		my_mlx_pixel_put(data, (int)p1.p_x, (int)p1.p_y, 0x0000FF);
+		my_mlx_pixel_put(data, p1.p_x, p1.p_y, 0x0000FF);
 		line.err2 = (2 * line.err);
 		if (line.err2 > -line.dy)
 		{
@@ -49,5 +49,5 @@ void	bresenham(t_point p1, t_point p2, t_cub3d *data, t_line line)
 			p1.p_y += line.s_y;
 		}
 	}
-	my_mlx_pixel_put(data, (int)p1.p_x, (int)p1.p_y, 0x0000FF);
+	my_mlx_pixel_put(data, p1.p_x, p1.p_y, 0x0000FF);
 }

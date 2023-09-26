@@ -6,53 +6,63 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/25 15:36:14 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:20:18 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-// static int	qualify_move(t_cub3d *data, int height, int width)
-// {
-// 	// if ((data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-// 	// 	|| (data->raw_map[(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
-// 	// 				[(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1'))
-// 	// 	return (1);
-	
-// 	return (0);
-// }
-
-void	move(t_cub3d *data, double height, double width)
+void	update_player_coordinates(t_cub3d *data)
 {
-	// if (qualify_move(data, (int)height, (int)width))
-	// 	return ;
-	printf("height: %f\n", height);
-	printf("width: %f\n", width);
+	int	x;
 	int	y;
-	int x;
-	y = round(height);
-	x = round(width);
-	if (data->raw_map[y / (BLOCK_SIZE / PLAYER_SIZE)]\
-		[x / (BLOCK_SIZE / PLAYER_SIZE)] == '1')
+
+	y = round(data->player->tmp_player_y);
+	x = round(data->player->tmp_player_x);
+	if (data->raw_map[y / (BLOCK_SIZE / PLAYER_SIZE)][x / (BLOCK_SIZE
+			/ PLAYER_SIZE)] == '1')
 		return ;
-	else
+	data->player->player_x = data->player->tmp_player_x;
+	data->player->player_y = data->player->tmp_player_y;
+	render_game(data);
+}
+
+void	arrow_keys(t_cub3d *data)
+{
+	if (data->keys[RIGHT])
 	{
-		data->player->player_x = width;
-		data->player->player_y = height;
-		mlx_clear_window(data->mlx_ptr, data->mlx_window);
-		render_game(data);
+		data->player->player_angle += ANGLE;
+		if (data->player->player_angle >= 360)
+			data->player->player_angle -= 360;
+	}
+	if (data->keys[LEFT])
+	{
+		data->player->player_angle -= ANGLE;
+		if (data->player->player_angle < 0)
+			data->player->player_angle += 360;
+	}
+}
+
+void	move_keys(t_cub3d *data, double player_rad_angle)
+{
+	if (data->keys[W])
+	{
+		data->player->tmp_player_x -= cos(player_rad_angle) * SPEED;
+		data->player->tmp_player_y -= sin(player_rad_angle) * SPEED;
+	}
+	if (data->keys[S])
+	{
+		data->player->tmp_player_x += cos(player_rad_angle) * SPEED;
+		data->player->tmp_player_y += sin(player_rad_angle) * SPEED;
+	}
+	if (data->keys[A])
+	{
+		data->player->tmp_player_x -= sin(player_rad_angle) * SPEED;
+		data->player->tmp_player_y += cos(player_rad_angle) * SPEED;
+	}
+	if (data->keys[D])
+	{
+		data->player->tmp_player_x += sin(player_rad_angle) * SPEED;
+		data->player->tmp_player_y -= cos(player_rad_angle) * SPEED;
 	}
 }

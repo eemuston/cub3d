@@ -6,13 +6,14 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/25 15:40:36 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/25 20:13:45 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-static void	put_map_to_window(int x, int y, unsigned int color, t_cub3d *data)
+static void	put_map_to_window(double x, double y, \
+				unsigned int color, t_cub3d *data)
 {
 	int	block_y;
 	int	block_x;
@@ -30,7 +31,7 @@ static void	put_map_to_window(int x, int y, unsigned int color, t_cub3d *data)
 	}
 }
 
-static void	create_player(t_cub3d *data, int x, int y, int color)
+static void	create_player(t_cub3d *data, double x, double y, int color)
 {
 	int	i;
 	int	j;
