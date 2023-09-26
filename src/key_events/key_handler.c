@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 15:06:44 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 15:25:49 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ int	keys(t_cub3d *data)
 	if (data->keys[RIGHT] || data->keys[LEFT])
 		arrow_keys(data);
 	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
-	{
 		move_keys(data);
-		update_player_coordinates(data);
-	}
+	update_player_coordinates(data);
 	return (0);
 }
 

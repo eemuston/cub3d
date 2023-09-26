@@ -6,11 +6,16 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 14:06:45 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:06:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+double	angle_rad(double angle)
+{
+	return (angle * M_PI / 180.0);
+}
 
 void	render_background(t_cub3d *data)
 {

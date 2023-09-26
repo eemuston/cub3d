@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/26 14:53:19 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:10:41 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 double				angle_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
+void				set_player_x_y(t_cub3d *data);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);

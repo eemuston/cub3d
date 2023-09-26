@@ -6,19 +6,11 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/26 13:29:24 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:09:33 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
-
-void	set_player_x_y(t_cub3d *data)
-{
-	data->player->player_x = (data->player->player_x * BLOCK_SIZE / PLAYER_SIZE)
-		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
-	data->player->player_y = (data->player->player_y * BLOCK_SIZE / PLAYER_SIZE)
-		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
-}
 
 int	main(int argc, char **argv)
 {

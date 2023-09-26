@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/26 14:57:38 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:04:33 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static int	qualify_move(t_cub3d *data, double height, double width)
 {
-	if ((data->raw_map[(int)(height - 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width - 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(int)(height + 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width + 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+	if ((data->raw_map[(int)(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(int)(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
 		|| (data->raw_map[(int)(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width + 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(int)(height + 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(int)(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
 					[(int)(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
 		|| (data->raw_map[(int)(height) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width - 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(int)(height - 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(int)(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
 					[(int)(width) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(int)(height - 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width + 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
-		|| (data->raw_map[(int)(height + 2) / (BLOCK_SIZE / PLAYER_SIZE)] \
-					[(int)(width - 2) / (BLOCK_SIZE / PLAYER_SIZE)] == '1'))
+		|| (data->raw_map[(int)(height - 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width + 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1') \
+		|| (data->raw_map[(int)(height + 1) / (BLOCK_SIZE / PLAYER_SIZE)] \
+					[(int)(width - 1) / (BLOCK_SIZE / PLAYER_SIZE)] == '1'))
 		return (1);
 	return (0);
 }
