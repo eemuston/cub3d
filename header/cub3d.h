@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/26 16:10:41 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 12:37:16 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct s_player
 /* cub3D struct */
 typedef struct s_cub3d
 {
-	bool			keys[256];
+	bool			keys[125];
 	int				color[3];
 	int				found_zero;
 	int				found_space;

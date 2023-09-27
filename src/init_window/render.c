@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 16:06:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 14:17:39 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	draw_2d_direction(t_cub3d *data)
 	line.dx = 0;
 	p1.p_x = data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2;
 	p1.p_y = data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2;
-	p2.p_x = (data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2);
-	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2);
-	p2.p_x -= cos((angle_rad(data->player->player_angle))) * 10;
-	p2.p_y -= sin((angle_rad(data->player->player_angle))) * 10;
+	p2.p_x = (data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2) \
+	+ data->player->pdx * 10;
+	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2) \
+	+ data->player->pdy * 10;
 	bresenham(p1, p2, data, line);
 }
 
