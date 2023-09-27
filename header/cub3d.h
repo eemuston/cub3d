@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/27 12:37:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 15:14:58 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define PLAYER_SIZE 5
 # define SPEED 0.8
 # define ANGLE 5.0
+# define FOV 60
 
 typedef struct s_ray
 {
@@ -104,6 +105,8 @@ typedef struct s_player
 {
 	double			player_x;
 	double			player_y;
+	double			pixel_x;
+	double			pixel_y;
 	double			pdx;
 	double			pdy;
 	double			tmp_player_x;
