@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/27 15:23:14 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/27 16:55:20 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ void	init_player_position(t_cub3d *data, int x, int y, char **map)
 	data->player->player_x = x;
 	data->player->player_y = y;
 	calculate_angle(map[y][x], data);
-	data->ray->dir_x = cos(angle_rad(data->player->player_angle));
-	data->ray->dir_y = sin(angle_rad(data->player->player_angle));
-	data->player->pdx = cos(angle_rad(data->player->player_angle));
-	data->player->pdy = -sin(angle_rad(data->player->player_angle));
+	data->player->pdx = cos(degree_to_rad(data->player->player_angle));
+	data->player->pdy = -sin(degree_to_rad(data->player->player_angle));
 }
 
 void	assign_player_map_dimension(t_cub3d *data, char **map)

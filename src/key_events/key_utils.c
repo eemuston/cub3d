@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/27 14:42:16 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 16:55:11 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void	arrow_keys(t_cub3d *data)
 		data->player->player_angle -= ANGLE;
 		if (data->player->player_angle < 0)
 			data->player->player_angle += 360;
-		data->player->pdx = cos(angle_rad(data->player->player_angle));
-		data->player->pdy = -sin(angle_rad(data->player->player_angle));
+		data->player->pdx = cos(degree_to_rad(data->player->player_angle));
+		data->player->pdy = -sin(degree_to_rad(data->player->player_angle));
 	}
 	if (data->keys[LEFT])
 	{
 		data->player->player_angle += ANGLE;
 		if (data->player->player_angle >= 360)
 			data->player->player_angle -= 360;
-		data->player->pdx = cos(angle_rad(data->player->player_angle));
-		data->player->pdy = -sin(angle_rad(data->player->player_angle));
+		data->player->pdx = cos(degree_to_rad(data->player->player_angle));
+		data->player->pdy = -sin(degree_to_rad(data->player->player_angle));
 	}
 }
 
