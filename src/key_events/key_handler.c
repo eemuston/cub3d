@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 13:12:30 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 15:25:49 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int	key_release_handler(int key, t_cub3d *data)
 
 int	keys(t_cub3d *data)
 {
-	double	player_rad_angle;
-
 	data->player->tmp_player_x = data->player->player_x;
 	data->player->tmp_player_y = data->player->player_y;
-	player_rad_angle = angle_rad(data->player->player_angle);
-	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
-		move_keys(data, player_rad_angle);
+	data->player->pdx = cos(angle_rad(data->player->player_angle));
+	data->player->pdy = sin(angle_rad(data->player->player_angle));
 	if (data->keys[RIGHT] || data->keys[LEFT])
 		arrow_keys(data);
+	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
+		move_keys(data);
 	update_player_coordinates(data);
 	return (0);
 }

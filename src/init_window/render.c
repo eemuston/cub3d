@@ -6,11 +6,16 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 14:54:28 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/27 10:02:15 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+double	angle_rad(double angle)
+{
+	return (angle * M_PI / 180.0);
+}
 
 void	render_background(t_cub3d *data)
 {
@@ -35,16 +40,14 @@ void	draw_2d_direction(t_cub3d *data)
 	t_line	line;
 	t_point	p1;
 	t_point	p2;
-	double	player_rad_angle;
 
-	player_rad_angle = data->player->player_angle * M_PI / 180.0;
 	line.dx = 0;
 	p1.p_x = data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2;
 	p1.p_y = data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2;
 	p2.p_x = (data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2);
 	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2);
-	p2.p_x -= cos(player_rad_angle) * 10;
-	p2.p_y -= sin(player_rad_angle) * 10;
+	p2.p_x -= cos((angle_rad(data->player->player_angle))) * 10;
+	p2.p_y -= sin((angle_rad(data->player->player_angle))) * 10;
 	bresenham(p1, p2, data, line);
 }
 

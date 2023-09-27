@@ -6,11 +6,19 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/22 13:26:07 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:09:42 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	set_player_x_y(t_cub3d *data)
+{
+	data->player->player_x = (data->player->player_x * BLOCK_SIZE / PLAYER_SIZE)
+		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
+	data->player->player_y = (data->player->player_y * BLOCK_SIZE / PLAYER_SIZE)
+		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
+}
 
 static double	calculate_angle(char player_direction)
 {

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/26 13:29:13 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 16:10:41 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define BLOCK_SIZE 30
 # define PLAYER_SIZE 5
 # define SPEED 0.8
-# define ANGLE 10
+# define ANGLE 5.0
 
 typedef struct s_ray
 {
@@ -104,6 +104,8 @@ typedef struct s_player
 {
 	double			player_x;
 	double			player_y;
+	double			pdx;
+	double			pdy;
 	double			tmp_player_x;
 	double			tmp_player_y;
 	double			player_angle;
@@ -172,6 +174,7 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 double				angle_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
+void				set_player_x_y(t_cub3d *data);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
@@ -196,8 +199,9 @@ void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 
 //key_events
 void				hook_keys_loop(t_cub3d *data);
-void				move_keys(t_cub3d *data, double player_rad_angle);
+void				move_keys(t_cub3d *data);
 void				arrow_keys(t_cub3d *data);
 void				update_player_coordinates(t_cub3d *data);
+int					key_release_handler(int key, t_cub3d *data);
 
 #endif
