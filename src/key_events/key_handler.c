@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/27 15:59:37 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/28 14:55:20 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	keys(t_cub3d *data)
 {
 	data->player->tmp_player_x = data->player->player_x;
 	data->player->tmp_player_y = data->player->player_y;
-	printf("player angle = %f\n", data->player->player_angle);
 	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
 		move_keys(data);
 	if (data->keys[RIGHT] || data->keys[LEFT])

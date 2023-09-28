@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/27 17:45:11 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:56:25 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,54 +49,6 @@ void	draw_2d_direction(t_cub3d *data)
 	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2)
 		+ data->player->pdy * 10;
 	bresenham(p1, p2, data, line);
-}
-
-void	grid_to_pixel(t_cub3d *data)
-{
-	data->player->pixel_x = (data->player->player_x + 0.5) * PLAYER_SIZE;
-	data->player->pixel_y = (data->player->player_y + 0.5) * PLAYER_SIZE;
-}
-
-void	draw_ray(t_cub3d *data, double angle)
-{
-	double	rx;
-	double	ry;
-	double	distance;
-
-	distance = 0.1;
-	rx = data->player->pixel_x;
-	ry = data->player->pixel_y;
-	while (rx >= 0 && rx < data->width * BLOCK_SIZE && \
-	ry >= 0 && ry < data->height * BLOCK_SIZE && \
-	data->raw_map[(int)(ry / BLOCK_SIZE)][(int)(rx
-		/ BLOCK_SIZE)] != '1')
-	{
-		rx += cos(angle) * distance;
-		ry -= sin(angle) * distance;
-	}
-	if (rx >= 0 && rx < data->width * BLOCK_SIZE && \
-		ry >= 0 && ry < data->height * BLOCK_SIZE)
-	{
-		bresenham((t_point){data->player->pixel_x, data->player->pixel_y},
-			(t_point){rx, ry}, data, (t_line){0});
-	}
-}
-
-void	draw_fov(t_cub3d *data)
-{
-	double	p_angle;
-	double	fov_angle;
-	double	angle;
-
-	grid_to_pixel(data);
-	p_angle = degree_to_rad(data->player->player_angle);
-	fov_angle = degree_to_rad(FOV / 2.0);
-	angle = p_angle - fov_angle;
-	while (angle <= p_angle + fov_angle)
-	{
-		draw_ray(data, angle);
-		angle += degree_to_rad(1.0);
-	}
 }
 
 void	render_game(t_cub3d *data)

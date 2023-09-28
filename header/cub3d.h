@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/27 17:35:10 by atoof            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:57:46 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,8 +190,8 @@ void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
 int					init_window(t_cub3d *data);
-void draw_fov(t_cub3d *data);
-void render_game(t_cub3d *data);
+void				draw_fov(t_cub3d *data);
+void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
 void				bresenham(t_point p1, t_point p2, \
