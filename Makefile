@@ -6,7 +6,7 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/28 11:01:27 by mtoof            ###   ########.fr        #
+#    Updated: 2023/09/28 17:52:23 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ UTILS =  free.c ft_atoll.c init_data.c ft_split_spaces.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
 READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
 			color_init_utils.c init_player_position.c
-INIT_WINDOW = init_window.c image_handler.c mini_map.c render.c draw_fov.c bresenham.c
+INIT_WINDOW = init_window.c image_handler.c mini_map.c render.c draw_fov.c dda_algorithm.c
 KEY_EVENTS = key_handler.c key_utils.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \

@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/28 10:56:25 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:43:39 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_2d_direction(t_cub3d *data)
 		+ data->player->pdx * 10;
 	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2)
 		+ data->player->pdy * 10;
-	bresenham(p1, p2, data, line);
+	dda_algorithm(p1, p2, data, line);
 }
 
 void	render_game(t_cub3d *data)

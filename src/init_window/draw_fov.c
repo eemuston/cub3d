@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 10:55:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/28 14:54:56 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:44:20 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_ray(t_cub3d *data, double angle)
 	if (rx >= 0 && rx < data->width * BLOCK_SIZE && \
 		ry >= 0 && ry < data->height * BLOCK_SIZE)
 	{
-		bresenham((t_point){data->player->pixel_x, data->player->pixel_y},
+		dda_algorithm((t_point){data->player->pixel_x, data->player->pixel_y},
 			(t_point){rx, ry}, data, (t_line){0});
 	}
 }
