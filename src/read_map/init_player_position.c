@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_position.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/26 16:09:42 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 16:55:20 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,16 @@ void	set_player_x_y(t_cub3d *data)
 		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
 }
 
-static double	calculate_angle(char player_direction)
+static void	calculate_angle(char player_direction, t_cub3d *data)
 {
-	double	angle;
-
 	if (player_direction == 'E')
-		angle = 180.0;
+		data->player->player_angle = 0.0;
 	else if (player_direction == 'N')
-		angle = 90.0;
+		data->player->player_angle = 90.0;
 	else if (player_direction == 'W')
-		angle = 0.0;
+		data->player->player_angle = 180.0;
 	else if (player_direction == 'S')
-		angle = 270.0;
-	else
-		angle = -1.0;
-	return (angle);
+		data->player->player_angle = 270.0;
 }
 
 void	init_player_position(t_cub3d *data, int x, int y, char **map)
@@ -42,9 +37,9 @@ void	init_player_position(t_cub3d *data, int x, int y, char **map)
 	data->player_direction = map[y][x];
 	data->player->player_x = x;
 	data->player->player_y = y;
-	data->player->player_angle = calculate_angle(map[y][x]);
-	data->ray->dir_x = cos(data->player->player_angle);
-	data->ray->dir_y = sin(data->player->player_angle);
+	calculate_angle(map[y][x], data);
+	data->player->pdx = cos(degree_to_rad(data->player->player_angle));
+	data->player->pdy = -sin(degree_to_rad(data->player->player_angle));
 }
 
 void	assign_player_map_dimension(t_cub3d *data, char **map)

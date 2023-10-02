@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/27 14:09:38 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:17:48 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ int	key_press_handler(int key, t_cub3d *data)
 		free_texture(data);
 		exit(0);
 	}
-	else if (key == W || key == S || key == D || key == A)
+	if (key == W || key == S || key == D || key == A || \
+	key == LEFT || key == RIGHT)
 		data->keys[key] = TRUE;
 	return (0);
 }
 
 int	key_release_handler(int key, t_cub3d *data)
 {
-	if (key == W || key == S || key == D || key == A)
+	if (key == W || key == S || key == D || key == A || \
+		key == LEFT || key == RIGHT)
 		data->keys[key] = FALSE;
 	return (0);
 }
@@ -43,12 +45,10 @@ int	keys(t_cub3d *data)
 {
 	data->player->tmp_player_x = data->player->player_x;
 	data->player->tmp_player_y = data->player->player_y;
-	data->player->pdx = cos(angle_rad(data->player->player_angle));
-	data->player->pdy = sin(angle_rad(data->player->player_angle));
-	if (data->keys[RIGHT] || data->keys[LEFT])
-		arrow_keys(data);
 	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
 		move_keys(data);
+	if (data->keys[RIGHT] || data->keys[LEFT])
+		arrow_keys(data);
 	update_player_coordinates(data);
 	return (0);
 }

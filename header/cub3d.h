@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/27 12:42:52 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:18:01 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "../libft/libft.h"
 # include "mlx.h"
-# include <stdio.h>
 # include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
 
 /* arrow keys */
 # define LEFT 123
@@ -38,7 +38,8 @@
 # define BLOCK_SIZE 30
 # define PLAYER_SIZE 5
 # define SPEED 0.8
-# define ANGLE 10.0
+# define ANGLE 5.0
+# define FOV 60
 
 typedef struct s_ray
 {
@@ -63,19 +64,18 @@ typedef struct s_texture
 
 typedef struct s_point
 {
-	double	p_x;
-	double	p_y;
-}			t_point;
+	double			p_x;
+	double			p_y;
+}					t_point;
 
 typedef struct s_line
 {
-	double			s_x;
-	double			s_y;
+	double			x;
+	double			y;
 	double			dx;
 	double			dy;
-	int				err;
-	int				err2;
-}				t_line;
+	double			step;
+}					t_line;
 
 typedef struct s_color
 {
@@ -98,12 +98,14 @@ typedef struct s_img
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-}				t_img;
+}					t_img;
 
 typedef struct s_player
 {
 	double			player_x;
 	double			player_y;
+	double			pixel_x;
+	double			pixel_y;
 	double			pdx;
 	double			pdy;
 	double			tmp_player_x;
@@ -158,7 +160,7 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 
 // flood_fill_algorithm
 int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
-int					flood_fill_outside_map(char	**temp_map, t_cub3d *data);
+int					flood_fill_outside_map(char **temp_map, t_cub3d *data);
 int					allocate_temp_map(char ***temp_map, char **raw_map, \
 					int height, int width);
 // check_map_path_color.c:
@@ -171,7 +173,7 @@ int					valid_map(t_cub3d *data);
 int					check_amount_player(char **map, int index, t_cub3d *d);
 
 // utils:
-double				angle_rad(double angle);
+double				degree_to_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
 void				set_player_x_y(t_cub3d *data);
@@ -187,11 +189,12 @@ void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
 int					init_window(t_cub3d *data);
+void				draw_fov(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
-void				bresenham(t_point p1, t_point p2, \
-					t_cub3d *data, t_line line);
+void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data, \
+					t_line line);
 
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \

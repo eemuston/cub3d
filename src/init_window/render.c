@@ -6,13 +6,13 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/27 10:02:15 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:18:12 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-double	angle_rad(double angle)
+double	degree_to_rad(double angle)
 {
 	return (angle * M_PI / 180.0);
 }
@@ -44,11 +44,11 @@ void	draw_2d_direction(t_cub3d *data)
 	line.dx = 0;
 	p1.p_x = data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2;
 	p1.p_y = data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2;
-	p2.p_x = (data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2);
-	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2);
-	p2.p_x -= cos((angle_rad(data->player->player_angle))) * 10;
-	p2.p_y -= sin((angle_rad(data->player->player_angle))) * 10;
-	bresenham(p1, p2, data, line);
+	p2.p_x = (data->player->player_x * PLAYER_SIZE + PLAYER_SIZE / 2)
+		+ data->player->pdx * 10;
+	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2)
+		+ data->player->pdy * 10;
+	dda_algorithm(p1, p2, data, line);
 }
 
 void	render_game(t_cub3d *data)
@@ -58,6 +58,7 @@ void	render_game(t_cub3d *data)
 	draw_2d_map(data);
 	draw_2d_player(data);
 	draw_2d_direction(data);
+	draw_fov(data);
 	mlx_put_image_to_window(data->mlx_ptr, \
-	data->mlx_window, data->img->img_ptr, 0, 0);
+		data->mlx_window, data->img->img_ptr, 0, 0);
 }

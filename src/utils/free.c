@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/27 12:50:36 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:18:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ void	free_texture(t_cub3d *data)
 		free_map(&data->map);
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
-	if (data->img)
-		free(data->img);
+	free(data->img);
+	free(data->player);
+	free(data->ray);
 	close(data->fd);
 }
 
