@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 15:25:49 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/27 14:09:38 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ int	key_press_handler(int key, t_cub3d *data)
 		free_texture(data);
 		exit(0);
 	}
-	data->keys[key] = TRUE;
+	else if (key == W || key == S || key == D || key == A)
+		data->keys[key] = TRUE;
 	return (0);
 }
 
 int	key_release_handler(int key, t_cub3d *data)
 {
-	data->keys[key] = FALSE;
+	if (key == W || key == S || key == D || key == A)
+		data->keys[key] = FALSE;
 	return (0);
 }
 

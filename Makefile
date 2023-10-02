@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
+#    By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/26 16:08:05 by vvu              ###   ########.fr        #
+#    Updated: 2023/09/27 14:04:49 by eemuston         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJ_DIR = obj/
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
-ERROR_FLAGS = -fsanitize=address -g #-static-libsan -fno-omit-frame-pointer -overflow
+ERROR_FLAGS = -fsanitize=address -g -static-libsan -fno-omit-frame-pointer -overflow
 EXTRA_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 BOLD = \033[1m
@@ -58,7 +58,7 @@ $(NAME): $(OBJS)
 		else \
 			echo "$(YELLOW)$(BOLD)Compiling $(NAME)...$(NC)"; \
 			make -C ./libft; \
-			cc $(FLAGS) $(EXTRA_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
+			cc $(FLAGS) $(EXTRA_FLAGS) $(ERROR_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
 			echo "$(GREEN)$(BOLD)$(NAME) successfully compiled!$(NC)"; \
 		fi
 $(OBJ_DIR)%.o: %.c $(HEADER_DIR)$(HEADER)
