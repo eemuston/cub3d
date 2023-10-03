@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/03 15:53:44 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/03 18:24:00 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ typedef struct s_ray
 	double			p_delta_y;
 	int				steps_x;
 	int				steps_y;
-
+	double			center_angle;
+	double			half_fov;
+	double			start_angle;
+	double			end_angle;
+	double			angle_increment;
 }					t_ray;
 
 typedef struct s_texture

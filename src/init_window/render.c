@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/03 15:19:11 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/03 18:16:45 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	render_background(t_cub3d *data)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			// my_mlx_pixel_put(data, x, y, color);
-			my_mlx_pixel_put_mini(data, x, y, color);
+			my_mlx_pixel_put(data, x, y, color);
+			// my_mlx_pixel_put_mini(data, x, y, color);
 
 		}
 	}
