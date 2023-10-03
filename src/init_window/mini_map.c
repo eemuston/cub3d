@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 14:54:19 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:19:58 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	put_map_to_window(double x, double y, \
 		block_x = 0;
 		while (block_x < BLOCK_SIZE - 1)
 		{
-			my_mlx_pixel_put(data, x + block_x, y + block_y, color);
+			// my_mlx_pixel_put(data, x + block_x, y + block_y, color);
+			my_mlx_pixel_put_mini(data, x + block_x, y + block_y, color);
 			block_x++;
 		}
 		block_y++;
@@ -42,7 +43,9 @@ static void	create_player(t_cub3d *data, double x, double y, int color)
 		j = -1;
 		while (++j < PLAYER_SIZE)
 		{
-			my_mlx_pixel_put(data, x + j, y + i, color);
+			// my_mlx_pixel_put(data, x + j, y + i, color);
+			my_mlx_pixel_put_mini(data, x + j, y + i, color);
+
 		}
 	}
 	i = 0;

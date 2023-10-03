@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:06:32 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/29 12:34:29 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/03 15:20:43 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	dda_algorithm(t_point p1, t_point p2, t_cub3d *data, t_line line)
 	i = 0;
 	while (i <= line.step)
 	{
-		my_mlx_pixel_put(data, line.x, line.y, 0x0000FF);
+		// my_mlx_pixel_put(data, line.x, line.y, 0x0000FF);
+		my_mlx_pixel_put_mini(data, line.x, line.y, 0x0000FF);
 		line.x = line.x + line.dx;
 		line.y = line.y + line.dy;
 		i++;

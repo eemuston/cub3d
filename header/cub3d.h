@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/02 12:18:01 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:53:44 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define WEST 4
 # define TRUE 1
 # define FALSE 0
-# define X 1920
-# define Y 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # define BLOCK_SIZE 30
 # define PLAYER_SIZE 5
@@ -123,6 +123,9 @@ typedef struct s_cub3d
 	int				width;
 	int				height;
 	int				fd;
+	double			minimap_scale;
+	int				minimap_offset_x;
+	int				minimap_offset_y;
 	int				player_number;
 	char			player_direction;
 	void			*mlx_ptr;
@@ -199,6 +202,8 @@ void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data, \
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 					unsigned int color);
+void				my_mlx_pixel_put_mini(t_cub3d *data, double width, \
+					double height, unsigned int color);
 
 //key_events
 void				hook_keys_loop(t_cub3d *data);
