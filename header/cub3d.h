@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/03 18:24:00 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/03 18:54:17 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,5 +215,13 @@ void				move_keys(t_cub3d *data);
 void				arrow_keys(t_cub3d *data);
 void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
+
+// ray
+
+void				grid_to_pixel(t_cub3d *data);
+bool				is_in_map(t_cub3d *data, double x, double y);
+bool				is_not_wall(t_cub3d *data, double x, double y);
+void				update_position(double *x, double *y, double angle, \
+					double distance);
 
 #endif
