@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/02 12:18:12 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:44:29 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_2d_direction(t_cub3d *data)
 		+ data->player->pdx * 10;
 	p2.p_y = (data->player->player_y * PLAYER_SIZE + PLAYER_SIZE / 2)
 		+ data->player->pdy * 10;
-	dda_algorithm(p1, p2, data, line);
+	dda_algorithm_nose(p1, p2, data, line);
 }
 
 void	render_game(t_cub3d *data)
@@ -57,8 +57,8 @@ void	render_game(t_cub3d *data)
 	render_background(data);
 	draw_2d_map(data);
 	draw_2d_player(data);
-	draw_2d_direction(data);
 	draw_fov(data);
+	draw_2d_direction(data);
 	mlx_put_image_to_window(data->mlx_ptr, \
 		data->mlx_window, data->img->img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/02 12:18:01 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:44:21 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,5 +206,6 @@ void				move_keys(t_cub3d *data);
 void				arrow_keys(t_cub3d *data);
 void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
+void				dda_algorithm_nose(t_point p1, t_point p2, t_cub3d *data, t_line line);
 
 #endif
