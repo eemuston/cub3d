@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 14:53:59 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:14:44 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	init_game_config(t_cub3d *data)
+{
+	data->minimap_scale = 0.40;
+	data->minimap_offset_x = 0;
+	data->minimap_offset_y = HEIGHT - (int)(data->height * BLOCK_SIZE \
+			* data->minimap_scale);
+}
 
 int	init_window(t_cub3d *data)
 {
@@ -20,12 +28,12 @@ int	init_window(t_cub3d *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (error_in_img(data, 1));
-	data->mlx_window = mlx_new_window(data->mlx_ptr, X, \
-							Y, "Cub3D");
+	data->mlx_window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!data->mlx_window)
 		return (error_in_img(data, 2));
-	data->img->img_ptr = mlx_new_image(data->mlx_ptr, X, Y);
+	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 	if (!data->img->img_ptr)
 		return (error_in_img(data, 3));
+	init_game_config(data);
 	return (0);
 }

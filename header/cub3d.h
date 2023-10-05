@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/02 16:44:21 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:56:28 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define WEST 4
 # define TRUE 1
 # define FALSE 0
-# define X 1920
-# define Y 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # define BLOCK_SIZE 30
 # define PLAYER_SIZE 5
@@ -53,7 +53,11 @@ typedef struct s_ray
 	double			p_delta_y;
 	int				steps_x;
 	int				steps_y;
-
+	double			center_angle;
+	double			half_fov;
+	double			start_angle;
+	double			end_angle;
+	double			angle_increment;
 }					t_ray;
 
 typedef struct s_texture
@@ -123,6 +127,9 @@ typedef struct s_cub3d
 	int				width;
 	int				height;
 	int				fd;
+	double			minimap_scale;
+	int				minimap_offset_x;
+	int				minimap_offset_y;
 	int				player_number;
 	char			player_direction;
 	void			*mlx_ptr;
@@ -199,6 +206,8 @@ void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data, \
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 					unsigned int color);
+void				my_mlx_pixel_put_mini(t_cub3d *data, double width, \
+					double height, unsigned int color);
 
 //key_events
 void				hook_keys_loop(t_cub3d *data);
@@ -207,5 +216,13 @@ void				arrow_keys(t_cub3d *data);
 void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
 void				dda_algorithm_nose(t_point p1, t_point p2, t_cub3d *data, t_line line);
+
+// ray
+
+void				grid_to_pixel(t_cub3d *data);
+bool				is_in_map(t_cub3d *data, double x, double y);
+bool				is_not_wall(t_cub3d *data, double x, double y);
+void				update_position(double *x, double *y, double angle, \
+					double distance);
 
 #endif

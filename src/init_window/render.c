@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/02 16:44:29 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:56:16 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void	render_background(t_cub3d *data)
 
 	color = 0x58ABE5;
 	y = -1;
-	while (++y < Y)
+	while (++y < HEIGHT)
 	{
 		x = -1;
-		while (++x < X)
+		while (++x < WIDTH)
 		{
-			my_mlx_pixel_put(data, x, y, color);
+			// my_mlx_pixel_put(data, x, y, color);
+			my_mlx_pixel_put_mini(data, x, y, color);
 		}
 	}
 }
@@ -54,7 +55,7 @@ void	draw_2d_direction(t_cub3d *data)
 void	render_game(t_cub3d *data)
 {
 	mlx_clear_window(data->mlx_ptr, data->mlx_window);
-	render_background(data);
+	// render_background(data);
 	draw_2d_map(data);
 	draw_2d_player(data);
 	draw_fov(data);

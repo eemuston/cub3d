@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:24:51 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/26 13:19:13 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/03 15:43:32 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ void	my_mlx_pixel_put(t_cub3d *data, double width, \
 			&data->img->endian);
 	dst = data->img->addr + (y * data->img->line_length + \
 	x * (data->img->bits_per_pixel / 8));
-	if ((x >= 0 && x < X) && (y >= 0 && y < Y))
+	if ((x >= 0 && x < WIDTH) && (y >= 0 && y < HEIGHT))
 		*(unsigned int *)dst = color;
+}
+
+void	my_mlx_pixel_put_mini(t_cub3d *data, double width \
+		, double height, unsigned int color)
+{
+	my_mlx_pixel_put(data, width * data->minimap_scale + data->minimap_offset_x \
+		, height * data->minimap_scale + data->minimap_offset_y, color);
 }
