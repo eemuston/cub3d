@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/02 12:17:48 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:48:53 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	key_release_handler(int key, t_cub3d *data)
 
 int	keys(t_cub3d *data)
 {
-	data->player->tmp_player_x = data->player->player_x;
-	data->player->tmp_player_y = data->player->player_y;
+	data->player->tmp_player_x = data->player->player_x * BLOCK_SIZE;
+	data->player->tmp_player_y = data->player->player_y * BLOCK_SIZE;
 	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
 		move_keys(data);
 	if (data->keys[RIGHT] || data->keys[LEFT])

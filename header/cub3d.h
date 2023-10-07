@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/03 18:54:17 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/07 14:58:12 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-# define BLOCK_SIZE 30
-# define PLAYER_SIZE 5
-# define SPEED 0.8
-# define ANGLE 5.0
+# define BLOCK_SIZE 10
+# define PLAYER_SIZE 2
+# define SPEED 5
+# define ANGLE 5
 # define FOV 60
 
 typedef struct s_ray
