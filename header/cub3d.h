@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/07 14:58:12 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/07 17:29:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-# define BLOCK_SIZE 10
-# define PLAYER_SIZE 2
+# define BLOCK_SIZE 20
+# define PLAYER_SIZE 5
 # define SPEED 5
-# define ANGLE 5
+# define ANGLE 10
 # define FOV 60
 
 typedef struct s_ray
@@ -98,6 +98,7 @@ typedef struct s_map
 typedef struct s_img
 {
 	void			*img_ptr;
+	void			*n_wall;
 	char			*addr;
 	int				bits_per_pixel;
 	int				line_length;
@@ -121,6 +122,8 @@ typedef struct s_player
 typedef struct s_cub3d
 {
 	bool			keys[125];
+	unsigned int	ceil_color;
+	unsigned int	floor_color;
 	int				color[3];
 	int				found_zero;
 	int				found_space;
@@ -183,7 +186,7 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 double				degree_to_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
-void				set_player_x_y(t_cub3d *data);
+void				set_color_to_floor_ceiling(t_cub3d *data);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);

@@ -3,21 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_position.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/27 16:55:20 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/07 17:14:43 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-void	set_player_x_y(t_cub3d *data)
+static unsigned int	rgb_to_int(int r, int g, int b)
 {
-	data->player->player_x = (data->player->player_x * BLOCK_SIZE / PLAYER_SIZE)
-		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
-	data->player->player_y = (data->player->player_y * BLOCK_SIZE / PLAYER_SIZE)
-		+ (BLOCK_SIZE / PLAYER_SIZE / 2);
+	return (r << 16) | (g << 8) | b;
+}
+
+void	set_color_to_floor_ceiling(t_cub3d *data)
+{
+	int	i;
+	
+	i = 0;
+	while (i < 2)
+	{
+		if (data->colors[i].name == 'F')
+			data->floor_color = rgb_to_int(data->colors[i].rgb[0], \
+			data->colors[i].rgb[1], data->colors[i].rgb[2]);
+		else if (data->colors[i].name == 'C')
+			data->ceil_color = rgb_to_int(data->colors[i].rgb[0], \
+			data->colors[i].rgb[1], data->colors[i].rgb[2]);
+		i++;
+	}
 }
 
 static void	calculate_angle(char player_direction, t_cub3d *data)
