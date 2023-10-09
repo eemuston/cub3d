@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 14:02:55 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 16:47:05 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,10 @@ void	render_game(t_cub3d *data)
 	clear_image(data);
 	mlx_clear_window(data->mlx_ptr, data->mlx_window);
 	render_background(data);
-	draw_fov(data);
+	ray_casting(data);
 	draw_2d_map(data);
 	draw_2d_player(data);
 	draw_2d_direction(data);
-	printf("player_x: %f\n", data->player->player_x);
-	printf("player_y: %f\n", data->player->player_y);
-	printf("player_angle: %f\n", data->player->player_angle);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr,
 			0, 0);
 }

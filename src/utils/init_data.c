@@ -6,25 +6,18 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/10/09 14:29:40 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 16:51:28 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-void	init_player(t_cub3d *data)
-{
-	data->player->player_x = (data->player->player_x * BLOCK_SIZE / \
-	PLAYER_SIZE) + PLAYER_SIZE / 2;
-	data->player->player_y = (data->player->player_y * BLOCK_SIZE / \
-	PLAYER_SIZE) + PLAYER_SIZE / 2;
-}
-
 static int	init_mlx_ray_player(t_cub3d *data)
 {
 	data->img = ft_calloc(sizeof(t_img), 1);
 	data->player = ft_calloc(sizeof(t_player), 1);
-	if (!data->img || !data->player)
+	data->ray = ft_calloc(sizeof(t_ray), 1);
+	if (!data->img || !data->player || !data->ray)
 		return (1);
 	data->img->img_ptr = NULL;
 	data->mlx_ptr = NULL;

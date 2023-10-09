@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/18 18:16:12 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 17:32:29 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@ static int	cub3d_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-static void	assign_pole(int *nbr, char *direction)
+static int	assign_pole(char *direction)
 {
 	if (!ft_strncmp(direction, "NO", 2))
-		*nbr = NORTH;
+		return (NORTH);
 	else if (!ft_strncmp(direction, "SO", 2))
-		*nbr = SOUTH;
+		return (SOUTH);
 	else if (!ft_strncmp(direction, "EA", 2))
-		*nbr = EAST;
+		return (EAST);
 	else if (!ft_strncmp(direction, "WE", 2))
-		*nbr = WEST;
+		return (WEST);
+	return (0);
 }
 
 static int	allocate_texture(t_cub3d *data, char **splitted_line)
 {
-	int	index;
-
-	index = 0;
-	while (data->texture[index].path && index < 4)
-		index++;
-	data->texture[index].path = ft_substr(splitted_line[1], 0, \
-		ft_strlen(splitted_line[1]) - 1);
-	if (!data->texture[index].path)
+	int	i;
+	
+	i = 0;
+	i = assign_pole(splitted_line[0]);
+	data->texture[i - 1].identifier = i;
+	data->texture[i - 1].path = ft_substr(splitted_line[1], 0, \
+	ft_strlen(splitted_line[1]) - 1);
+	if (!data->texture[i - 1].path)
 		return (error_in_texture(data, 4));
-	assign_pole(&data->texture[index].identifier, splitted_line[0]);
 	return (0);
 }
 

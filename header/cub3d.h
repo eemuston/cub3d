@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 15:07:06 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 16:35:32 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,6 @@
 # define ANGLE 10
 # define FOV 60
 
-typedef struct s_ray
-{
-	double			x;
-	double			y;
-	double			angle;
-	double			dist;
-	double			dir_x;
-	double			dir_y;
-	double			p_delta_x;
-	double			p_delta_y;
-	int				steps_x;
-	int				steps_y;
-	double			center_angle;
-	double			half_fov;
-	double			start_angle;
-	double			end_angle;
-	double			angle_increment;
-}					t_ray;
-
 typedef struct s_texture
 {
 	char			*path;
@@ -81,6 +62,31 @@ typedef struct s_point
 	double			p_x;
 	double			p_y;
 }					t_point;
+
+typedef struct s_ray
+{
+	t_point			ray_pos;
+	t_point			ray_dir;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			wall_distance;
+	int				map_x;
+	int				map_y;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				wall_height;
+	int				draw_start;
+	int				draw_end;
+	double			wallX;
+	int				textureX;
+	int				textureY;
+	int				texture_offset;
+	int				color;
+}					t_ray;
 
 typedef struct s_line
 {
@@ -157,6 +163,7 @@ typedef struct s_cub3d
 	t_player		*player;
 	t_map			*map;
 	t_img			*img;
+	t_ray			*ray;
 	t_texture		texture[4];
 	t_color			colors[2];
 }					t_cub3d;
@@ -208,15 +215,19 @@ void				assign_player_map_dimension(t_cub3d *data, \
 									char **map);
 
 // render:
+void				hit_wall(t_cub3d *data);
+double				fix_angle(double angle);
+void				ray_casting(t_cub3d *data);
+void				horizontal_vertical(t_cub3d *data);
+int					init_window(t_cub3d *data);
+void				render_game(t_cub3d *data);
 void				draw_2d_map(t_cub3d *data);
+void				draw_rayline(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
-void				draw_rayline(t_cub3d *data);
-int					init_window(t_cub3d *data);
-void				draw_fov(t_cub3d *data);
-void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
+void				draw_walls(t_cub3d *data, int screen_x);
 void				select_texture(t_cub3d *data, double px, double py, \
 					int side);
 void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data,

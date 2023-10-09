@@ -1,8 +1,8 @@
-	SO ./maps/valid_map.cub
-    WE ./maps/test_map.cub
+	NO ./texture/wall_brick_black.xpm
+    EA ./texture/wall_brick_gray.xpm
 
-EA		 ./maps/valid_map.cub
-       NO     ./maps/test_map.cub
+WE		 ./texture/wall_brick_orange.xpm
+       SO     ./texture/wall_brick_red.xpm
 
 
 		    C 		242      ,      212,       		 225
