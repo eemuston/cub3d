@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 17:32:29 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:27:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	assign_pole(char *direction)
 static int	allocate_texture(t_cub3d *data, char **splitted_line)
 {
 	int	i;
-	
+
 	i = 0;
 	i = assign_pole(splitted_line[0]);
 	data->texture[i - 1].identifier = i;
@@ -60,6 +60,12 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 	ft_strlen(splitted_line[1]) - 1);
 	if (!data->texture[i - 1].path)
 		return (error_in_texture(data, 4));
+	if (ft_strncmp(data->texture[i - 1].path + \
+	ft_strlen(data->texture[i - 1].path) - 4, ".xpm", 4) != 0)
+	{
+		ft_putstr_fd("Error\nNot a xpm file\n", 2);
+		return (1);
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 16:47:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:49:43 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ double	degree_to_rad(double angle)
 
 void	render_background(t_cub3d *data)
 {
-	int color;
-	int y;
-	int x;
+	int	color;
+	int	y;
+	int	x;
 
 	color = 0;
 	y = 0;
@@ -85,5 +85,5 @@ void	render_game(t_cub3d *data)
 	draw_2d_player(data);
 	draw_2d_direction(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr,
-			0, 0);
+		0, 0);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/10/09 14:23:17 by vvu              ###   ########.fr       */
+/*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
+/*   Updated: 2023/10/09 19:18:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,19 @@ void	free_texture(t_cub3d *data)
 {
 	int	i;
 
-	i = 0;
-	while (i < 2)
+	i = -1;
+	while (++i < 2)
 	{
 		if (data->colors[i].color)
 			free(data->colors[i].color);
 		data->colors[i].color = NULL;
-		i++;
 	}
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
 		if (data->texture[i].path != NULL)
 			free(data->texture[i].path);
 		data->texture[i].path = NULL;
-		i++;
 	}
 	if (data->map != NULL)
 		free_map(&data->map);
@@ -58,6 +56,7 @@ void	free_texture(t_cub3d *data)
 		free_array(data->raw_map);
 	free(data->img);
 	free(data->player);
+	free(data->ray);
 	close(data->fd);
 }
 
@@ -80,4 +79,13 @@ void	free_array(char **array)
 	}
 	free(array);
 	array = NULL;
+}
+void	destroy_image(t_cub3d *data)
+{
+	int	i;
+
+	i = -1;
+	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
+	while (++i < 4)
+		mlx_destroy_image(data->mlx_ptr, data->texture[i].img);
 }

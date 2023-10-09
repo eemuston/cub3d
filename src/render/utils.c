@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:38:30 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 17:46:09 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:50:49 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,26 @@ void	horizontal_vertical(t_cub3d *data)
 	if (data->ray->ray_dir.p_x < 0)
 	{
 		data->ray->step_x = -1;
-		data->ray->side_dist_x = (data->ray->ray_pos.p_x - data->ray->map_x) * data->ray->delta_dist_x;
+		data->ray->side_dist_x = (data->ray->ray_pos.p_x - \
+			data->ray->map_x) * data->ray->delta_dist_x;
 	}
 	else
 	{
 		data->ray->step_x = 1;
-		data->ray->side_dist_x = (data->ray->map_x + 1.0 - data->ray->ray_pos.p_x) * data->ray->delta_dist_x;
+		data->ray->side_dist_x = (data->ray->map_x + 1.0 - \
+			data->ray->ray_pos.p_x) * data->ray->delta_dist_x;
 	}
 	if (data->ray->ray_dir.p_y < 0)
 	{
 		data->ray->step_y = -1;
-		data->ray->side_dist_y = (data->ray->ray_pos.p_y - data->ray->map_y) * data->ray->delta_dist_y;
+		data->ray->side_dist_y = (data->ray->ray_pos.p_y - \
+			data->ray->map_y) * data->ray->delta_dist_y;
 	}
 	else
 	{
 		data->ray->step_y = 1;
-		data->ray->side_dist_y = (data->ray->map_y + 1.0 - data->ray->ray_pos.p_y) * data->ray->delta_dist_y;
+		data->ray->side_dist_y = (data->ray->map_y + 1.0 - \
+			data->ray->ray_pos.p_y) * data->ray->delta_dist_y;
 	}
 }
 
