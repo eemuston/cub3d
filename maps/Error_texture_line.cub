@@ -1,7 +1,7 @@
-SO dkfm ./maps/valid_map.cub
-WE  12313 ./maps/valid_map.cub
-EA ewrre ./maps/valid_map.cub
-N ./maps/valid_map.cub
+SO dkfm ./texture/wall_brick_black.xpm
+WE  12313 ./texture/wall_brick_black.xpm
+EA ewrre ./texture/wall_brick_black.xpm
+NO ./texture/wall_brick_black.xpm
 
 F 0000,000000000000000000000255,00000154
 C 242,212,54

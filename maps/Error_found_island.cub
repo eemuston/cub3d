@@ -1,7 +1,7 @@
 SO ./texture/wall_brick_black.xpm
-WE ./texture/wall_brick_black.xpm
+WE  ./texture/wall_brick_black.xpm
 EA ./texture/wall_brick_black.xpm
-N ./texture/wall_brick_black.xpm
+NO ./texture/wall_brick_black.xpm
 
 F 0000,000000000000000000000255,00000154
 C 242,212,54
@@ -16,6 +16,6 @@ C 242,212,54
 10000000000000011111111111111111100000001
 100000000W000001                100000001
 1000000000000001111             111111111
-1000000000000000001     11111
+1000000000000000001       11111
 100000010000000111111111    11111
 111111111111111

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 16:35:32 by vvu              ###   ########.fr       */
+/*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
+/*   Updated: 2023/10/09 19:18:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@
 # define FALSE 0
 # define WIDTH 1920
 # define HEIGHT 1080
-# define N_WALL "texture/wall_brick_red.xpm"
-# define S_WALL "texture/wall_brick_orange.xpm"
-# define W_WALL "texture/wall_brick_gray.xpm"
-# define E_WALL "texture/wall_brick_black.xpm"
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
 # define SPEED 5
@@ -81,9 +77,9 @@ typedef struct s_ray
 	int				wall_height;
 	int				draw_start;
 	int				draw_end;
-	double			wallX;
-	int				textureX;
-	int				textureY;
+	double			wall_x;
+	int				texture_x;
+	int				texture_y;
 	int				texture_offset;
 	int				color;
 }					t_ray;
@@ -120,7 +116,6 @@ typedef struct s_img
 	int				line_length;
 	int				endian;
 }					t_img;
-
 
 typedef struct s_player
 {
@@ -175,6 +170,8 @@ int					init_data(t_cub3d *data);
 void				free_array(char **array);
 void				free_texture(t_cub3d *data);
 void				free_map(t_map **map);
+void				destroy_image(t_cub3d *data);
+
 // read_file.c:
 int					read_file_and_parse(char **argv, t_cub3d *data);
 int					error_in_texture(t_cub3d *data, int flag);
