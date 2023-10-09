@@ -1,10 +1,12 @@
-SO ./maps/valid_map.cub
-WE ./maps/valid_map.cub
-EA ./maps/valid_map.cub
-NO ./maps/valid_map.cub
+SO ./texture/itachi.xpm
+WE ./texture/itachi.xpm
+EA ./texture/itachi.xpm
+NO ./texture/itachi.xpm
 
-F 0000,000000000000000000000255,00000154
-C 242,212,54
+
+C 		00099  ,   0049   ,   00231
+
+F 		211  , 000024		,   		194
 
 
 

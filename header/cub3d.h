@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/05 14:56:28 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:39:27 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,26 @@
 # define FALSE 0
 # define WIDTH 1920
 # define HEIGHT 1080
-
-# define BLOCK_SIZE 30
+# define N_WALL "texture/wall_brick_red.xpm"
+# define S_WALL "texture/wall_brick_orange.xpm"
+# define W_WALL "texture/wall_brick_gray.xpm"
+# define E_WALL "texture/wall_brick_black.xpm"
+# define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
-# define SPEED 0.8
-# define ANGLE 5.0
+# define SPEED 5
+# define ANGLE 10
 # define FOV 60
-
-typedef struct s_ray
-{
-	double			x;
-	double			y;
-	double			angle;
-	double			dist;
-	double			dir_x;
-	double			dir_y;
-	double			p_delta_x;
-	double			p_delta_y;
-	int				steps_x;
-	int				steps_y;
-	double			center_angle;
-	double			half_fov;
-	double			start_angle;
-	double			end_angle;
-	double			angle_increment;
-}					t_ray;
 
 typedef struct s_texture
 {
 	char			*path;
+	void			*img;
+	int				*data;
+	int				width;
+	int				height;
+	int				bpp;
+	int				size_line;
+	int				endian;
 	int				identifier;
 }					t_texture;
 
@@ -98,11 +89,13 @@ typedef struct s_map
 typedef struct s_img
 {
 	void			*img_ptr;
+	void			*n_wall;
 	char			*addr;
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
 }					t_img;
+
 
 typedef struct s_player
 {
@@ -121,6 +114,8 @@ typedef struct s_player
 typedef struct s_cub3d
 {
 	bool			keys[125];
+	unsigned int	ceil_color;
+	unsigned int	floor_color;
 	int				color[3];
 	int				found_zero;
 	int				found_space;
@@ -141,7 +136,9 @@ typedef struct s_cub3d
 	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
-	t_ray			*ray;
+	t_texture		floor_texture;
+	t_texture		wall_texture;
+	t_texture		brick_texture;
 }					t_cub3d;
 
 // init.c:
@@ -168,8 +165,8 @@ int					add_new_node_to_map(char *line, t_cub3d *data);
 // flood_fill_algorithm
 int					flood_fill_inside_map(char **raw_map, t_cub3d *data);
 int					flood_fill_outside_map(char **temp_map, t_cub3d *data);
-int					allocate_temp_map(char ***temp_map, char **raw_map, \
-					int height, int width);
+int					allocate_temp_map(char ***temp_map, char **raw_map,
+						int height, int width);
 // check_map_path_color.c:
 int					check_valid_color(t_cub3d *data);
 int					check_texture_path(t_cub3d *data, int current);
@@ -183,12 +180,12 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 double				degree_to_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
-void				set_player_x_y(t_cub3d *data);
+void				set_color_to_floor_ceiling(t_cub3d *data);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
-					char **map);
+									char **map);
 
 // init_window:
 void				draw_2d_map(t_cub3d *data);
@@ -200,14 +197,14 @@ void				draw_fov(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
-void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data, \
-					t_line line);
+void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data,
+						t_line line);
 
 //image_handler
-void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
-					unsigned int color);
-void				my_mlx_pixel_put_mini(t_cub3d *data, double width, \
-					double height, unsigned int color);
+void				my_mlx_pixel_put(t_cub3d *data, double x, double y,
+						unsigned int color);
+void				my_mlx_pixel_put_mini(t_cub3d *data, double width,
+						double height, unsigned int color);
 
 //key_events
 void				hook_keys_loop(t_cub3d *data);
@@ -222,7 +219,7 @@ void				dda_algorithm_nose(t_point p1, t_point p2, t_cub3d *data, t_line line);
 void				grid_to_pixel(t_cub3d *data);
 bool				is_in_map(t_cub3d *data, double x, double y);
 bool				is_not_wall(t_cub3d *data, double x, double y);
-void				update_position(double *x, double *y, double angle, \
-					double distance);
+void				update_position(double *x, double *y, double angle,
+						double distance);
 
 #endif

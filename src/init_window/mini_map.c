@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/03 15:19:58 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/07 16:25:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,21 @@ static void	create_player(t_cub3d *data, double x, double y, int color)
 	int	j;
 
 	i = -1;
-	while (++i < PLAYER_SIZE)
+	while (++i <PLAYER_SIZE)
 	{
 		j = -1;
 		while (++j < PLAYER_SIZE)
 		{
 			// my_mlx_pixel_put(data, x + j, y + i, color);
 			my_mlx_pixel_put_mini(data, x + j, y + i, color);
-
 		}
 	}
-	i = 0;
 }
 
 void	draw_2d_player(t_cub3d *data)
 {
-	int	block_y;
-	int	block_x;
-
-	block_y = 0;
-	while (block_y < data->height + 1)
-	{
-		block_x = 0;
-		while (block_x < data->width + 1)
-		{
-			create_player(data, data->player->player_x * PLAYER_SIZE, \
-			data->player->player_y * PLAYER_SIZE, data->color[2]);
-			block_x++;
-		}
-		block_y++;
-	}
+	create_player(data, data->player->player_x * BLOCK_SIZE, \
+			data->player->player_y * BLOCK_SIZE, data->color[2]);
 }
 
 void	draw_2d_map(t_cub3d *data)
