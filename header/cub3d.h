@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 13:15:39 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:07:06 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,10 @@ typedef struct s_cub3d
 	int				width;
 	int				height;
 	int				fd;
+	void			*selected_texture;
+	int				texture_h;
+	int				texture_w;
+	int				*texture_data;
 	double			minimap_scale;
 	int				minimap_offset_x;
 	int				minimap_offset_y;
@@ -155,10 +159,6 @@ typedef struct s_cub3d
 	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
-	t_ray			*ray;
-	t_texture		floor_texture;
-	t_texture		wall_texture;
-	t_texture		brick_texture;
 }					t_cub3d;
 
 // init.c:
@@ -207,7 +207,7 @@ int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
 									char **map);
 
-// init_window:
+// render:
 void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
@@ -217,6 +217,8 @@ void				draw_fov(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
+void				select_texture(t_cub3d *data, double px, double py, \
+					int side);
 void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data,
 						t_line line);
 
@@ -234,7 +236,6 @@ void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
 
 // ray
-
 void				grid_to_pixel(t_cub3d *data);
 bool				is_in_map(t_cub3d *data, double x, double y);
 bool				is_not_wall(t_cub3d *data, double x, double y);

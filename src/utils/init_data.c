@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:37:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/26 13:26:22 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 14:29:40 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	init_player(t_cub3d *data)
 static int	init_mlx_ray_player(t_cub3d *data)
 {
 	data->img = ft_calloc(sizeof(t_img), 1);
-	data->ray = ft_calloc(sizeof(t_ray), 1);
 	data->player = ft_calloc(sizeof(t_player), 1);
-	if (!data->img || !data->ray || !data->player)
+	if (!data->img || !data->player)
 		return (1);
 	data->img->img_ptr = NULL;
 	data->mlx_ptr = NULL;

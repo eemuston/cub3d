@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_fov.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 10:55:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/09 13:40:58 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:02:46 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,6 @@ void	cast_ray(t_cub3d *data, double ray_angle, int screen_x)
 	int		d;
 	int		textureY;
 	int		color;
-	void    *selected_texture;
-    int     texture_h;
-    int     texture_w;
-	int		*texture_data;
 	hit = 0;
 	hit = 0;
 	ray_pos.p_x = data->player->player_x;
@@ -116,42 +112,15 @@ void	cast_ray(t_cub3d *data, double ray_angle, int screen_x)
 		else
 			wallX = data->player->player_x + wall_distance * ray_dir.p_x;
 		wallX -= floor(wallX);
-		if (side == 0 && ray_dir.p_x > 0)// east
-		{
-			selected_texture = data->texture[0].img;
-			texture_w = data->texture[0].width;
-			texture_h = data->texture[0].height;
-			texture_data = data->texture[0].data;
-		}
-		else if (side == 0 && ray_dir.p_x < 0) //west
-		{
-			selected_texture = data->texture[1].img;
-			texture_w = data->texture[1].width;
-			texture_h = data->texture[1].height;
-			texture_data = data->texture[1].data;
-		}
-		else if (side == 1 && ray_dir.p_y > 0) // north
-		{
-			selected_texture = data->texture[2].img;
-			texture_w = data->texture[2].width;
-			texture_h = data->texture[2].height;
-			texture_data = data->texture[2].data;
-		}
-		else //south
-		{
-			selected_texture = data->texture[3].img;
-			texture_w = data->texture[3].width;
-			texture_h = data->texture[3].height;
-			texture_data = data->texture[3].data;
-		}
-		textureX = (int)(wallX * (double)texture_w);
+		select_texture(data, ray_dir.p_x, ray_dir.p_y, side);
+		textureX = (int)(wallX * (double)data->texture_w);
 		if (side == 0 && ray_dir.p_x > 0)
-			textureX = texture_w - textureX - 1;
+			textureX = data->texture_w - textureX - 1;
 		if (side == 1 && ray_dir.p_y < 0)
-			textureX = texture_w - textureX - 1;
+			textureX = data->texture_w - textureX - 1;
 		d = y * 256 - HEIGHT * 128 + wall_height * 128;
-		textureY = ((d * texture_h) / wall_height) / 256;
-		color = texture_data[texture_w * textureY
+		textureY = ((d * data->texture_h) / wall_height) / 256;
+		color = data->texture_data[data->texture_w * textureY
 			+ textureX];
 		my_mlx_pixel_put(data, screen_x, y, color);
 	}

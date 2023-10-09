@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 13:02:42 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/09 14:02:55 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,6 @@ double	degree_to_rad(double angle)
 {
 	return (angle * M_PI / 180.0);
 }
-
-// void	render_background(t_cub3d *data)
-// {
-// 	int	color;
-// 	int	y;
-// 	int	x;
-
-// 	x = -1;
-// 		while (++x < WIDTH)
-// 		{
-// 			y = -1;
-// 			while (++y < HEIGHT)
-// 			if (y < HEIGHT / 2)
-// 				color = data->ceil_color;
-// 			else
-// 				color = data->floor_color;
-// 			my_mlx_pixel_put(data, x, y, color);
-// 		}
-// }
 
 void	render_background(t_cub3d *data)
 {
