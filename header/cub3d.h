@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 13:15:39 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/09 14:05:42 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,6 @@
 # define SPEED 5
 # define ANGLE 10
 # define FOV 60
-
-typedef struct s_ray
-{
-	double			x;
-	double			y;
-	double			angle;
-	double			dist;
-	double			dir_x;
-	double			dir_y;
-	double			p_delta_x;
-	double			p_delta_y;
-	int				steps_x;
-	int				steps_y;
-	double			center_angle;
-	double			half_fov;
-	double			start_angle;
-	double			end_angle;
-	double			angle_increment;
-}					t_ray;
 
 typedef struct s_texture
 {
