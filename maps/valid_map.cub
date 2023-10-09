@@ -1,13 +1,10 @@
-SO ./texture/itachi.xpm
-WE ./texture/itachi.xpm
-EA ./texture/itachi.xpm
-NO ./texture/itachi.xpm
+SO ./texture/wall_brick_black.xpm
+WE ./texture/wall_brick_gray.xpm
+EA ./texture/wall_brick_orange.xpm
+NO ./texture/wall_brick_red.xpm
 
-
-C 		00099  ,   0049   ,   00231
-
-F 		211  , 000024		,   		194
-
+C 222,222,222
+F 222,222,222
 
 
 1111111111111111
