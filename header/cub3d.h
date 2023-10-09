@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 14:05:42 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/09 14:19:34 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef struct s_cub3d
 	t_img			*img;
 	t_texture		texture[4];
 	t_color			colors[2];
-	t_ray			*ray;
 	t_texture		floor_texture;
 	t_texture		wall_texture;
 	t_texture		brick_texture;
