@@ -1,7 +1,7 @@
-SO file.cub
-WE file.cub
-EA file.cub
-N0 file.cub
+SO ./texture/wall_brick_black.xpm
+WE ./texture/wall_brick_black.xpm
+EA ./texture/wall_brick_black.xpm
+N0 ./texture/wall_brick_black.xpm
 
 F 0000,000000000000000000000255,00000154
 F 242,212,54

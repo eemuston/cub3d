@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/07 16:25:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:46:25 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	put_map_to_window(double x, double y, \
 		block_x = 0;
 		while (block_x < BLOCK_SIZE - 1)
 		{
-			// my_mlx_pixel_put(data, x + block_x, y + block_y, color);
 			my_mlx_pixel_put_mini(data, x + block_x, y + block_y, color);
 			block_x++;
 		}
@@ -38,14 +37,11 @@ static void	create_player(t_cub3d *data, double x, double y, int color)
 	int	j;
 
 	i = -1;
-	while (++i <PLAYER_SIZE)
+	while (++i < PLAYER_SIZE)
 	{
 		j = -1;
 		while (++j < PLAYER_SIZE)
-		{
-			// my_mlx_pixel_put(data, x + j, y + i, color);
 			my_mlx_pixel_put_mini(data, x + j, y + i, color);
-		}
 	}
 }
 

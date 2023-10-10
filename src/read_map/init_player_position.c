@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/07 17:14:43 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:27:16 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static unsigned int	rgb_to_int(int r, int g, int b)
 {
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	set_color_to_floor_ceiling(t_cub3d *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 17:33:28 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:44:33 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,31 @@ static int	cub3d_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-static int    assign_pole(char *direction)
+static int	assign_pole(char *direction)
 {
-    if (!ft_strncmp(direction, "NO", 2))
-        return (NORTH);
-    else if (!ft_strncmp(direction, "SO", 2))
-        return (SOUTH);
-    else if (!ft_strncmp(direction, "EA", 2))
-        return (EAST);
-    else if (!ft_strncmp(direction, "WE", 2))
-        return (WEST);
-    return (0);
+	if (!ft_strncmp(direction, "NO", 2))
+		return (NORTH);
+	else if (!ft_strncmp(direction, "SO", 2))
+		return (SOUTH);
+	else if (!ft_strncmp(direction, "EA", 2))
+		return (EAST);
+	else if (!ft_strncmp(direction, "WE", 2))
+		return (WEST);
+	return (0);
 }
 
 static int    allocate_texture(t_cub3d *data, char **splitted_line)
 {
-    int    i;
-    
-    i = 0;
-    i = assign_pole(splitted_line[0]);
-    data->texture[i - 1].identifier = i;
-    data->texture[i - 1].path = ft_substr(splitted_line[1], 0, \
-    ft_strlen(splitted_line[1]) - 1);
-	printf("path of %i %s\n", i , data->texture[i - 1].path);
-  	if (!data->texture[i - 1].path)
-        return (error_in_texture(data, 4));
-    return (0);
+	int	i;
+
+	i = 0;
+	i = assign_pole(splitted_line[0]);
+	data->texture[i - 1].identifier = i;
+	data->texture[i - 1].path = ft_substr(splitted_line[1], 0, \
+	ft_strlen(splitted_line[1]) - 1);
+	if (!data->texture[i - 1].path)
+		return (error_in_texture(data, 4));
+	return (0);
 }
 
 static int	color_init(t_cub3d *data, char **splitted_line)
