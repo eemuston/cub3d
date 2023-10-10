@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:32:14 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 18:12:27 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,8 +226,6 @@ void				draw_2d_direction(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
 void				draw_walls(t_cub3d *data, int screen_x);
-void				select_texture(t_cub3d *data, double px, double py, \
-					int side);
 void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data,
 						t_line line);
 
