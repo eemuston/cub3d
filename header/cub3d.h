@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/09 14:19:34 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
+/*   Updated: 2023/10/10 14:18:38 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@
 # define FALSE 0
 # define WIDTH 1920
 # define HEIGHT 1080
-# define N_WALL "texture/wall_brick_red.xpm"
-# define S_WALL "texture/wall_brick_orange.xpm"
-# define W_WALL "texture/wall_brick_gray.xpm"
-# define E_WALL "texture/wall_brick_black.xpm"
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
 # define SPEED 5
@@ -62,6 +58,31 @@ typedef struct s_point
 	double			p_x;
 	double			p_y;
 }					t_point;
+
+typedef struct s_ray
+{
+	t_point			ray_pos;
+	t_point			ray_dir;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			wall_distance;
+	int				map_x;
+	int				map_y;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				wall_height;
+	int				draw_start;
+	int				draw_end;
+	double			wall_x;
+	int				texture_x;
+	int				texture_y;
+	int				texture_offset;
+	int				color;
+}					t_ray;
 
 typedef struct s_line
 {
@@ -96,7 +117,6 @@ typedef struct s_img
 	int				endian;
 }					t_img;
 
-
 typedef struct s_player
 {
 	double			player_x;
@@ -122,6 +142,10 @@ typedef struct s_cub3d
 	int				width;
 	int				height;
 	int				fd;
+	void			*selected_texture;
+	int				texture_h;
+	int				texture_w;
+	int				*texture_data;
 	double			minimap_scale;
 	int				minimap_offset_x;
 	int				minimap_offset_y;
@@ -134,11 +158,9 @@ typedef struct s_cub3d
 	t_player		*player;
 	t_map			*map;
 	t_img			*img;
+	t_ray			*ray;
 	t_texture		texture[4];
 	t_color			colors[2];
-	t_texture		floor_texture;
-	t_texture		wall_texture;
-	t_texture		brick_texture;
 }					t_cub3d;
 
 // init.c:
@@ -148,6 +170,8 @@ int					init_data(t_cub3d *data);
 void				free_array(char **array);
 void				free_texture(t_cub3d *data);
 void				free_map(t_map **map);
+void				destroy_image(t_cub3d *data);
+
 // read_file.c:
 int					read_file_and_parse(char **argv, t_cub3d *data);
 int					error_in_texture(t_cub3d *data, int flag);
@@ -187,16 +211,22 @@ int					check_valid_line(char **map, int flag);
 void				assign_player_map_dimension(t_cub3d *data, \
 									char **map);
 
-// init_window:
+// render:
+void				hit_wall(t_cub3d *data);
+double				fix_angle(double angle);
+void				ray_casting(t_cub3d *data);
+void				horizontal_vertical(t_cub3d *data);
+int					init_window(t_cub3d *data);
+void				render_game(t_cub3d *data);
 void				draw_2d_map(t_cub3d *data);
+void				draw_rayline(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
-void				draw_rayline(t_cub3d *data);
-int					init_window(t_cub3d *data);
-void				draw_fov(t_cub3d *data);
-void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
+void				draw_walls(t_cub3d *data, int screen_x);
+void				select_texture(t_cub3d *data, double px, double py, \
+					int side);
 void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data,
 						t_line line);
 
@@ -214,7 +244,6 @@ void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
 
 // ray
-
 void				grid_to_pixel(t_cub3d *data);
 bool				is_in_map(t_cub3d *data, double x, double y);
 bool				is_not_wall(t_cub3d *data, double x, double y);

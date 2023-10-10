@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/07 16:17:14 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 19:18:55 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	key_press_handler(int key, t_cub3d *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+		destroy_image(data);
 		free_texture(data);
 		exit(0);
 	}
