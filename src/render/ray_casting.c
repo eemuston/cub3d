@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 10:55:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 16:01:15 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 16:32:41 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,11 @@ static void	shortest_distance(t_cub3d *data, double ray_angle)
 	data->ray->wall_distance = data->ray->wall_distance * cos(ca);
 }
 
-// static	void correct_position(t_cub3d *data)
-// {
-// 	int	y;
-// 	int	x;
-	
-// 	y = data->player->player_y;
-// 	x = data->player->player_x;
-// 	if (data->raw_map[y - 1][x] == '1' && \
-// 		data->raw_map[y + 1][x] == '1' && \
-// 		data->raw_map[y][x - 1] == '1' && \
-// 		data->raw_map[y][x + 1] == '1')
-// 		data->found_wall = 1;
-// }
-
 static void	init_ray(t_cub3d *data, double ray_angle)
 {
 	data->ray->hit = 0;
-	// correct_position(data);
-	// if (data->found_wall == 1)
-	// {
-	// 	data->ray->ray_pos.p_x = data->player->player_x + 0.5;
-	// 	data->ray->ray_pos.p_y = data->player->player_y + 0.5;
-	// }
-	// else
-	// {
-		data->ray->ray_pos.p_x = data->player->player_x;
-		data->ray->ray_pos.p_y = data->player->player_y ;
-	// }
+	data->ray->ray_pos.p_x = data->player->player_x;
+	data->ray->ray_pos.p_y = data->player->player_y ;
 	data->ray->ray_dir.p_x = cos(ray_angle);
 	data->ray->ray_dir.p_y = -sin(ray_angle);
 	data->ray->map_x = (int)data->ray->ray_pos.p_x;

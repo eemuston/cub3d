@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 16:14:04 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/10 17:55:30 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define WEST 4
 # define TRUE 1
 # define FALSE 0
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 920
+# define HEIGHT 800
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
 # define SPEED 5

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 15:53:40 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 16:17:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static void	create_player(t_cub3d *data, double x, double y, int color)
 	int	j;
 
 	i = -1;
-	while (++i < PLAYER_SIZE)
+	while (++i < PLAYER_SIZE - 1)
 	{
 		j = -1;
-		while (++j < PLAYER_SIZE)
+		while (++j < PLAYER_SIZE - 1)
 			my_mlx_pixel_put_mini(data, x + j, y + i, color);
 	}
 }
