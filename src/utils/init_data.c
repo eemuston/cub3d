@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:06:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:06:02 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 14:58:55 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	init_mlx_ray_player(t_cub3d *data)
 	data->mlx_window = NULL;
 	data->player->player_x = 0;
 	data->player->player_y = 0;
+	data->found_wall = 0;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:18:46 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 15:20:19 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define WEST 4
 # define TRUE 1
 # define FALSE 0
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 820
+# define HEIGHT 800
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
 # define SPEED 5
@@ -139,6 +139,7 @@ typedef struct s_cub3d
 	int				color[3];
 	int				found_zero;
 	int				found_space;
+	int				found_wall;
 	int				width;
 	int				height;
 	int				fd;

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:28:04 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 18:30:26 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 15:13:38 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ void	draw_walls(t_cub3d *data, int screen_x)
 	if (data->ray->draw_start < 0)
 		data->ray->draw_start = 0;
 	data->ray->draw_end = data->ray->wall_height / 2 + HEIGHT / 2;
-	if (data->ray->draw_end >= HEIGHT)
-		data->ray->draw_end = HEIGHT - 1;
+	// if (data->ray->draw_end >= HEIGHT)
+	// 	data->ray->draw_end = HEIGHT - 1;
 	y = data->ray->draw_start;
+	if (data->found_wall == 1)
+		data->ray->draw_end += 1;
 	while (y < data->ray->draw_end)
 	{
 		line_too_long(data, y);
