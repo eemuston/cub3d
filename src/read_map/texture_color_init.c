@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_color_init.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:38:05 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 18:27:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 12:35:26 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,6 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 	ft_strlen(splitted_line[1]) - 1);
 	if (!data->texture[i - 1].path)
 		return (error_in_texture(data, 4));
-	if (ft_strncmp(data->texture[i - 1].path + \
-	ft_strlen(data->texture[i - 1].path) - 4, ".xpm", 4) != 0)
-	{
-		ft_putstr_fd("Error\nNot a xpm file\n", 2);
-		return (1);
-	}
 	return (0);
 }
 
