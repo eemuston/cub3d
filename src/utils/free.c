@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:18:17 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 17:47:51 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	free_array(char **array)
 	free(array);
 	array = NULL;
 }
+
 void	destroy_image(t_cub3d *data)
 {
 	int	i;
