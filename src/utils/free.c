@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:47:51 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:14:43 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	destroy_image(t_cub3d *data)
 
 	i = -1;
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
-	while (++i < 4)
+	mlx_destroy_image(data->mlx_ptr, data->mini_img->img_ptr);
+	while (++i < 4 && data->texture[i].img != NULL)
 		mlx_destroy_image(data->mlx_ptr, data->texture[i].img);
 }

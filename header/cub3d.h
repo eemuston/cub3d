@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 18:12:27 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:01:01 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@
 # define A 0
 # define S 1
 # define D 2
+
+//Direction
 # define NORTH 1
 # define SOUTH 2
 # define EAST 3
 # define WEST 4
+
 # define TRUE 1
 # define FALSE 0
+
+//Window size and block_size
 # define WIDTH 920
 # define HEIGHT 800
+# define MINI_WIDTH 200
+# define MINI_HEIGHT 200
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
 # define SPEED 5
@@ -147,7 +154,6 @@ typedef struct s_cub3d
 	int				texture_h;
 	int				texture_w;
 	int				*texture_data;
-	double			minimap_scale;
 	int				minimap_offset_x;
 	int				minimap_offset_y;
 	int				player_number;
@@ -159,6 +165,7 @@ typedef struct s_cub3d
 	t_player		*player;
 	t_map			*map;
 	t_img			*img;
+	t_img			*mini_img;
 	t_ray			*ray;
 	t_texture		texture[4];
 	t_color			colors[2];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:28:04 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:47:11 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:18:15 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,6 @@ static void	position_wall_hit(t_cub3d *data)
 	data->ray->wall_x -= floor(data->ray->wall_x);
 }
 
-// static void	calculate_walls_height(t_cub3d *data)
-// {
-
-// }
-
-	// calculate_walls_height(data);
 void	draw_walls(t_cub3d *data, int screen_x)
 {
 	int	y;
