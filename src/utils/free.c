@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 13:44:58 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:01:19 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	free_array(char **array)
 	free(array);
 	array = NULL;
 }
+
 void	destroy_image(t_cub3d *data)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_and_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 13:27:28 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 10:02:02 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ static int	check_valid_input(char **splitted_line, t_cub3d *data)
 	i = 0;
 	while (splitted_line[i])
 		i++;
-	if (i == 2 && ft_strncmp(splitted_line[1] + \
-	ft_strlen(splitted_line[1]) - 5, ".xpm\n", 5) != 0)
+	if (i == 2 && ((!ft_strncmp(splitted_line[0], "NO", 2)
+				|| !ft_strncmp(splitted_line[0], "EA", 2)
+				|| !ft_strncmp(splitted_line[0], "WE", 2)
+				|| !ft_strncmp(splitted_line[0], "SO", 2)) && \
+		(ft_strncmp(splitted_line[1] + \
+			ft_strlen(splitted_line[1]) - 5, ".xpm\n", 5)) != 0))
 	{
 		ft_putstr_fd("Error\nNot a xpm file\n", 2);
 		free_texture(data);
