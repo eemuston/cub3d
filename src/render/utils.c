@@ -6,11 +6,29 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:38:30 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 18:50:49 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:33:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	clear_image(t_cub3d *data)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			my_mlx_pixel_put(data, x, y, 0x000000);
+			x++;
+		}
+		y++;
+	}
+}
 
 double	fix_angle(double angle)
 {

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 16:13:18 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 16:05:16 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static int	not_qualify_move(t_cub3d *data, double height, double width)
 {
-	if ((data->raw_map[(int)(height - 0.3)] \
-					[(int)(width - 0.3)] == '1') \
-		|| (data->raw_map[(int)(height + 0.3)] \
-					[(int)(width + 0.3)] == '1') \
+	if ((data->raw_map[(int)(height - 0.2)] \
+					[(int)(width - 0.2)] == '1') \
+		|| (data->raw_map[(int)(height + 0.2)] \
+					[(int)(width + 0.2)] == '1') \
 		|| (data->raw_map[(int)(height)] \
-					[(int)(width + 0.3)] == '1') \
-		|| (data->raw_map[(int)(height + 0.3)] \
+					[(int)(width + 0.2)] == '1') \
+		|| (data->raw_map[(int)(height + 0.2)] \
 					[(int)(width)] == '1') \
 		|| (data->raw_map[(int)(height)] \
-					[(int)(width - 0.3)] == '1') \
-		|| (data->raw_map[(int)(height - 0.3)] \
+					[(int)(width - 0.2)] == '1') \
+		|| (data->raw_map[(int)(height - 0.2)] \
 					[(int)(width)] == '1') \
-		|| (data->raw_map[(int)(height - 0.3)] \
-					[(int)(width + 0.3)] == '1') \
-		|| (data->raw_map[(int)(height + 0.3)] \
-					[(int)(width - 0.3)] == '1'))
+		|| (data->raw_map[(int)(height - 0.2)] \
+					[(int)(width + 0.2)] == '1') \
+		|| (data->raw_map[(int)(height + 0.2)] \
+					[(int)(width - 0.2)] == '1'))
 		return (1);
 	return (0);
 }

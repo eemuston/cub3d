@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 14:59:02 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 17:09:59 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_2d_player(t_cub3d *data)
 			(MINI_HEIGHT / 2), data->color[2]);
 }
 
-unsigned int	choose_color(t_cub3d *data, int x, int y)
+static unsigned int	choose_color(t_cub3d *data, int x, int y)
 {
 	unsigned int	color;
 
@@ -69,13 +69,13 @@ unsigned int	choose_color(t_cub3d *data, int x, int y)
 		color = 0x0000FF;
 	return (color);
 }
+
 void	draw_2d_map(t_cub3d *data)
 {
 	int				y;
 	int				x;
 	double			start_x;
 	double			start_y;
-
 
 	start_x = data->player->player_x - 5;
 	start_y = data->player->player_y - 5;

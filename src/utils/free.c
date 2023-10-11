@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:14:43 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 16:27:20 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	free_texture(t_cub3d *data)
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
 	free(data->img);
+	free(data->mini_img);
 	free(data->player);
 	free(data->ray);
 	close(data->fd);

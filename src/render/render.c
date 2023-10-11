@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:16:01 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 17:11:25 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	render_background(t_cub3d *data)
 	}
 }
 
-void	render_background_mini(t_cub3d *data)
+static void	render_background_mini(t_cub3d *data)
 {
 	int	color;
 	int	y;
@@ -68,36 +68,18 @@ void	draw_2d_direction(t_cub3d *data)
 	t_point	p2;
 
 	line.dx = 0;
-	p1.p_x = (MINI_WIDTH / 2);
-	p1.p_y = (MINI_HEIGHT / 2);
-	p2.p_x = (MINI_WIDTH / 2)
+	p1.p_x = (MINI_WIDTH / 2) + PLAYER_SIZE / 2;
+	p1.p_y = (MINI_HEIGHT / 2) + PLAYER_SIZE / 2;
+	p2.p_x = (MINI_WIDTH / 2) + PLAYER_SIZE / 2
 		+ data->player->pdx * 10;
-	p2.p_y = (MINI_HEIGHT / 2)
+	p2.p_y = (MINI_HEIGHT / 2) + PLAYER_SIZE / 2
 		+ data->player->pdy * 10;
 	dda_algorithm(p1, p2, data, line);
 }
 
-void	clear_image(t_cub3d *data)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			my_mlx_pixel_put(data, x, y, 0x000000);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	render_game(t_cub3d *data)
 {
-	// clear_image(data);
+	clear_image(data);
 	mlx_clear_window(data->mlx_ptr, data->mlx_window);
 	render_background(data);
 	ray_casting(data);
