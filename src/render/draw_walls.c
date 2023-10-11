@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:28:04 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:18:15 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 17:17:43 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	select_texture(t_cub3d *data, double px, double py, int side)
 
 static void	calculate_wall_texture_x_y(t_cub3d *data, int y)
 {
-	(void)y;
 	data->ray->texture_x = (int)(data->ray->wall_x * (double)data->texture_w);
 	if (data->ray->side == 0 && data->ray->ray_dir.p_x > 0)
 		data->ray->texture_x = data->texture_w - data->ray->texture_x - 1;

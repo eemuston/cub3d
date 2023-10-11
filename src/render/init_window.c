@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:15:26 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 17:35:41 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static int	init_image(t_cub3d *data)
 	!data->texture[EAST - 1].img || !data->texture[EAST - 1].data)
 	{
 		ft_putstr_fd("Error\nAllocate texture image\n", 2);
+		destroy_image(data);
+		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
 		free_texture(data);
 		return (1);
 	}
@@ -57,7 +59,8 @@ int	init_window(t_cub3d *data)
 	if (!data->mlx_window)
 		return (error_in_img(data, 2));
 	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	data->mini_img->img_ptr = mlx_new_image(data->mlx_ptr, 200, 200);
+	data->mini_img->img_ptr = mlx_new_image(data->mlx_ptr, MINI_WIDTH, \
+	MINI_HEIGHT);
 	if (!data->img->img_ptr)
 		return (error_in_img(data, 3));
 	if (init_image(data))
