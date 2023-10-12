@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 16:27:20 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 14:12:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_texture(t_cub3d *data)
 	i = -1;
 	while (++i < 2)
 	{
-		if (data->colors[i].color)
+		if (data->colors[i].color != NULL)
 			free(data->colors[i].color);
 		data->colors[i].color = NULL;
 	}
