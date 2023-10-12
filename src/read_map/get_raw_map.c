@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:47:50 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 14:23:07 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static int	assign_map_to_cub3d(t_cub3d *data, int lst_size, \
 	{
 		lst_size++;
 		current = current->next;
+	}
+	if (lst_size == 0)
+	{
+		ft_putstr_fd("Error\nThere is no map to read.\n", 2);
+		free_texture(data);
+		return (1);
 	}
 	data->raw_map = ft_calloc(sizeof(char *), lst_size + 1);
 	if (!data->raw_map)
@@ -63,7 +69,7 @@ int	get_raw_map(t_cub3d *data, int fd)
 		free(line);
 	}
 	if (assign_map_to_cub3d(data, 0, -1, NULL))
-		return (error_in_texture(data, 5));
+		return (1);
 	free_map(&data->map);
 	data->map = NULL;
 	close(fd);

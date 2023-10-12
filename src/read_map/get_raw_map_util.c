@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:40:43 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 15:47:39 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 14:07:56 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_texture_path(t_cub3d *data, int current)
 {
-	int	fd;
+	int		fd;
 
 	while (current < 4)
 	{

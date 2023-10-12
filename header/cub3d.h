@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 10:52:55 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/12 14:50:50 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,10 @@ typedef struct s_cub3d
 }					t_cub3d;
 
 // error_checking:
+int					error_check(int argc, char **argv);
+void				error_in_init_texture(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
 int					error_in_texture(t_cub3d *data, int flag);
-int					error_check(int argc, char **argv);
 
 // utils:
 void				free_array(char **array);

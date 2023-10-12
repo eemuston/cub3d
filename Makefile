@@ -6,7 +6,7 @@
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:06:14 by vvu               #+#    #+#              #
-#    Updated: 2023/10/11 17:13:27 by vvu              ###   ########.fr        #
+#    Updated: 2023/10/12 14:33:58 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(NAME): $(OBJS)
 		else \
 			echo "$(YELLOW)$(BOLD)Compiling $(NAME)...$(NC)"; \
 			make -C ./libft; \
-			cc $(FLAGS) $(EXTRA_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
+			cc $(FLAGS) $(EXTRA_FLAGS) $(ERROR_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
 			echo "$(GREEN)$(BOLD)$(NAME) successfully compiled!$(NC)"; \
 		fi
 $(OBJ_DIR)%.o: %.c $(HEADER_DIR)$(HEADER)
