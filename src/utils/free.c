@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 14:49:44 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/12 15:21:44 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/12 15:21:45 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../header/cub3d.h"
 
@@ -58,6 +57,7 @@ void	free_texture(t_cub3d *data)
 	free(data->img);
 	free(data->mini_img);
 	free(data->player);
+	free(data->ray);
 	close(data->fd);
 }
 

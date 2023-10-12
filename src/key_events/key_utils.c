@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 12:17:44 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/12 10:55:56 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/12 15:15:55 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/12 15:15:56 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static int	not_qualify_move(t_cub3d *data, double height, double width)
 {
-	if ((data->raw_map[(int)(height - 0.1)] \
-					[(int)(width - 0.1)] == '1') \
-		|| (data->raw_map[(int)(height + 0.1)] \
-					[(int)(width + 0.1)] == '1') \
+	if ((data->raw_map[(int)(height - 0.3)] \
+					[(int)(width - 0.3)] == '1') \
+		|| (data->raw_map[(int)(height + 0.3)] \
+					[(int)(width + 0.3)] == '1') \
 		|| (data->raw_map[(int)(height)] \
-					[(int)(width + 0.1)] == '1') \
-		|| (data->raw_map[(int)(height + 0.1)] \
+					[(int)(width + 0.3)] == '1') \
+		|| (data->raw_map[(int)(height + 0.3)] \
 					[(int)(width)] == '1') \
 		|| (data->raw_map[(int)(height)] \
-					[(int)(width - 0.1)] == '1') \
-		|| (data->raw_map[(int)(height - 0.1)] \
+					[(int)(width - 0.3)] == '1') \
+		|| (data->raw_map[(int)(height - 0.3)] \
 					[(int)(width)] == '1') \
-		|| (data->raw_map[(int)(height - 0.1)] \
-					[(int)(width + 0.1)] == '1') \
-		|| (data->raw_map[(int)(height + 0.1)] \
-					[(int)(width - 0.1)] == '1'))
+		|| (data->raw_map[(int)(height - 0.3)] \
+					[(int)(width + 0.3)] == '1') \
+		|| (data->raw_map[(int)(height + 0.3)] \
+					[(int)(width - 0.3)] == '1'))
 		return (1);
 	return (0);
 }
