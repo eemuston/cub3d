@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:49:03 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 15:54:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:51:16 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	calculate_angle(char player_direction, t_cub3d *data)
 		data->player->player_angle = 270.0;
 }
 
-void	init_player_position(t_cub3d *data, int x, int y, char **map)
+static void	init_player_position(t_cub3d *data, int x, int y, char **map)
 {
 	data->player_direction = map[y][x];
 	data->player->player_x = x + 0.5;

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 10:52:45 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 17:41:51 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:47:50 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	assign_map_to_cub3d(t_cub3d *data, int lst_size, \
 	return (0);
 }
 
-int	free_line(char *line, t_cub3d *data)
+static int	free_line(char *line, t_cub3d *data)
 {
 	free(line);
 	return (error_in_texture(data, 5));

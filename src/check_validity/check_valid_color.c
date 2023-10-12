@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:31:14 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/20 18:27:25 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 16:15:37 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int	is_not_number(char **color_check)
 	int			current;
 	long long	nbr_check;
 
-	index = 0;
-	while (color_check[index] != NULL)
+	index = -1;
+	while (color_check[++index] != NULL)
 	{
 		current = 0;
 		nbr_check = ft_atoll(color_check[index]);
@@ -44,7 +44,6 @@ static int	is_not_number(char **color_check)
 		nbr_check = ft_atoll(color_check[index]);
 		if (nbr_check > 255 || nbr_check < 0)
 			return (1);
-		index++;
 	}
 	return (0);
 }
@@ -63,21 +62,36 @@ static int	check_dup_color(t_cub3d *data)
 	return (0);
 }
 
+static	int	check_comma(char *comma)
+{
+	int	n_of_comma;
+	int	index;
+
+	index = -1;
+	n_of_comma = 0;
+	while (comma[++index] != '\0')
+	{
+		if (comma[index] == ',')
+			n_of_comma++;
+	}
+	if (n_of_comma != 2)
+		return (1);
+	return (0);
+}
+
 int	check_valid_color(t_cub3d *data)
 {
 	char	**color_check;
-	int		index;
 	int		array;
 
 	array = -1;
 	while (++array < 2)
 	{
-		index = 0;
+		if (check_comma(data->colors[array].color))
+			return (error_in_texture(data, 6));
 		color_check = ft_split(data->colors[array].color, ',');
 		if (!color_check)
 			return (error_in_texture(data, 4));
-		while (color_check[index] != NULL)
-			index++;
 		if (is_not_number(color_check))
 		{
 			free_array(color_check);

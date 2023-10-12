@@ -6,20 +6,20 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:18:55 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/11 15:43:44 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-int	mouse_handler(t_cub3d *data)
+static int	mouse_handler(t_cub3d *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_window);
 	free_texture(data);
 	exit(0);
 }
 
-int	key_press_handler(int key, t_cub3d *data)
+static int	key_press_handler(int key, t_cub3d *data)
 {
 	if (key == 53)
 	{
@@ -34,7 +34,7 @@ int	key_press_handler(int key, t_cub3d *data)
 	return (0);
 }
 
-int	key_release_handler(int key, t_cub3d *data)
+static int	key_release_handler(int key, t_cub3d *data)
 {
 	if (key == W || key == S || key == D || key == A || \
 		key == LEFT || key == RIGHT)
@@ -42,7 +42,7 @@ int	key_release_handler(int key, t_cub3d *data)
 	return (0);
 }
 
-int	keys(t_cub3d *data)
+static int	keys(t_cub3d *data)
 {
 	data->player->tmp_player_x = data->player->player_x * BLOCK_SIZE;
 	data->player->tmp_player_y = data->player->player_y * BLOCK_SIZE;

@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:55:59 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/12 10:54:49 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	free_texture(t_cub3d *data)
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
 	free(data->img);
+	free(data->mini_img);
 	free(data->player);
 	close(data->fd);
 }
@@ -87,6 +88,7 @@ void	destroy_image(t_cub3d *data)
 
 	i = -1;
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
-	while (++i < 4)
+	mlx_destroy_image(data->mlx_ptr, data->mini_img->img_ptr);
+	while (++i < 4 && data->texture[i].img != NULL)
 		mlx_destroy_image(data->mlx_ptr, data->texture[i].img);
 }

@@ -1,13 +1,12 @@
-WE ./texture/wall_brick_black.xpm
-SO ./texture/wall_brick_gray.xpm
-NO ./texture/wall_brick_orange.xpm
-EA ./texture/wall_brick_red.xpm
+      		EA ./texture/wall_brick_red.xpm
+		  SO 	    ./texture/wall_brick_gray.xpm
+	  WE 		  	./texture/wall_brick_black.xpm
+NO 			./texture/wall_brick_orange.xpm
 
 
-C 		00099  ,   0049   ,   00231
+C 		  	99, 		49   ,			   231
 
-F 		211  , 000024		,   		194
-
+F 		   192,	236, 42 
 
 
 1111111111111111

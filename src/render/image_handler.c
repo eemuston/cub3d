@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:24:51 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/03 15:43:32 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/11 14:56:55 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ void	my_mlx_pixel_put(t_cub3d *data, double width, \
 void	my_mlx_pixel_put_mini(t_cub3d *data, double width \
 		, double height, unsigned int color)
 {
-	my_mlx_pixel_put(data, width * data->minimap_scale + data->minimap_offset_x \
-		, height * data->minimap_scale + data->minimap_offset_y, color);
+	char	*dst;
+	int		y;
+	int		x;
+
+	x = round(width);
+	y = round(height);
+	data->mini_img->addr = mlx_get_data_addr(data->mini_img->img_ptr,
+			&data->mini_img->bits_per_pixel, &data->mini_img->line_length,
+			&data->mini_img->endian);
+	dst = data->mini_img->addr + (y * data->mini_img->line_length + \
+	x * (data->mini_img->bits_per_pixel / 8));
+	if ((x >= 0 && x < MINI_WIDTH) && (y >= 0 && y < MINI_HEIGHT))
+		*(unsigned int *)dst = color;
 }
