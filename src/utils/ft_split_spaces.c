@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:09:47 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 13:14:57 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 17:14:15 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	**ft_split_spaces(char *str)
 	words = count_words(str);
 	if (!words)
 		return (NULL);
-	new_str = malloc(sizeof(char *) * words + 1);
+	new_str = malloc(sizeof(char *) * (words + 1));
 	if (!new_str)
 		return (NULL);
 	new_str[words] = NULL;

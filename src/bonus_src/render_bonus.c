@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 18:36:32 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 18:36:47 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
-void	render_background(t_cub3d *data)
+static void	render_background(t_cub3d *data)
 {
 	int	color;
 	int	y;
@@ -44,10 +44,10 @@ void	render_game(t_cub3d *data)
 	ray_casting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr,
 		0, 0);
-	// render_background_mini(data);
-	// draw_2d_map(data);
-	// draw_2d_player(data);
-	// draw_2d_direction(data);
-	// mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, \
-	// data->mini_img->img_ptr, WIDTH - MINI_WIDTH, HEIGHT - MINI_HEIGHT);
+	render_background_mini(data);
+	draw_2d_map(data);
+	draw_2d_player(data);
+	draw_2d_direction(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, \
+	data->mini_img->img_ptr, WIDTH - MINI_WIDTH, HEIGHT - MINI_HEIGHT);
 }

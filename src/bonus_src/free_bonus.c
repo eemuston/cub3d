@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 18:39:03 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 18:54:30 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
 void	free_map(t_map **map)
 {
@@ -55,6 +55,7 @@ void	free_texture(t_cub3d *data)
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
 	free(data->img);
+	free(data->mini_img);
 	free(data->player);
 	free(data->ray);
 	close(data->fd);
@@ -87,6 +88,7 @@ void	destroy_image(t_cub3d *data)
 
 	i = -1;
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->mini_img->img_ptr);
 	while (++i < 4 && data->texture[i].img != NULL)
 		mlx_destroy_image(data->mlx_ptr, data->texture[i].img);
 }
