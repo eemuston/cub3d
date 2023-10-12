@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:21:55 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/12 15:21:56 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/12 16:52:49 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	**ft_split_spaces(char *str)
 	words = count_words(str);
 	if (!words)
 		return (NULL);
-	new_str = malloc(sizeof(char *) * words + 1);
+	new_str = malloc(sizeof(char *) * (words + 1));
 	if (!new_str)
 		return (NULL);
 	new_str[words] = NULL;

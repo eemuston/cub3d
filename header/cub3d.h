@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:53:01 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/12 14:53:03 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/12 17:04:26 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define MINI_HEIGHT 200
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
-# define SPEED 2
-# define ANGLE 10
+# define SPEED 3
+# define ANGLE 5
 # define FOV 60
 
 typedef struct s_texture
