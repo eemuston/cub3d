@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2023/10/13 12:41:44 by atoof            ###   ########.fr        #
+#    Created: 2023/10/09 19:06:14 by vvu               #+#    #+#              #
+#    Updated: 2023/10/13 14:05:51 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,13 +90,11 @@ $(MANDATORY_OBJ_DIR)%.o: %.c
 	@mkdir -p $(@D)
 	@cc $(FLAGS) -I$(HEADER_DIR) -c $< -o $@
 
-bonus: all $(BONUS_NAME)
+bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BONUS_OBJS)
 	@make -C ./libft
 	@cc $(FLAGS) $(EXTRA_FLAGS) $(BONUS_OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@
-	@/bin/rm -rf $(NAME)
-	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
 	@echo "$(GREEN)$(BOLD)$(BONUS_NAME) successfully compiled!$(NC)"
 
 $(BONUS_OBJ_DIR)%.o: %.c
@@ -107,11 +105,15 @@ clean:
 	@make clean -C ./libft
 	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
 	@/bin/rm -rf $(BONUS_OBJ_DIR)
+	@echo "\033[1;35m[🧹] Cleaning Makedatory object files...\033[0m"
+	@echo "\033[1;35m[🧹] Cleaning Bonus object files...\033[0m"
 
 fclean: clean
 	@make fclean -C ./libft
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(BONUS_NAME)
+	@echo "\033[1;35m[🧹] Cleaning $(NAME) file...\033[0m"
+	@echo "\033[1;35m[🧹] Cleaning $(BONUS_NAME) file...\033[0m"
 
 re: fclean all
 re_bonus: fclean bonus
