@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/13 14:18:56 by atoof             #+#    #+#              #
-#    Updated: 2023/10/13 14:18:57 by atoof            ###   ########.fr        #
+#    Created: 2023/10/13 14:33:39 by atoof             #+#    #+#              #
+#    Updated: 2023/10/13 14:33:40 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw
 			color_init_utils.c init_player_position.c
 RENDER = image_handler.c ray_casting.c utils.c draw_walls.c
 KEY_EVENTS = key_handler.c key_utils.c
-RENDER_MANDATORY_FILES = render.c init_window.c
 KEY_EVENTS_FILES = key_handler.c key_utils.c
+RENDER_MANDATORY_FILES = render.c init_window.c
 UTILS_MANDATORY_FILES = init_data.c free.c
 BONUS_FILES = init_data_bonus.c free_bonus.c render_bonus.c init_window_bonus.c mini_map_bonus.c draw_bonus.c dda_algorithm_bonus.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) \
@@ -57,9 +57,11 @@ HEADER_DIR = header/
 HEADER = $(HEADER_DIR)cub3d.h
 BONUS_HEADER = $(HEADER_DIR)cub3d_bonus.h
 
+OBJ_DIR = obj/
+
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
-# ERROR_FLAGS = -fsanitize=address -g -static-libsan -fno-omit-frame-pointer -overflow
+ERROR_FLAGS = -fsanitize=address -g
 EXTRA_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 BOLD = \033[1m
@@ -73,6 +75,7 @@ vpath %.c $(BONUS_DIR)
 vpath %.h $(HEADER_DIR)
 
 .PHONY : all bonus clean fclean re re_bonus
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -89,7 +92,7 @@ bonus: $(BONUS_NAME)
 $(BONUS_NAME): $(BONUS_OBJS)
 	@make -C ./libft
 	@cc $(FLAGS) $(EXTRA_FLAGS) $(BONUS_OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@
-	@echo "$(GREEN)$(BOLD)$(BONUS_NAME) successfully compiled!$(NC)"
+	@echo "$(YELLOW)$(BOLD)$(BONUS_NAME) successfully compiled!$(NC)"
 
 $(BONUS_OBJ_DIR)%.o: %.c
 	@mkdir -p $(@D)
@@ -98,16 +101,26 @@ $(BONUS_OBJ_DIR)%.o: %.c
 clean:
 	@make clean -C ./libft
 	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
-	@/bin/rm -rf $(BONUS_OBJ_DIR)
-	@echo "\033[1;35m[🧹] Cleaning Makedatory object files...\033[0m"
-	@echo "\033[1;35m[🧹] Cleaning Bonus object files...\033[0m"
-
+	@echo "$(GREEN)$(BOLD)Cleaning cub3D object files$(NC)"
+	
 fclean: clean
-	@make fclean -C ./libft
 	@/bin/rm -f $(NAME)
+	@/bin/rm -f ./libft/libft.a
+	@/bin/rm -rf ./libft/obj/
+	@echo "\033[1;35m[🧹] Cleaning libft.a...\033[0m"
+	@echo "$(GREEN)$(BOLD)Cleaning $(NAME)!$(NC)"
+	
+clean_bonus:
+	@make clean -C ./libft
+	@/bin/rm -rf $(BONUS_OBJ_DIR)
+	@echo "$(YELLOW)$(BOLD)Cleaning cub3D_bonus object files$(NC)"
+	
+fclean_bonus: clean_bonus
 	@/bin/rm -f $(BONUS_NAME)
-	@echo "\033[1;35m[🧹] Cleaning $(NAME) file...\033[0m"
-	@echo "\033[1;35m[🧹] Cleaning $(BONUS_NAME) file...\033[0m"
-
+	@/bin/rm -f ./libft/libft.a
+	@/bin/rm -rf ./libft/obj/
+	@echo "\033[1;35m[🧹] Cleaning libft.a...\033[0m"
+	@echo "$(YELLOW)$(BOLD)Cleaning $(BONUS_NAME)!$(NC)"
+	
 re: fclean all
-re_bonus: fclean bonus
+re_bonus: fclean_bonus bonus

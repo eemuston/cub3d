@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:19:54 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 14:19:55 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/13 14:46:19 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,4 @@ void	render_game(t_cub3d *data)
 	ray_casting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr,
 		0, 0);
-	// render_background_mini(data);
-	// draw_2d_map(data);
-	// draw_2d_player(data);
-	// draw_2d_direction(data);
-	// mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, \
-	// data->mini_img->img_ptr, WIDTH - MINI_WIDTH, HEIGHT - MINI_HEIGHT);
 }
