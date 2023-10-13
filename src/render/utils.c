@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 15:21:38 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/12 15:21:39 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/09 14:38:30 by vvu               #+#    #+#             */
+/*   Updated: 2023/10/13 12:42:11 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+double	degree_to_rad(double angle)
+{
+	return (angle * M_PI / 180.0);
+}
 
 void	clear_image(t_cub3d *data)
 {
@@ -83,7 +88,9 @@ void	hit_wall(t_cub3d *data)
 			data->ray->map_y += data->ray->step_y;
 			data->ray->side = 1;
 		}
-		if (data->raw_map[data->ray->map_y][data->ray->map_x] == '1')
+		if (data->ray->map_y >= 0 && data->ray->map_y < data->height && \
+		data->ray->map_x >= 0 && data->ray->map_x < data->width && \
+		data->raw_map[data->ray->map_y][data->ray->map_x] == '1')
 			data->ray->hit = 1;
 	}
 }

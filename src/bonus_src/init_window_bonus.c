@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   init_window_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:27:52 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/13 12:41:58 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/12 18:28:59 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
 static void	init_texture_data(t_cub3d *data)
 {
@@ -42,11 +42,15 @@ int	init_window(t_cub3d *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (error_in_img(data, 1));
-	data->mlx_window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
+	data->mlx_window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D bonus");
 	if (!data->mlx_window)
 		return (error_in_img(data, 2));
 	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 	if (!data->img->img_ptr)
+		return (error_in_img(data, 3));
+	data->mini_img->img_ptr = mlx_new_image(data->mlx_ptr, MINI_WIDTH, \
+	MINI_HEIGHT);
+	if (!data->mini_img->img_ptr)
 		return (error_in_img(data, 3));
 	init_texture_data(data);
 	return (0);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_map.c                                         :+:      :+:    :+:   */
+/*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 15:19:43 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/12 15:19:44 by atoof            ###   ########.fr       */
+/*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
+/*   Updated: 2023/10/13 12:42:28 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
 static void	put_map_to_window(double x, double y, \
 				unsigned int color, t_cub3d *data)
@@ -19,10 +19,10 @@ static void	put_map_to_window(double x, double y, \
 	int	block_x;
 
 	block_y = 0;
-	while (block_y < (BLOCK_SIZE) - 1)
+	while (block_y < BLOCK_SIZE)
 	{
 		block_x = 0;
-		while (block_x < (BLOCK_SIZE) - 1)
+		while (block_x < BLOCK_SIZE)
 		{
 			my_mlx_pixel_put_mini(data, x + block_x, y + block_y, color);
 			block_x++;
