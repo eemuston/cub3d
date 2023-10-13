@@ -6,7 +6,7 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:06:14 by vvu               #+#    #+#              #
-#    Updated: 2023/10/12 23:13:31 by mtoof            ###   ########.fr        #
+#    Updated: 2023/10/13 12:20:59 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ RENDER = image_handler.c ray_casting.c utils.c draw_walls.c
 KEY_EVENTS = key_handler.c key_utils.c
 RENDER_MANDATORY_FILES = render.c init_window.c
 KEY_EVENTS_FILES = key_handler.c key_utils.c
+UTILS_MANDATORY_FILES = init_data.c free.c
+BONUS_FILES = init_data_bonus.c free_bonus.c render_bonus.c init_window_bonus.c mini_map_bonus.c draw_bonus.c dda_algorithm_bonus.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) \
 		$(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) \
@@ -71,6 +73,7 @@ vpath %.c $(SRC_DIR)
 vpath %.c $(BONUS_DIR)
 vpath %.h $(HEADER_DIR)
 
+.PHONY : all bonus clean fclean re re_bonus
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -89,13 +92,13 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	@cc $(FLAGS) $(EXTRA_FLAGS) $(BONUS_OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@
 	@echo "$(GREEN)$(BOLD)$(BONUS_NAME) successfully compiled!$(NC)"
 
-$(BONUS_OBJ_DIR)%.o: $(BONUS_DIR)%.c $(BONUS_HEADER)
+$(BONUS_OBJ_DIR)%.o: %.c
 	@mkdir -p $(@D)
 	@cc $(FLAGS) -I$(HEADER_DIR) -c $< -o $@
 
 clean:
 	@make clean -C ./libft
-	@/bin/rm -rf $(OBJ_DIR)
+	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
 
 fclean: clean
 	@make fclean -C ./libft
@@ -103,4 +106,4 @@ fclean: clean
 	@/bin/rm -f $(BONUS_NAME)
 
 re: fclean all
-re bonus: fclean bonus
+re_bonus: fclean bonus
