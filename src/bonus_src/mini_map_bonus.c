@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:31:31 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 18:29:05 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/13 13:29:27 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	put_map_to_window(double x, double y, \
 	int	block_x;
 
 	block_y = 0;
-	while (block_y < (BLOCK_SIZE) - 1)
+	while (block_y < BLOCK_SIZE)
 	{
 		block_x = 0;
-		while (block_x < (BLOCK_SIZE) - 1)
+		while (block_x < BLOCK_SIZE)
 		{
 			my_mlx_pixel_put_mini(data, x + block_x, y + block_y, color);
 			block_x++;

@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:04:51 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 14:04:48 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/13 12:54:40 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,16 @@ int	error_check(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("Not right amount of arguments.\n", 2);
-		ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
+		if (!ft_strncmp(argv[0], "./cub3D", ft_strlen(argv[0])))
+		{
+			ft_putstr_fd("Not right amount of arguments.\n", 2);
+			ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
+		}
+		else
+		{
+			ft_putstr_fd("Not right amount of arguments.\n", 2);
+			ft_putstr_fd("Usage ./cub3D_bonus [mapfile].cub\n", 2);
+		}
 		return (1);
 	}
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)
