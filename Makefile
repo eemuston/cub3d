@@ -6,7 +6,7 @@
 #    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 14:33:39 by atoof             #+#    #+#              #
-#    Updated: 2023/10/13 14:33:40 by atoof            ###   ########.fr        #
+#    Updated: 2023/10/13 15:13:12 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw
 			color_init_utils.c init_player_position.c
 RENDER = image_handler.c ray_casting.c utils.c draw_walls.c
 KEY_EVENTS = key_handler.c key_utils.c
-KEY_EVENTS_FILES = key_handler.c key_utils.c
 RENDER_MANDATORY_FILES = render.c init_window.c
 UTILS_MANDATORY_FILES = init_data.c free.c
 BONUS_FILES = init_data_bonus.c free_bonus.c render_bonus.c init_window_bonus.c mini_map_bonus.c draw_bonus.c dda_algorithm_bonus.c

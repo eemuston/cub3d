@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:25:37 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 14:25:38 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:03:43 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ typedef struct s_cub3d
 	unsigned int	floor_color;
 	int				color[3];
 	int				found_zero;
-	int				found_space;
 	int				width;
 	int				height;
 	int				fd;

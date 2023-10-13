@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:14:52 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 14:14:53 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:14:17 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	init_window(t_cub3d *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (error_in_img(data, 1));
-	data->mlx_window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D bonus");
+	data->mlx_window = mlx_new_window(data->mlx_ptr, \
+		WIDTH, HEIGHT, "Cub3D bonus");
 	if (!data->mlx_window)
 		return (error_in_img(data, 2));
 	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
