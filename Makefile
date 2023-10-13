@@ -6,11 +6,12 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:06:14 by vvu               #+#    #+#              #
-#    Updated: 2023/10/13 12:20:59 by mtoof            ###   ########.fr        #
+#    Updated: 2023/10/13 12:35:16 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
+BONUS_NAME = cub3D_bonus
 SRC_DIR = src/
 BONUS_DIR = src/bonus_src/
 UTILS_DIR = src/utils/
@@ -56,8 +57,6 @@ HEADER_DIR = header/
 HEADER = $(HEADER_DIR)cub3d.h
 BONUS_HEADER = $(HEADER_DIR)cub3d_bonus.h
 
-OBJ_DIR = obj/
-
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
 ERROR_FLAGS = -fsanitize=address -g -static-libsan -fno-omit-frame-pointer -overflow
@@ -85,11 +84,13 @@ $(MANDATORY_OBJ_DIR)%.o: %.c
 	@mkdir -p $(@D)
 	@cc $(FLAGS) -I$(HEADER_DIR) -c $< -o $@
 
-bonus: $(BONUS_NAME)
+bonus: all $(BONUS_NAME)
 
 $(BONUS_NAME): $(BONUS_OBJS)
 	@make -C ./libft
 	@cc $(FLAGS) $(EXTRA_FLAGS) $(BONUS_OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@
+	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
 	@echo "$(GREEN)$(BOLD)$(BONUS_NAME) successfully compiled!$(NC)"
 
 $(BONUS_OBJ_DIR)%.o: %.c
@@ -99,6 +100,7 @@ $(BONUS_OBJ_DIR)%.o: %.c
 clean:
 	@make clean -C ./libft
 	@/bin/rm -rf $(MANDATORY_OBJ_DIR)
+	@/bin/rm -rf $(BONUS_OBJ_DIR)
 
 fclean: clean
 	@make fclean -C ./libft
