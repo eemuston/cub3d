@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:06:08 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:06:09 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/13 23:16:51 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	data;
 
-	if (init_data(&data))
-		return (1);
 	if (error_check(argc, argv) == 1)
+		return (1);
+	if (init_data(&data))
 		return (1);
 	if (read_file_and_parse(argv, &data) == 1)
 		return (1);
