@@ -5,10 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 14:23:19 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 15:15:01 by atoof            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/10/14 15:02:29 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
 
 #ifndef CUB3D_BONUS_H
 # define CUB3D_BONUS_H
