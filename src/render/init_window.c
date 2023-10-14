@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 14:20:09 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 14:20:10 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/14 15:26:03 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/14 15:26:04 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	init_texture_data(t_cub3d *data)
 		if (!data->texture[index].img)
 			error_in_init_texture(data);
 		data->texture[index].data = (int *)mlx_get_data_addr(
-				data->texture[index].img, &data->texture[index].bpp, 
-				&data->texture[index].size_line, 
+				data->texture[index].img, &data->texture[index].bpp,
+				&data->texture[index].size_line,
 				&data->texture[index].endian);
 		if (!data->texture[index].data)
 			error_in_init_texture(data);

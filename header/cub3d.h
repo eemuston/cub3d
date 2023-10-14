@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 14:25:37 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/13 15:03:43 by atoof            ###   ########.fr       */
+/*   Created: 2023/10/14 15:22:08 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/14 15:22:09 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define MINI_HEIGHT 200
 # define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
-# define SPEED 3
-# define ANGLE 5
+# define SPEED 2
+# define ANGLE 10
 # define FOV 60
 
 typedef struct s_texture
@@ -146,6 +146,7 @@ typedef struct s_cub3d
 	unsigned int	floor_color;
 	int				color[3];
 	int				found_zero;
+	int				found_space;
 	int				width;
 	int				height;
 	int				fd;

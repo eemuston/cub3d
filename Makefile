@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/14 15:05:44 by atoof             #+#    #+#              #
-#    Updated: 2023/10/14 15:05:45 by atoof            ###   ########.fr        #
+#    Created: 2023/10/14 15:21:50 by atoof             #+#    #+#              #
+#    Updated: 2023/10/14 15:21:51 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,6 @@ BONUS_OBJS = $(BONUS_SRCS:%.c=$(BONUS_OBJ_DIR)%.o)
 HEADER_DIR = header/
 HEADER = $(HEADER_DIR)cub3d.h
 BONUS_HEADER = $(HEADER_DIR)cub3d_bonus.h
-
-OBJ_DIR = obj/
 
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
