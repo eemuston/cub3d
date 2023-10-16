@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:28:04 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:47:11 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 17:13:58 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	select_texture(t_cub3d *data, double px, double py, int side)
 
 static void	calculate_wall_texture_x_y(t_cub3d *data, int y)
 {
-	(void)y;
 	data->ray->texture_x = (int)(data->ray->wall_x * (double)data->texture_w);
 	if (data->ray->side == 0 && data->ray->ray_dir.p_x > 0)
 		data->ray->texture_x = data->texture_w - data->ray->texture_x - 1;
@@ -71,12 +70,6 @@ static void	position_wall_hit(t_cub3d *data)
 	data->ray->wall_x -= floor(data->ray->wall_x);
 }
 
-// static void	calculate_walls_height(t_cub3d *data)
-// {
-
-// }
-
-	// calculate_walls_height(data);
 void	draw_walls(t_cub3d *data, int screen_x)
 {
 	int	y;

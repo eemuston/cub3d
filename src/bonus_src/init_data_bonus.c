@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   init_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:06:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/13 10:30:27 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:29:14 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
 static int	init_mlx_ray_player(t_cub3d *data)
 {

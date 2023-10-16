@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:38:30 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 13:29:59 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/13 10:30:41 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+double	degree_to_rad(double angle)
+{
+	return (angle * M_PI / 180.0);
+}
+
+void	clear_image(t_cub3d *data)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			my_mlx_pixel_put(data, x, y, 0x000000);
+			x++;
+		}
+		y++;
+	}
+}
 
 double	fix_angle(double angle)
 {
@@ -65,7 +88,9 @@ void	hit_wall(t_cub3d *data)
 			data->ray->map_y += data->ray->step_y;
 			data->ray->side = 1;
 		}
-		if (data->raw_map[data->ray->map_y][data->ray->map_x] == '1')
+		if (data->ray->map_y >= 0 && data->ray->map_y < data->height && \
+		data->ray->map_x >= 0 && data->ray->map_x < data->width && \
+		data->raw_map[data->ray->map_y][data->ray->map_x] == '1')
 			data->ray->hit = 1;
 	}
 }

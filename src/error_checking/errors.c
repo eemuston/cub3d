@@ -6,11 +6,20 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:04:51 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/09 19:04:53 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 14:04:48 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	error_in_init_texture(t_cub3d *data)
+{
+	ft_putstr_fd("Error\nInitialize texture image\n", 2);
+	destroy_image(data);
+	mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+	free_texture(data);
+	exit (1);
+}
 
 int	error_in_texture(t_cub3d *data, int flag)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda_algorithm.c                                    :+:      :+:    :+:   */
+/*   dda_algorithm_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:06:32 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 13:44:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:30:53 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3d.h"
+#include "../../header/cub3d_bonus.h"
 
 void	dda_algorithm(t_point p1, t_point p2, t_cub3d *data, t_line line)
 {
