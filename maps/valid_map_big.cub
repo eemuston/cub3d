@@ -1,13 +1,13 @@
 	NO ./texture/wall_brick_black.xpm
     EA ./texture/wall_brick_gray.xpm
 
-WE		 ./texture/wall_brick_orange.xpm
-       SO     ./texture/wall_brick_red.xpm
+WE		 ./texture/natural_stone_wall_texture_free_1.xpm
+       SO     ./texture/FreshDesignElements-Brick-Wall-3.xpm
 
 
-		    C 		242      ,      212,       		 225
+		    C 		222,234,238
 
-			F      000	,		    0000000000000000167,00000166
+			F      37,69,60
 
 
 1111111111111111111111111  
