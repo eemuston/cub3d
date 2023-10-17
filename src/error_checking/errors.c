@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 15:09:42 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/26 13:28:21 by vvu              ###   ########.fr       */
+/*   Created: 2023/10/14 15:23:28 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/17 16:36:22 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
+
+void	error_in_init_texture(t_cub3d *data)
+{
+	ft_putstr_fd("Error\nInitialize texture image\n", 2);
+	destroy_image(data);
+	mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+	free_texture(data);
+	exit (1);
+}
 
 int	error_in_texture(t_cub3d *data, int flag)
 {
@@ -40,12 +49,20 @@ int	error_in_texture(t_cub3d *data, int flag)
 	return (1);
 }
 
-int	error_check(int argc, char **argv)
+int	error_check(int argc, char **argv, t_cub3d *data)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("Not right amount of arguments.\n", 2);
-		ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
+		if (!ft_strncmp(argv[0], "./cub3D", ft_strlen(argv[0])))
+		{
+			ft_putstr_fd("Not right amount of arguments.\n", 2);
+			ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
+		}
+		else
+		{
+			ft_putstr_fd("Not right amount of arguments.\n", 2);
+			ft_putstr_fd("Usage ./cub3D_bonus [mapfile].cub\n", 2);
+		}
 		return (1);
 	}
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)
@@ -54,7 +71,7 @@ int	error_check(int argc, char **argv)
 		ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
 		return (1);
 	}
-	return (0);
+	return (test_open_file(data, argv));
 }
 
 static void	destroy_image_ptr(t_cub3d *data)

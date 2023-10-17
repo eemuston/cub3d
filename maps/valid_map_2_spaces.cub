@@ -1,0 +1,15 @@
+WE ./texture/wall_brick_black.xpm
+SO ./texture/wall_brick_gray.xpm
+NO ./texture/wall_brick_orange.xpm
+EA ./texture/wall_brick_red.xpm
+
+
+C 		00099  ,   0049   ,   00231
+
+F 		211  , 000024		,   		194
+
+
+
+1111
+1E001
+1111

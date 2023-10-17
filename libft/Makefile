@@ -52,7 +52,7 @@ $(addprefix $(OBJ_DIR)/, $(OBJS_B)): $(SRC_B)
 
 clean:
 	@/bin/rm -rf $(OBJ_DIR)
-	@echo "\033[1;35m[🧹] Cleaning object files...\033[0m"
+	@echo "\033[1;35m[🧹] Cleaning libft object files...\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)

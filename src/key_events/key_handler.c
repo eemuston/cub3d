@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 12:04:42 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/02 12:17:48 by eemuston         ###   ########.fr       */
+/*   Created: 2023/10/14 15:23:44 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/14 15:23:45 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-int	mouse_handler(t_cub3d *data)
+static int	mouse_handler(t_cub3d *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_window);
 	free_texture(data);
 	exit(0);
 }
 
-int	key_press_handler(int key, t_cub3d *data)
+static int	key_press_handler(int key, t_cub3d *data)
 {
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->mlx_window);
+		destroy_image(data);
 		free_texture(data);
 		exit(0);
 	}
@@ -33,7 +34,7 @@ int	key_press_handler(int key, t_cub3d *data)
 	return (0);
 }
 
-int	key_release_handler(int key, t_cub3d *data)
+static int	key_release_handler(int key, t_cub3d *data)
 {
 	if (key == W || key == S || key == D || key == A || \
 		key == LEFT || key == RIGHT)
@@ -41,10 +42,10 @@ int	key_release_handler(int key, t_cub3d *data)
 	return (0);
 }
 
-int	keys(t_cub3d *data)
+static int	keys(t_cub3d *data)
 {
-	data->player->tmp_player_x = data->player->player_x;
-	data->player->tmp_player_y = data->player->player_y;
+	data->player->tmp_player_x = data->player->player_x * BLOCK_SIZE;
+	data->player->tmp_player_y = data->player->player_y * BLOCK_SIZE;
 	if (data->keys[W] || data->keys[S] || data->keys[A] || data->keys[D])
 		move_keys(data);
 	if (data->keys[RIGHT] || data->keys[LEFT])

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 15:07:50 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/27 10:02:24 by eemuston         ###   ########.fr       */
+/*   Created: 2023/10/14 15:22:14 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/17 16:28:52 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	data;
 
+	if (error_check(argc, argv, &data) == 1)
+		return (1);
 	if (init_data(&data))
 		return (1);
-	if (error_check(argc, argv) == 1)
-		return (1);
-	if (read_file_and_parse(argv, &data) == 1)
+	if (read_file_and_parse(&data) == 1)
 		return (1);
 	if (init_window(&data))
 		return (1);
-	set_player_x_y(&data);
+	set_color_to_floor_ceiling(&data);
 	render_game(&data);
 	hook_keys_loop(&data);
 	free_texture(&data);

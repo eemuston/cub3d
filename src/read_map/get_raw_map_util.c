@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_raw_map_util.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:40:43 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/12 15:47:39 by vvu              ###   ########.fr       */
+/*   Created: 2023/10/14 15:23:59 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/14 15:24:00 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_texture_path(t_cub3d *data, int current)
 {
-	int	fd;
+	int		fd;
 
 	while (current < 4)
 	{
@@ -30,7 +30,7 @@ int	check_texture_path(t_cub3d *data, int current)
 static int	new_node(t_map **new, char *line)
 {
 	*new = malloc(sizeof(t_map));
-	if (!*new) 
+	if (!*new)
 	{
 		ft_putstr_fd("malloc in new_node\n", 2);
 		return (1);

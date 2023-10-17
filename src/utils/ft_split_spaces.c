@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_spaces.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 18:09:47 by vvu               #+#    #+#             */
-/*   Updated: 2023/09/26 13:14:57 by vvu              ###   ########.fr       */
+/*   Created: 2023/10/14 15:25:21 by atoof             #+#    #+#             */
+/*   Updated: 2023/10/14 15:25:22 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	**ft_split_spaces(char *str)
 	words = count_words(str);
 	if (!words)
 		return (NULL);
-	new_str = malloc(sizeof(char *) * words + 1);
+	new_str = malloc(sizeof(char *) * (words + 1));
 	if (!new_str)
 		return (NULL);
 	new_str[words] = NULL;
