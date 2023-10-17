@@ -6,7 +6,7 @@
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:22:08 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:22:09 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/17 16:46:58 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,10 +172,11 @@ typedef struct s_cub3d
 }					t_cub3d;
 
 // error_checking:
-int					error_check(int argc, char **argv);
+int					error_check(int argc, char **argv, t_cub3d *data);
 void				error_in_init_texture(t_cub3d *data);
 int					error_in_img(t_cub3d *data, int flag);
 int					error_in_texture(t_cub3d *data, int flag);
+int					test_open_file(t_cub3d *data, char **argv);
 
 // utils:
 void				free_array(char **array);
@@ -187,7 +188,7 @@ char				**ft_split_spaces(char *str);
 int					init_data(t_cub3d *data);
 
 // read_map:
-int					read_file_and_parse(char **argv, t_cub3d *data);
+int					read_file_and_parse(t_cub3d *data);
 int					check_splitptr_len(char **splitted_line);
 char				*join_splitted_line(char **splitted_line);
 int					check_texture_path(t_cub3d *data, int current);

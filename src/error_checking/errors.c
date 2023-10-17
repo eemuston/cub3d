@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 15:23:28 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:23:30 by atoof            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/10/17 16:47:04 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../header/cub3d.h"
 
@@ -49,7 +50,7 @@ int	error_in_texture(t_cub3d *data, int flag)
 	return (1);
 }
 
-int	error_check(int argc, char **argv)
+int	error_check(int argc, char **argv, t_cub3d *data)
 {
 	if (argc != 2)
 	{
@@ -71,7 +72,7 @@ int	error_check(int argc, char **argv)
 		ft_putstr_fd("Usage ./cub3D [mapfile].cub\n", 2);
 		return (1);
 	}
-	return (0);
+	return (test_open_file(data, argv));
 }
 
 static void	destroy_image_ptr(t_cub3d *data)

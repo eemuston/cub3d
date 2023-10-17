@@ -6,7 +6,7 @@
 #    By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/14 15:21:50 by atoof             #+#    #+#              #
-#    Updated: 2023/10/14 15:21:51 by atoof            ###   ########.fr        #
+#    Updated: 2023/10/17 16:46:48 by atoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RENDER_DIR = src/render/
 KEY_EVENTS_DIR = src/key_events/
 SRC =	main.c
 VALID = check_valid_color.c validity_utils.c valid_map.c
-ERROR =  errors.c
+ERROR =  errors.c error_utils.c
 UTILS =  ft_atoll.c ft_split_spaces.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
 READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \

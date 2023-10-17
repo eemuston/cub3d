@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 15:24:30 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:24:31 by atoof            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/10/17 16:46:33 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../header/cub3d.h"
 
@@ -102,14 +103,8 @@ static int	read_texture_color(int fd, t_cub3d *data)
 	return (0);
 }
 
-int	read_file_and_parse(char **argv, t_cub3d *data)
+int	read_file_and_parse(t_cub3d *data)
 {
-	data->fd = open(argv[1], O_RDONLY);
-	if (data->fd == -1)
-	{
-		ft_putstr_fd("Error\nCould not open file.\n", 2);
-		return (1);
-	}
 	if (read_texture_color(data->fd, data) || check_duplicate(data) || \
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \

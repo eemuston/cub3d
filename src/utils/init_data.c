@@ -5,10 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 15:25:03 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:25:04 by atoof            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/10/17 16:48:38 by atoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #include "../../header/cub3d.h"
 
@@ -35,7 +48,6 @@ int	init_data(t_cub3d *data)
 	data->found_zero = 0;
 	data->width = 0;
 	data->height = 0;
-	data->fd = 0;
 	data->player_number = 0;
 	data->raw_map = NULL;
 	data->map = NULL;
