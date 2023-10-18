@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"*.excalidraw": "json",
-		"*.excalidrawlib": "json",
-		"__tuple": "c",
-		"array": "c",
-		"cub3d.h": "c"
-	}
-}
