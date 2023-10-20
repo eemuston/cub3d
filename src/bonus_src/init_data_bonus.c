@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:22:42 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:22:43 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:46:40 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	init_mlx_ray_player(t_cub3d *data)
 	data->player = ft_calloc(sizeof(t_player), 1);
 	data->ray = ft_calloc(sizeof(t_ray), 1);
 	data->mini_img = ft_calloc(sizeof(t_img), 1);
-	if (!data->img || !data->player || !data->ray)
+	if (!data->img || !data->player || !data->ray || !data->mini_img)
 		return (1);
 	data->img->img_ptr = NULL;
 	data->mlx_ptr = NULL;
@@ -36,7 +36,6 @@ int	init_data(t_cub3d *data)
 	data->found_zero = 0;
 	data->width = 0;
 	data->height = 0;
-	data->fd = 0;
 	data->player_number = 0;
 	data->raw_map = NULL;
 	data->map = NULL;
