@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_color_init.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atoof <atoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:24:38 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/14 15:24:39 by atoof            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:40:29 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static int	allocate_texture(t_cub3d *data, char **splitted_line)
 
 	i = 0;
 	i = assign_pole(splitted_line[0]);
+	if (data->texture[i - 1].path != NULL)
+		return (error_in_texture(data, 2));
 	data->texture[i - 1].identifier = i;
 	data->texture[i - 1].path = ft_substr(splitted_line[1], 0, \
 	ft_strlen(splitted_line[1]) - 1);

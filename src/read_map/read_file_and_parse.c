@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:24:30 by atoof             #+#    #+#             */
-/*   Updated: 2023/10/17 16:28:44 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:40:55 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,6 @@ static int	split_line(char *line, t_cub3d *data)
 	return (0);
 }
 
-static int	check_duplicate(t_cub3d *data)
-{
-	int	index;
-	int	cur_index;
-	int	temp;
-
-	index = 0;
-	while (index < 3)
-	{
-		cur_index = index;
-		while (cur_index < 3)
-		{
-			temp = data->texture[cur_index + 1].identifier;
-			if (data->texture[index].identifier == temp)
-				return (error_in_texture(data, 2));
-			cur_index++;
-		}
-		index++;
-	}
-	return (0);
-}
-
 static int	read_texture_color(int fd, t_cub3d *data)
 {
 	char	*line;
@@ -104,7 +82,7 @@ static int	read_texture_color(int fd, t_cub3d *data)
 
 int	read_file_and_parse(t_cub3d *data)
 {
-	if (read_texture_color(data->fd, data) || check_duplicate(data) || \
+	if (read_texture_color(data->fd, data) || \
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \
 		check_amount_player(data->raw_map, 0, data) || \
