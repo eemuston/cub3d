@@ -1,4 +1,4 @@
-# Wolfenstein 3D Inspired Project
+# Cube3D - Wolfenstein 3D Inspired Project
 
 This project draws inspiration from the iconic Wolfenstein 3D game, renowned as the pioneer of first-person shooter (FPS) games. Our aim is to simulate a dynamic view within a maze, challenging players to navigate and find their way out.
 
