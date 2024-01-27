@@ -13,7 +13,7 @@ The core concept behind this project is ray casting, a fundamental technique in 
 
 Here's a glimpse of what to expect:
 
-![Demo View](video.mp4)
+[![Watch the video](http://img.youtube.com/vi/SMFE3QZWZ0Q/0.jpg)](http://www.youtube.com/watch?v=SMFE3QZWZ0Q)
 
 ## Getting Started
 
