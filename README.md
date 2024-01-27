@@ -6,8 +6,9 @@ The core concept behind this project is ray casting, a fundamental technique in 
 
 ## Contributors
 
-- Abbas Toof
-- Eemeli Mustonen
+- [Abbas Toof](https://github.com/abbastoof)
+- [Eemeli Mustonen](https://github.com/eemuston/cub3d)
+
 
 ## Demo View
 
